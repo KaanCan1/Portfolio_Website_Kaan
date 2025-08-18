@@ -1,0 +1,264 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.5s ease;
+}
+
+/* Ortak kurallar */
+#profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding-top: 10vh;
+  margin-bottom: 4rem;
+  flex-direction: column;
+}
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  height: auto;
+}
+
+.section__pic-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+}
+
+.section__pic-container img,
+.section__pic-container .about-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* 1201px - 1400px arası */
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+  #first-image {
+    width: 300px;
+    height: 290px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+    transition: all 0.8s ease-in-out;
+  }
+
+  #first-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: all 0.8s ease-in-out;
+  }
+  section {
+    margin: 0 5%;
+    max-width: 1400px;
+  }
+
+  #profile {
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  .about-pic {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .section-container {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .section__pic-container {
+    width: 600px;
+    height: 320px;
+    border-radius: 50% / 40%; /* Oval görünüm */
+  }
+
+  .details-container {
+    width: auto;
+  }
+
+  .arrow {
+    display: block;
+  }
+}
+
+/* max-width: 1200px */
+@media screen and (max-width: 1200px) {
+  #main-nav {
+    display: none;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  #hamburger-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    height: 12vh;
+  }
+
+  #hamburger-nav .logo-img {
+    height: 50px;
+    width: auto;
+  }
+
+  #hamburger-nav .logo {
+    font-size: 1.5rem;
+    gap: 0.5rem;
+  }
+
+  .menu-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    width: fit-content;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    padding: 0;
+    margin: 0;
+    z-index: 99;
+  }
+
+  .menu-links.open {
+    max-height: 300px;
+    opacity: 1;
+  }
+
+  .menu-links a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #experience,
+  .experience-details-container {
+    margin-top: 2rem;
+  }
+
+  section {
+    height: fit-content;
+    margin: 0 5%;
+  }
+
+  #about {
+    height: auto;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+  }
+
+  .about-details-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-containers {
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0;
+  }
+
+  .details-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .arrow {
+    display: none;
+  }
+}
+
+/* max-width: 600px */
+@media screen and (max-width: 600px) {
+  #contact,
+  footer {
+    height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  article {
+    font-size: 0.9rem;
+  }
+
+  .section__text__p1 {
+    font-size: 1rem;
+  }
+
+  .section__text__p2 {
+    font-size: 1.1rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .text-container {
+    text-align: justify;
+    padding: 0 1rem;
+  }
+
+  footer nav {
+    height: fit-content;
+    margin-bottom: 1rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .logo-img {
+    height: 40px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .about-containers,
+  .contact-info-upper-container,
+  .btn-container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .contact-info-container {
+    margin: 0.5rem 0;
+  }
+
+  .contact-info-container p,
+  .nav-links li a {
+    font-size: 1rem;
+  }
+
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+
+  .about-containers {
+    gap: 1.5rem;
+  }
+}

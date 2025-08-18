@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      /*==================== CONTACT - MİNİMAL CARD TASARIM ====================*/
+
+      #contact {
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Formu dikeyde ortalar */
+        min-height: 48vh;
+        padding: 3rem 1.5rem;
+        background-color: var(--bg-color); /* Gri arka planı kaldırdım */
+        margin-top: 1.5rem; /* Üstteki bölümden boşluk azaltıldı */
+        margin-bottom: 4rem; /* Alttaki boşluk azaltıldı */
+      }
+
+      .contact-form-container {
+        max-width: 420px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: var(--bg-color);
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e0e0e0;
+        text-align: left;
+      }
+
+      .title {
+        font-size: clamp(2rem, 5vw, 2.5rem);
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+        text-align: center;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .form-label {
+        font-weight: 500;
+        color: var(--primary-color);
+        font-size: 1rem;
+      }
+
+      .form-input,
+      .form-textarea {
+        padding: 0.9rem;
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        background-color: var(--bg-color);
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      .form-input:focus,
+      .form-textarea:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(53, 53, 53, 0.1);
+      }
+
+      .form-textarea {
+        resize: vertical;
+        min-height: 110px;
+      }
+      .form-submit-btn {
+        align-self: flex-start;
+        padding: 0.7rem 1.6rem;
+        background: #fdf4e3; /* açık krem rengi */
+        color: #8a5c2e; /* kahverengimsi metin rengi */
+        border: 1px solid #e6d3b3; /* yumuşak krem kenarlık */
+        border-radius: 25px; /* yumuşak köşeler */
+        font-weight: 500;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        letter-spacing: normal;
+      }
+
+      .form-submit-btn:hover {
+        background: #faebd7; /* biraz daha koyu krem tonu */
+        color: #6e4a24;
+        border-color: #d5c2a1;
+      }
+
+      /* Mevcut .status-message kodunu bununla değiştirin */
+      .status-message {
+        margin-top: 1.2rem;
+        padding: 0.9rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        font-weight: 500;
+        opacity: 0; /* Başlangıçta gizli */
+        transform: translateY(10px); /* Hafifçe aşağıda başlar */
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        visibility: hidden; /* Gösterilene kadar tamamen gizli */
+        max-height: 0; /* Animasyon için yükseklik 0 */
+        overflow: hidden;
+      }
+
+      /* Gönderim başarılı olduğunda veya hata oluştuğunda bu sınıfları ekleyeceğiz */
+      .status-message.show {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        max-height: 80px; /* Mesajı gösterebilecek bir yükseklik */
+        margin-top: 0.8rem;
+      }
+
+      .status-message.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .status-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      /*============== ABOUT GRID LAYOUT ==============*/
+      #about .about-containers {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+      }
+
+      #about .about-containers .details-container:first-child {
+        grid-column: 1 / -1;
+      }
+
+      /*============== DİL ETİKETLERİ ==============*/
+      .text-left-list .lang-label {
+        font-weight: 600;
+      }
+
+      .text-left-list li p {
+        transition: color 0.2s ease;
+      }
+
+      .text-left-list li p:hover {
+        color: #cc7a29; /* hafif turuncu */
+      }
+
+      /*============== CONTACT GRID ==============*/
+      .contact-grid {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .contact-media {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .contact-media lottie-player {
+        width: 100%;
+        max-width: 480px;
+        height: auto;
+      }
+
+      .contact-grid .contact-form-container {
+        flex: 1;
+        margin: 0;
+        max-width: none;
+      }
+
+      /*============== MOBİL UYUMLULUK ==============*/
+      @media screen and (max-width: 600px) {
+        .contact-form-container {
+          padding: 1.5rem 1.25rem;
+        }
+
+        .form-submit-btn {
+          align-self: stretch;
+          width: 100%;
+        }
+
+        .contact-grid {
+          flex-direction: column;
+          gap: 1.25rem;
+        }
+
+        /* ABOUT GRID: mobile tek sütun */
+        #about .about-containers {
+          grid-template-columns: 1fr;
+        }
+
+        #about .about-containers .details-container:first-child {
+          grid-column: auto;
+        }
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kaan Can Kurt</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2I5R3t+s0s2vJvT18A6g/E7j/q66R4i56A6g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </head>
+  <body>
+    <nav id="main-nav">
+      <a href="#" class="logo">
+        <img
+          src="./assets/logo1.png"
+          alt="Kaan Can Kurt Logo"
+          class="logo-img"
+          style="height: 350px; width: auto; padding-top: 30px"
+        />
+      </a>
+      <div class="nav-links-container">
+        <ul class="nav-links">
+          <li><a href="#about">Hakkımda</a></li>
+          <li><a href="#experience">Deneyim</a></li>
+          <li><a href="#projects">Projelerim</a></li>
+          <li><a href="#contact">İletişim</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <nav id="hamburger-nav" onmouseleave="closeMenu()">
+      <a href="#" class="logo">
+        <img
+          src="./assets/logo1.png"
+          alt="Kaan Can Kurt Logo"
+          class="logo-img"
+          style="height: 300px; width: auto; padding-top: 23px"
+        />
+      </a>
+      <div class="hamburger-menu">
+        <div
+          class="hamburger-icon"
+          onmouseenter="openMenu()"
+          onclick="toggleMenu()"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">Hakkımda</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Deneyim</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projeler</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">İletişim</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div id="first-image" class="section__pic-container">
+        <img
+          src="./assets/profilfoto1.jpeg"
+          alt="Profil resmim"
+          class="about-pic"
+        />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Merhaba, ben</p>
+        <h1 class="title">Kaan Can Kurt</h1>
+        <p class="section__text__p2">
+          Flutter Developer <br />Web & mobile Frontend Developer
+        </p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/KaanCanKurt_CV.pdf')"
+          >
+            CV'me ulaşmak isterseniz
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            İletişim
+          </button>
+        </div>
+        <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://linkedin.com/in/kaan-can-kurt-805990299'"
+          />
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/KaanCan1'"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Daha Fazla Bilgi</p>
+      <h1 class="title">Hakkımda</h1>
+      <div class="section-container">
+        <div id="second-image" class="section__pic-container">
+          <img
+            src="./assets/profilkaan.jpeg"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Deneyim</h3>
+              <ul class="text-left-list">
+                <li>
+                  <h5>Stajyer Bilgisayar Mühendisi</h5>
+                  <p>
+                    EDUJI ARAŞTIRMA GELİŞTİRME YAZILIM TASARIM VE DANIŞMANLIK
+                    A.Ş. | Bornova, İzmir
+                  </p>
+                  <p>Temmuz 2024 - Eylül 2024</p>
+                </li>
+              </ul>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Eğitim</h3>
+              <ul class="text-left-list">
+                <li>
+                  <h5>Tokat Gaziosmanpaşa Üniversitesi</h5>
+                  <p>Bilgisayar Mühendisliği (Eylül 2021 - Haziran 2025)</p>
+                </li>
+                <li>
+                  <h5>Kepirtepe Anadolu Lisesi</h5>
+                  <p>Mezuniyet Yılı: 2021</p>
+                </li>
+              </ul>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/language.png"
+                alt="Language icon"
+                class="icon"
+              />
+              <h3>Diller</h3>
+              <ul class="text-left-list">
+                <li>
+                  <p><span class="lang-label">Türkçe:</span> Anadil</p>
+                </li>
+                <li>
+                  <p>
+                    <span class="lang-label">İngilizce:</span> B2
+                    (Upper-Intermediate)
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <span class="lang-label">Almanca:</span> A1 (Başlangıç
+                    Seviyesi)
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              Bilgisayar Mühendisliği lisans eğitimimi Tokat Gaziosmanpaşa
+              Üniversitesi'nde tamamladım. Flutter ile mobil uygulama
+              geliştirme, web programlama ve veritabanı yönetimi alanlarında
+              deneyim kazandım. Staj sürecimde edindiğim pratik bilgilerle
+              teknik altyapımı güçlendirdim. Yeni teknolojilere meraklı,
+              gelişime açık ve projelerde aktif rol almayı seven bir
+              yazılımcıyım.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
+    </section>
+    <section id="experience">
+      <p class="section__text__p1">Yetkinliklerime Göz Atın</p>
+      <h1 class="title">Deneyim</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">
+              Web & Mobil Geliştirme ve Diller
+            </h2>
+            <div class="article-container">
+              <article class="skill" data-level="90">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>Flutter & Dart</h3>
+                  <p>Experienced</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="85">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>REST API</h3>
+                  <p>Experienced</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="80">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>HTML & CSS</h3>
+                  <p>Experienced</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="60">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>JavaScript</h3>
+                  <p>Basic</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="70">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>Java</h3>
+                  <p>Intermediate</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="70">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>PHP</h3>
+                  <p>Intermediate</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="75">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>Python</h3>
+                  <p>Intermediate</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="65">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>C#</h3>
+                  <p>Basic-Intermediate</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="85">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>GetX</h3>
+                  <p>Experienced</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="70">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>Android Studio</h3>
+                  <p>Intermediate</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="60">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>ASP.NET</h3>
+                  <p>Basic</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="80">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>Responsive Arayüz</h3>
+                  <p>Experienced</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="70">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>UI/UX Tasarımı</h3>
+                  <p>Intermediate</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Araçlar ve Veritabanı</h2>
+            <div class="article-container">
+              <article class="skill" data-level="90">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>Git & GitHub</h3>
+                  <p>Experienced</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="75">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>Figma</h3>
+                  <p>Intermediate</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="85">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>Postman</h3>
+                  <p>Experienced</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="70">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>SQLite</h3>
+                  <p>Intermediate</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="50">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>Firebase</h3>
+                  <p>Basic</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="80">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>SQL</h3>
+                  <p>Experienced</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="80">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>MySQL</h3>
+                  <p>Experienced</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="75">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>PostgreSQL</h3>
+                  <p>Intermediate</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+              <article class="skill" data-level="70">
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div class="skill-meta">
+                  <h3>SQL Server</h3>
+                  <p>Intermediate</p>
+                </div>
+                <div class="bar"><div class="bar-fill"></div></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#projects'"
+      />
+    </section>
+    <section id="projects">
+      <p class="section__text__p1">Son Projelerime Göz Atın</p>
+      <h1 class="title">Projelerim</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <!-- 
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project-1.png"
+                alt="Project 1"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Project One</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+          
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project-2.png"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Project Two</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+          
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project-3.png"
+                alt="Project 3"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Project Three</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+          -->
+
+          <p
+            style="
+              text-align: center;
+              width: 100%;
+              font-style: italic;
+              margin-top: 20px;
+            "
+          >
+            Projeler eklenecek...
+          </p>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <div class="contact-grid">
+        <div class="contact-media">
+          <lottie-player
+            src="./assets/Welcome.json"
+            background="transparent"
+            speed="1"
+            loop
+            autoplay
+          ></lottie-player>
+        </div>
+        <div class="contact-form-container">
+          <h1 class="title">İletişim</h1>
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="name" class="form-label">Adınız</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-label">Konu</label>
+              <input
+                type="text"
+                id="subject"
+                name="title"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">E-posta</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Mesajınız</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-textarea"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="form-submit-btn">Gönder</button>
+            <div id="status-message" class="status-message"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">Hakkımda</a></li>
+            <li><a href="#experience">Deneyim</a></li>
+            <li><a href="#projects">Projelerim</a></li>
+            <li><a href="#contact">İletişim</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2025 Kaan Can Kurt. All Rights Reserved.</p>
+    </footer>
+    <button id="back-to-top" aria-label="Yukarı çık" class="back-to-top">
+      <img
+        src="./assets/arrow.png"
+        alt="Yukarı çık"
+        class="icon back-to-top-icon"
+      />
+    </button>
+    <script src="script.js"></script>
+    <!-- EmailJS Script -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("vOCHwW1SJjORmGB6z");
+      })();
+
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const statusMessage = document.getElementById("status-message");
+
+          // Mevcut mesajı temizle ve gizle
+          statusMessage.innerText = "";
+          statusMessage.className = "status-message"; // Tüm sınıfları kaldır
+
+          emailjs.sendForm("service_ganvnbc", "template_chyavpa", this).then(
+            function () {
+              // Başarılı olursa
+              statusMessage.innerText = "✅ Mesajınız başarıyla gönderildi!";
+              statusMessage.classList.add("show", "success");
+
+              // 2 saniye sonra siteyi yenile
+              setTimeout(() => {
+                window.location.reload();
+              }, 2000);
+            },
+            function (error) {
+              statusMessage.innerText =
+                "❌ Gönderim başarısız oldu. Lütfen tekrar deneyin.";
+              statusMessage.classList.add("show", "error");
+              console.error("Hata:", error);
+
+              setTimeout(() => {
+                statusMessage.classList.remove("show", "error");
+              }, 5000);
+            }
+          );
+        });
+    </script>
+  </body>
+</html>
