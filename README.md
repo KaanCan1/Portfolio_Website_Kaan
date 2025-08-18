@@ -1,6 +1,6 @@
 # Kaan Can Kurt - Kişisel Portföy Web Sitesi
 
-Merhaba! 👋  
+Merhaba!  
 Bu proje benim kişisel portföy sitem. Burada hem kendimi tanıtıyorum hem de yazılım alanındaki yeteneklerimi, deneyimlerimi ve projelerimi sergiliyorum. Amacım, modern ve kullanıcı dostu bir tasarımla ziyaretçilere hakkımda hızlıca bilgi vermek ve kolayca iletişim kurmalarını sağlamak.  
 
 ## Özellikler
