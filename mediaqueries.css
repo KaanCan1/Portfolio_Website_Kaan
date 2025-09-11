@@ -191,6 +191,24 @@
 
 /* max-width: 600px */
 @media screen and (max-width: 600px) {
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100vw;
+  }
+  section {
+    margin: 0;
+    padding: 0 1rem;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+  .section__pic-container {
+    width: 90vw;
+    max-width: 300px;
+    height: 90vw;
+    max-height: 300px;
+    margin: 0 auto;
+  }
   #contact,
   footer {
     height: auto;
@@ -260,5 +278,99 @@
 
   .about-containers {
     gap: 1.5rem;
+  }
+  .menu-links {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 78vw !important;
+    max-width: 300px !important;
+    min-width: 160px !important;
+    height: auto !important;
+    border-radius: 0 0 18px 18px;
+    padding: 0.7rem 0.5rem 1rem 0.5rem;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    background: #fff;
+    transform: none !important;
+    display: block;
+    padding-top: 2.5rem !important; /* Üstte çarpı için boşluk bırak */
+  }
+  .menu-links.open {
+    max-height: 100vh !important;
+    opacity: 1 !important;
+  }
+  .menu-links .menu-close {
+    position: absolute;
+    top: 0.7rem;
+    right: 1.1rem;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    z-index: 10001;
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+  .menu-links .menu-close:hover {
+    color: #222;
+  }
+  .menu-links .theme-toggle {
+    margin-bottom: 0.7rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #eee;
+    margin-top: 0.2rem;
+  }
+  .menu-links li a {
+    font-size: 1.08rem !important;
+    padding: 0.55rem 0 !important;
+    line-height: 1.3;
+  }
+  .hamburger-menu {
+    position: static !important;
+  }
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.32);
+    z-index: 9998;
+    transition: opacity 0.2s;
+  }
+  .menu-links.open ~ .menu-overlay,
+  .menu-links.open + .menu-overlay {
+    display: block;
+  }
+  .menu-links .theme-toggle {
+    pointer-events: none;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .menu-links.open .theme-toggle {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  [data-theme="dark"] .menu-links {
+    background: #181818 !important;
+    color: #fff !important;
+  }
+  [data-theme="dark"] .menu-links li a {
+    color: #fff !important;
+  }
+  [data-theme="dark"] .menu-links .menu-close {
+    color: #eee;
+  }
+  [data-theme="dark"] .menu-links .theme-toggle {
+    border-bottom: 1px solid #333;
   }
 }

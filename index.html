@@ -208,6 +208,162 @@
           grid-column: auto;
         }
       }
+      .project-slider {
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto 1.2rem auto;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #f8f8f8;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+        min-height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .project-slide {
+        display: none;
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+        border-radius: 18px;
+        background: #fff;
+      }
+      .project-slide.active {
+        display: block;
+      }
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        font-size: 1.5rem;
+        color: #8a5c2e;
+        cursor: pointer;
+        z-index: 2;
+        transition: background 0.2s;
+      }
+      .slider-btn:hover {
+        background: #faebd7;
+      }
+      .slider-btn.prev {
+        left: 10px;
+      }
+      .slider-btn.next {
+        right: 10px;
+      }
+      @media (max-width: 600px) {
+        .project-slider,
+        .project-slide {
+          height: 140px;
+        }
+      }
+      .experience-details-container {
+        display: flex;
+        justify-content: center;
+      }
+      .about-containers {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      .project1-container {
+        max-width: 480px;
+        width: 100%;
+        margin: 2rem auto 0 auto;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+        border-radius: 24px;
+        background: #fff;
+        padding: 2rem 1.2rem 1.5rem 1.2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .project-slider {
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto 1.2rem auto;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #f8f8f8;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+        min-height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .project-slide {
+        display: none;
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+        border-radius: 18px;
+        background: #fff;
+      }
+      .project-slide.active {
+        display: block;
+      }
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        font-size: 1.5rem;
+        color: #8a5c2e;
+        cursor: pointer;
+        z-index: 2;
+        transition: background 0.2s;
+      }
+      .slider-btn:hover {
+        background: #faebd7;
+      }
+      .slider-btn.prev {
+        left: 10px;
+      }
+      .slider-btn.next {
+        right: 10px;
+      }
+      @media (max-width: 600px) {
+        .project1-container {
+          padding: 1.2rem 0.3rem 1rem 0.3rem;
+        }
+        .project-slider,
+        .project-slide {
+          height: 140px;
+        }
+      }
+      .github-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        background: #24292f;
+        color: #fff;
+        font-weight: 500;
+        font-size: 1.05rem;
+        padding: 0.65em 1.4em;
+        border-radius: 24px;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
+        transition: background 0.2s, color 0.2s;
+      }
+      .github-btn:hover {
+        background: #444d56;
+        color: #ffd700;
+      }
+      .github-btn i {
+        font-size: 1.2em;
+      }
     </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -274,27 +430,8 @@
         />
       </a>
       <div class="hamburger-nav-right">
-        <!-- Mobile Dark Mode Toggle -->
-        <div class="theme-toggle mobile-theme-toggle" id="mobile-theme-toggle">
-          <div class="theme-label-container">
-            <img
-              src="./assets/light.png"
-              alt="Light mode"
-              class="theme-icon light-icon"
-            />
-            <img
-              src="./assets/moon.png"
-              alt="Dark mode"
-              class="theme-icon moon-icon"
-              style="display: none"
-            />
-            <span class="theme-label">LIGHT</span>
-          </div>
-          <div class="toggle-track">
-            <div class="toggle-thumb"></div>
-          </div>
-        </div>
         <div class="hamburger-menu">
+          <div class="menu-overlay" onclick="toggleMenu()"></div>
           <div
             class="hamburger-icon"
             onmouseenter="openMenu()"
@@ -305,6 +442,31 @@
             <span></span>
           </div>
           <div class="menu-links">
+            <div class="menu-close" onclick="toggleMenu()" aria-label="Kapat">
+              &times;
+            </div>
+            <div
+              class="theme-toggle mobile-theme-toggle"
+              id="mobile-theme-toggle"
+            >
+              <div class="theme-label-container">
+                <img
+                  src="./assets/light.png"
+                  alt="Light mode"
+                  class="theme-icon light-icon"
+                />
+                <img
+                  src="./assets/moon.png"
+                  alt="Dark mode"
+                  class="theme-icon moon-icon"
+                  style="display: none"
+                />
+                <span class="theme-label">LIGHT</span>
+              </div>
+              <div class="toggle-track">
+                <div class="toggle-thumb"></div>
+              </div>
+            </div>
             <li><a href="#about" onclick="toggleMenu()">Hakkımda</a></li>
             <li><a href="#experience" onclick="toggleMenu()">Deneyim</a></li>
             <li><a href="#projects" onclick="toggleMenu()">Projeler</a></li>
@@ -765,93 +927,97 @@
       <h1 class="title">Projelerim</h1>
       <div class="experience-details-container">
         <div class="about-containers">
-          <!-- 
-          <div class="details-container color-container">
+          <!-- Proje 1: Slider ve Açıklama Başlangıcı -->
+          <div class="details-container color-container project1-container">
             <div class="article-container">
-              <img
-                src="./assets/project-1.png"
-                alt="Project 1"
-                class="project-img"
-              />
+              <div class="project-slider" id="project1-slider">
+                <img
+                  src="./assets/proje1_1.png"
+                  class="project-slide active"
+                  alt="Proje 1 - 1"
+                />
+                <img
+                  src="./assets/proje1_2.png"
+                  class="project-slide"
+                  alt="Proje 1 - 2"
+                />
+                <img
+                  src="./assets/proje1_3.png"
+                  class="project-slide"
+                  alt="Proje 1 - 3"
+                />
+                <img
+                  src="./assets/proje1_4.png"
+                  class="project-slide"
+                  alt="Proje 1 - 4"
+                />
+                <img
+                  src="./assets/proje1_5.png"
+                  class="project-slide"
+                  alt="Proje 1 - 5"
+                />
+                <button class="slider-btn prev" type="button">&#10094;</button>
+                <button class="slider-btn next" type="button">&#10095;</button>
+              </div>
+              <script>
+                (function () {
+                  var slider = document.getElementById("project1-slider");
+                  var slides = slider.querySelectorAll(".project-slide");
+                  var prevBtn = slider.querySelector(".slider-btn.prev");
+                  var nextBtn = slider.querySelector(".slider-btn.next");
+                  var current = 0;
+                  function showSlide(idx) {
+                    slides.forEach(function (slide, i) {
+                      slide.classList.toggle("active", i === idx);
+                    });
+                  }
+                  prevBtn.onclick = function () {
+                    current = (current - 1 + slides.length) % slides.length;
+                    showSlide(current);
+                  };
+                  nextBtn.onclick = function () {
+                    current = (current + 1) % slides.length;
+                    showSlide(current);
+                  };
+                  showSlide(current);
+                })();
+              </script>
             </div>
-            <h2 class="experience-sub-title project-title">Project One</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
+            <h2
+              class="experience-sub-title project-title"
+              style="text-align: center"
+            >
+              BeanSocial: Kahve Sosyal Medya Platformu
+            </h2>
+            <p
+              style="
+                text-align: center;
+                max-width: 420px;
+                margin: 0 auto 1.5rem auto;
+              "
+            >
+              Kullanıcıların kahve tariflerini paylaşabildiği, favori
+              kahvelerini kaydedebildiği ve kahve çeşitleri hakkında bilgi
+              alabildiği sosyal bir platformdur.
+            </p>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                margin-bottom: 1rem;
+              "
+            >
+              <a
+                href="https://github.com/KaanCan1/beansocial_son"
+                target="_blank"
+                rel="noopener"
+                class="github-btn"
               >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
+                <i class="fab fa-github"></i> Github'da Görüntüle
+              </a>
             </div>
           </div>
-          
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-2.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project Two</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-3.png"
-                alt="Project 3"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project Three</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          -->
-
-          <p
-            style="
-              text-align: center;
-              width: 100%;
-              font-style: italic;
-              margin-top: 20px;
-            "
-          >
-            Projeler eklenecek...
-          </p>
+          <!-- Proje 1: Slider ve Açıklama Sonu -->
         </div>
       </div>
       <img

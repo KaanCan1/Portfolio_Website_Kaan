@@ -1,8 +1,18 @@
 function toggleMenu() {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");
+  const overlay = document.querySelector(".menu-overlay");
   menu.classList.toggle("open");
   icon.classList.toggle("open");
+  if (overlay) {
+    if (menu.classList.contains("open")) {
+      overlay.style.display = "block";
+      overlay.style.pointerEvents = "auto";
+    } else {
+      overlay.style.display = "none";
+      overlay.style.pointerEvents = "none";
+    }
+  }
 }
 
 // Back-to-top behavior
