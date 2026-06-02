@@ -97,31 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
     revealEls.forEach((el) => revealObserver.observe(el));
   }
 
-  /* ----- Skill bars fill when scrolled into view ----- */
-  const skills = document.querySelectorAll(".skill[data-level]");
-  function fillSkill(skill) {
-    const level = Math.max(0, Math.min(100, Number(skill.dataset.level) || 0));
-    const fill = skill.querySelector(".bar-fill");
-    if (fill) fill.style.width = level + "%";
-  }
-
-  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-    skills.forEach(fillSkill);
-  } else {
-    const skillObserver = new IntersectionObserver(
-      function (entries, observer) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            fillSkill(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-    skills.forEach((skill) => skillObserver.observe(skill));
-  }
-
   /* ----- Project slider ----- */
   const slider = document.getElementById("project1-slider");
   if (slider) {
