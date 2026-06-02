@@ -202,8 +202,20 @@ nav {
 }
 
 .logo-img {
-  height: 84px;
+  height: 58px;
   width: auto;
+}
+
+.logo-dark {
+  display: none;
+}
+
+[data-theme="dark"] .logo-light {
+  display: none;
+}
+
+[data-theme="dark"] .logo-dark {
+  display: block;
 }
 
 .logo:hover {

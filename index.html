@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Kaan Can Kurt — Flutter Developer, Web & Mobile Frontend Developer. Projeler, deneyim ve iletişim."
+      content="Kaan Can Kurt — Flutter Developer, Web & Mobile Frontend Developer. Projects, experience and contact."
     />
     <title>Kaan Can Kurt — Flutter & Frontend Developer</title>
     <link rel="stylesheet" href="style.css" />
@@ -24,17 +24,22 @@
     <nav id="main-nav">
       <a href="#" class="logo">
         <img
-          src="./assets/logo1.png"
+          src="./assets/logo.png"
           alt="Kaan Can Kurt Logo"
-          class="logo-img"
+          class="logo-img logo-light"
+        />
+        <img
+          src="./assets/logo-dark.png"
+          alt="Kaan Can Kurt Logo"
+          class="logo-img logo-dark"
         />
       </a>
       <div class="nav-links-container">
         <ul class="nav-links">
-          <li><a href="#about">Hakkımda</a></li>
-          <li><a href="#experience">Deneyim</a></li>
-          <li><a href="#projects">Projelerim</a></li>
-          <li><a href="#contact">İletişim</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
         <!-- Minimal Dark Mode Toggle -->
         <div class="theme-toggle" id="theme-toggle">
@@ -62,9 +67,14 @@
     <nav id="hamburger-nav" onmouseleave="closeMenu()">
       <a href="#" class="logo">
         <img
-          src="./assets/logo1.png"
+          src="./assets/logo.png"
           alt="Kaan Can Kurt Logo"
-          class="logo-img"
+          class="logo-img logo-light"
+        />
+        <img
+          src="./assets/logo-dark.png"
+          alt="Kaan Can Kurt Logo"
+          class="logo-img logo-dark"
         />
       </a>
       <div class="hamburger-nav-right">
@@ -80,7 +90,7 @@
             <span></span>
           </div>
           <div class="menu-links">
-            <div class="menu-close" onclick="toggleMenu()" aria-label="Kapat">
+            <div class="menu-close" onclick="toggleMenu()" aria-label="Close">
               &times;
             </div>
             <div
@@ -105,17 +115,17 @@
                 <div class="toggle-thumb"></div>
               </div>
             </div>
-            <li><a href="#about" onclick="toggleMenu()">Hakkımda</a></li>
-            <li><a href="#experience" onclick="toggleMenu()">Deneyim</a></li>
-            <li><a href="#projects" onclick="toggleMenu()">Projeler</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">İletişim</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+            <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
           </div>
         </div>
       </div>
     </nav>
     <section id="profile">
       <div class="section__text" data-reveal>
-        <p class="section__text__p1">Merhaba, ben</p>
+        <p class="section__text__p1">Hello, I'm</p>
         <h1 class="title">Kaan Can Kurt</h1>
         <p class="section__text__p2">
           Flutter Developer <br />Web &amp; Mobile Frontend Developer
@@ -126,7 +136,7 @@
               class="btn btn-color-2 cv-dropdown-btn"
               onclick="toggleCVDropdown()"
             >
-              CV'me ulaşmak isterseniz
+              Get My CV
               <i class="fas fa-chevron-down dropdown-arrow"></i>
             </button>
             <div class="cv-dropdown-menu" id="cv-dropdown-menu">
@@ -136,7 +146,7 @@
                 class="cv-option"
               >
                 <i class="fas fa-file-pdf"></i>
-                İngilizce CV
+                English CV
               </a>
               <a
                 href="./assets/KaanCanKurt_CV.pdf"
@@ -144,12 +154,12 @@
                 class="cv-option"
               >
                 <i class="fas fa-file-pdf"></i>
-                Türkçe CV
+                Turkish CV
               </a>
             </div>
           </div>
           <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            İletişim
+            Contact
           </button>
         </div>
         <div id="socials-container">
@@ -170,14 +180,14 @@
       <div id="first-image" class="section__pic-container" data-reveal>
         <img
           src="./assets/profilfoto1.jpeg"
-          alt="Profil resmim"
+          alt="My profile picture"
           class="about-pic"
         />
       </div>
     </section>
     <section id="about">
-      <p class="section__text__p1" data-reveal>Daha Fazla Bilgi</p>
-      <h1 class="title" data-reveal>Hakkımda</h1>
+      <p class="section__text__p1" data-reveal>Get To Know More</p>
+      <h1 class="title" data-reveal>About Me</h1>
       <div class="section-container">
         <div id="second-image" class="section__pic-container" data-reveal>
           <img
@@ -194,15 +204,15 @@
                 alt="Experience icon"
                 class="icon"
               />
-              <h3>Deneyim</h3>
+              <h3>Experience</h3>
               <ul class="text-left-list">
                 <li>
-                  <h5>Stajyer Bilgisayar Mühendisi</h5>
+                  <h5>Computer Engineering Intern</h5>
                   <p>
                     EDUJI ARAŞTIRMA GELİŞTİRME YAZILIM TASARIM VE DANIŞMANLIK
                     A.Ş. | Bornova, İzmir
                   </p>
-                  <p>Temmuz 2024 - Eylül 2024</p>
+                  <p>July 2024 - September 2024</p>
                 </li>
               </ul>
             </div>
@@ -212,15 +222,15 @@
                 alt="Education icon"
                 class="icon"
               />
-              <h3>Eğitim</h3>
+              <h3>Education</h3>
               <ul class="text-left-list">
                 <li>
-                  <h5>Tokat Gaziosmanpaşa Üniversitesi</h5>
-                  <p>Bilgisayar Mühendisliği (Eylül 2021 - Haziran 2025)</p>
+                  <h5>Tokat Gaziosmanpaşa University</h5>
+                  <p>Computer Engineering (September 2021 - June 2025)</p>
                 </li>
                 <li>
-                  <h5>Kepirtepe Anadolu Lisesi</h5>
-                  <p>Mezuniyet Yılı: 2021</p>
+                  <h5>Kepirtepe Anatolian High School</h5>
+                  <p>Graduation Year: 2021</p>
                 </li>
               </ul>
             </div>
@@ -230,21 +240,20 @@
                 alt="Language icon"
                 class="icon"
               />
-              <h3>Diller</h3>
+              <h3>Languages</h3>
               <ul class="text-left-list">
                 <li>
-                  <p><span class="lang-label">Türkçe:</span> Anadil</p>
+                  <p><span class="lang-label">Turkish:</span> Native</p>
                 </li>
                 <li>
                   <p>
-                    <span class="lang-label">İngilizce:</span> B2
+                    <span class="lang-label">English:</span> B2
                     (Upper-Intermediate)
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span class="lang-label">Almanca:</span> A1 (Başlangıç
-                    Seviyesi)
+                    <span class="lang-label">German:</span> A1 (Beginner)
                   </p>
                 </li>
               </ul>
@@ -252,13 +261,13 @@
           </div>
           <div class="text-container" data-reveal>
             <p>
-              Bilgisayar Mühendisliği lisans eğitimimi Tokat Gaziosmanpaşa
-              Üniversitesi'nde tamamladım. Flutter ile mobil uygulama
-              geliştirme, web programlama ve veritabanı yönetimi alanlarında
-              deneyim kazandım. Staj sürecimde edindiğim pratik bilgilerle
-              teknik altyapımı güçlendirdim. Yeni teknolojilere meraklı,
-              gelişime açık ve projelerde aktif rol almayı seven bir
-              yazılımcıyım.
+              I completed my bachelor's degree in Computer Engineering at Tokat
+              Gaziosmanpaşa University. I have gained experience in mobile
+              application development with Flutter, web programming and database
+              management. During my internship I strengthened my technical
+              foundation with the hands-on knowledge I acquired. I am a
+              developer who is curious about new technologies, open to growth,
+              and enjoys taking an active role in projects.
             </p>
           </div>
         </div>
@@ -271,13 +280,13 @@
       />
     </section>
     <section id="experience">
-      <p class="section__text__p1" data-reveal>Yetkinliklerime Göz Atın</p>
-      <h1 class="title" data-reveal>Deneyim</h1>
+      <p class="section__text__p1" data-reveal>Explore My Skills</p>
+      <h1 class="title" data-reveal>Experience</h1>
       <div class="experience-details-container">
         <div class="about-containers">
           <div class="details-container" data-reveal>
             <h2 class="experience-sub-title">
-              Web &amp; Mobil Geliştirme ve Diller
+              Web &amp; Mobile Development & Languages
             </h2>
             <div class="article-container">
               <article class="skill">
@@ -391,7 +400,7 @@
             </div>
           </div>
           <div class="details-container" data-reveal>
-            <h2 class="experience-sub-title">Araçlar ve Veritabanı</h2>
+            <h2 class="experience-sub-title">Tools & Databases</h2>
             <div class="article-container">
               <article class="skill">
                 <img
@@ -517,50 +526,49 @@
       />
     </section>
     <section id="projects">
-      <p class="section__text__p1" data-reveal>Son Projelerime Göz Atın</p>
-      <h1 class="title" data-reveal>Projelerim</h1>
+      <p class="section__text__p1" data-reveal>Check Out My Recent Projects</p>
+      <h1 class="title" data-reveal>Projects</h1>
       <div class="experience-details-container">
         <div class="about-containers">
-          <!-- Proje 1: Slider ve Açıklama Başlangıcı -->
+          <!-- Project 1: Slider and Description Start -->
           <div class="details-container color-container project1-container" data-reveal>
             <div class="article-container">
               <div class="project-slider" id="project1-slider">
                 <img
                   src="./assets/proje1_1.png"
                   class="project-slide active"
-                  alt="Proje 1 - 1"
+                  alt="BeanSocial screenshot 1"
                 />
                 <img
                   src="./assets/proje1_2.png"
                   class="project-slide"
-                  alt="Proje 1 - 2"
+                  alt="BeanSocial screenshot 2"
                 />
                 <img
                   src="./assets/proje1_3.png"
                   class="project-slide"
-                  alt="Proje 1 - 3"
+                  alt="BeanSocial screenshot 3"
                 />
                 <img
                   src="./assets/proje1_4.png"
                   class="project-slide"
-                  alt="Proje 1 - 4"
+                  alt="BeanSocial screenshot 4"
                 />
                 <img
                   src="./assets/proje1_5.png"
                   class="project-slide"
-                  alt="Proje 1 - 5"
+                  alt="BeanSocial screenshot 5"
                 />
                 <button class="slider-btn prev" type="button">&#10094;</button>
                 <button class="slider-btn next" type="button">&#10095;</button>
               </div>
             </div>
             <h2 class="experience-sub-title project-title">
-              BeanSocial: Kahve Sosyal Medya Platformu
+              BeanSocial: Coffee Social Media Platform
             </h2>
             <p class="project-desc">
-              Kullanıcıların kahve tariflerini paylaşabildiği, favori
-              kahvelerini kaydedebildiği ve kahve çeşitleri hakkında bilgi
-              alabildiği sosyal bir platformdur.
+              A social platform where users can share coffee recipes, save their
+              favorite coffees, and learn about different types of coffee.
             </p>
             <div class="project-tags">
               <span>Flutter</span>
@@ -575,11 +583,11 @@
                 rel="noopener"
                 class="github-btn"
               >
-                <i class="fab fa-github"></i> Github'da Görüntüle
+                <i class="fab fa-github"></i> View on Github
               </a>
             </div>
           </div>
-          <!-- Proje 1: Slider ve Açıklama Sonu -->
+          <!-- Project 1: Slider and Description End -->
         </div>
       </div>
       <img
@@ -592,8 +600,8 @@
 
     <!-- CONTACT SECTION -->
     <section id="contact">
-      <p class="section__text__p1" data-reveal>İletişime Geçin</p>
-      <h1 class="title" data-reveal>İletişim</h1>
+      <p class="section__text__p1" data-reveal>Get In Touch</p>
+      <h1 class="title" data-reveal>Contact</h1>
       <div class="contact-grid">
         <div class="contact-media" data-reveal>
           <lottie-player
@@ -607,7 +615,7 @@
         <div class="contact-form-container" data-reveal>
           <form id="contact-form" class="contact-form">
             <div class="form-group">
-              <label for="name" class="form-label">Adınız</label>
+              <label for="name" class="form-label">Your Name</label>
               <input
                 type="text"
                 id="name"
@@ -617,7 +625,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="subject" class="form-label">Konu</label>
+              <label for="subject" class="form-label">Subject</label>
               <input
                 type="text"
                 id="subject"
@@ -627,7 +635,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="email" class="form-label">E-posta</label>
+              <label for="email" class="form-label">Email</label>
               <input
                 type="email"
                 id="email"
@@ -637,7 +645,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="message" class="form-label">Mesajınız</label>
+              <label for="message" class="form-label">Your Message</label>
               <textarea
                 id="message"
                 name="message"
@@ -645,7 +653,7 @@
                 required
               ></textarea>
             </div>
-            <button type="submit" class="form-submit-btn">Gönder</button>
+            <button type="submit" class="form-submit-btn">Send</button>
             <div id="status-message" class="status-message"></div>
           </form>
         </div>
@@ -655,10 +663,10 @@
       <nav>
         <div class="nav-links-container">
           <ul class="nav-links">
-            <li><a href="#about">Hakkımda</a></li>
-            <li><a href="#experience">Deneyim</a></li>
-            <li><a href="#projects">Projelerim</a></li>
-            <li><a href="#contact">İletişim</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -667,10 +675,10 @@
 
     <!-- Bottom Fade Effect -->
     <div class="bottom-fade-overlay"></div>
-    <button id="back-to-top" aria-label="Yukarı çık" class="back-to-top">
+    <button id="back-to-top" aria-label="Scroll to top" class="back-to-top">
       <img
         src="./assets/arrow.png"
-        alt="Yukarı çık"
+        alt="Scroll to top"
         class="icon back-to-top-icon"
       />
     </button>
@@ -689,26 +697,26 @@
 
           const statusMessage = document.getElementById("status-message");
 
-          // Mevcut mesajı temizle ve gizle
+          // Clear and hide the current message
           statusMessage.innerText = "";
-          statusMessage.className = "status-message"; // Tüm sınıfları kaldır
+          statusMessage.className = "status-message"; // Remove all classes
 
           emailjs.sendForm("service_ganvnbc", "template_chyavpa", this).then(
             function () {
-              // Başarılı olursa
-              statusMessage.innerText = "✅ Mesajınız başarıyla gönderildi!";
+              // On success
+              statusMessage.innerText = "✅ Your message has been sent successfully!";
               statusMessage.classList.add("show", "success");
 
-              // 2 saniye sonra siteyi yenile
+              // Reload the page after 2 seconds
               setTimeout(() => {
                 window.location.reload();
               }, 2000);
             },
             function (error) {
               statusMessage.innerText =
-                "❌ Gönderim başarısız oldu. Lütfen tekrar deneyin.";
+                "❌ Sending failed. Please try again.";
               statusMessage.classList.add("show", "error");
-              console.error("Hata:", error);
+              console.error("Error:", error);
 
               setTimeout(() => {
                 statusMessage.classList.remove("show", "error");
