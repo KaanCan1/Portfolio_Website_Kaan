@@ -1,374 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
   <head>
-    <style>
-      /*==================== CONTACT - MİNİMAL CARD TASARIM ====================*/
-
-      #contact {
-        display: flex;
-        justify-content: center;
-        align-items: center; /* Formu dikeyde ortalar */
-        min-height: 48vh;
-        padding: 3rem 1.5rem;
-        background-color: var(--bg-color); /* Gri arka planı kaldırdım */
-        margin-top: 1.5rem; /* Üstteki bölümden boşluk azaltıldı */
-        margin-bottom: 4rem; /* Alttaki boşluk azaltıldı */
-      }
-
-      .contact-form-container {
-        max-width: 420px;
-        width: 100%;
-        margin: 0 auto;
-        padding: 2rem;
-        background-color: var(--bg-color);
-        border-radius: var(--border-radius);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        border: 1px solid #e0e0e0;
-        text-align: left;
-      }
-
-      .title {
-        font-size: clamp(2rem, 5vw, 2.5rem);
-        margin-bottom: 1.5rem;
-        color: var(--primary-color);
-        text-align: center;
-      }
-
-      .contact-form {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-      }
-
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .form-label {
-        font-weight: 500;
-        color: var(--primary-color);
-        font-size: 1rem;
-      }
-
-      .form-input,
-      .form-textarea {
-        padding: 0.9rem;
-        border: 1px solid #ddd;
-        border-radius: 0.5rem;
-        font-family: "Poppins", sans-serif;
-        font-size: 1rem;
-        background-color: var(--bg-color);
-        transition: all 0.3s ease;
-        outline: none;
-      }
-
-      .form-input:focus,
-      .form-textarea:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(53, 53, 53, 0.1);
-      }
-
-      .form-textarea {
-        resize: vertical;
-        min-height: 110px;
-      }
-      .form-submit-btn {
-        align-self: flex-start;
-        padding: 0.7rem 1.6rem;
-        background: #fdf4e3; /* açık krem rengi */
-        color: #8a5c2e; /* kahverengimsi metin rengi */
-        border: 1px solid #e6d3b3; /* yumuşak krem kenarlık */
-        border-radius: 25px; /* yumuşak köşeler */
-        font-weight: 500;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        letter-spacing: normal;
-      }
-
-      .form-submit-btn:hover {
-        background: #faebd7; /* biraz daha koyu krem tonu */
-        color: #6e4a24;
-        border-color: #d5c2a1;
-      }
-
-      /* Mevcut .status-message kodunu bununla değiştirin */
-      .status-message {
-        margin-top: 1.2rem;
-        padding: 0.9rem;
-        border-radius: 0.5rem;
-        text-align: center;
-        font-weight: 500;
-        opacity: 0; /* Başlangıçta gizli */
-        transform: translateY(10px); /* Hafifçe aşağıda başlar */
-        transition: opacity 0.5s ease, transform 0.5s ease;
-        visibility: hidden; /* Gösterilene kadar tamamen gizli */
-        max-height: 0; /* Animasyon için yükseklik 0 */
-        overflow: hidden;
-      }
-
-      /* Gönderim başarılı olduğunda veya hata oluştuğunda bu sınıfları ekleyeceğiz */
-      .status-message.show {
-        opacity: 1;
-        transform: translateY(0);
-        visibility: visible;
-        max-height: 80px; /* Mesajı gösterebilecek bir yükseklik */
-        margin-top: 0.8rem;
-      }
-
-      .status-message.success {
-        background-color: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
-      }
-
-      .status-message.error {
-        background-color: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
-      }
-
-      /*============== ABOUT GRID LAYOUT ==============*/
-      #about .about-containers {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.25rem;
-      }
-
-      #about .about-containers .details-container:first-child {
-        grid-column: 1 / -1;
-      }
-
-      /*============== DİL ETİKETLERİ ==============*/
-      .text-left-list .lang-label {
-        font-weight: 600;
-      }
-
-      .text-left-list li p {
-        transition: color 0.2s ease;
-      }
-
-      .text-left-list li p:hover {
-        color: #cc7a29; /* hafif turuncu */
-      }
-
-      /*============== CONTACT GRID ==============*/
-      .contact-grid {
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-        width: 100%;
-        max-width: 1100px;
-        margin: 0 auto;
-      }
-
-      .contact-media {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .contact-media lottie-player {
-        width: 100%;
-        max-width: 480px;
-        height: auto;
-      }
-
-      .contact-grid .contact-form-container {
-        flex: 1;
-        margin: 0;
-        max-width: none;
-      }
-
-      /*============== MOBİL UYUMLULUK ==============*/
-      @media screen and (max-width: 600px) {
-        .contact-form-container {
-          padding: 1.5rem 1.25rem;
-        }
-
-        .form-submit-btn {
-          align-self: stretch;
-          width: 100%;
-        }
-
-        .contact-grid {
-          flex-direction: column;
-          gap: 1.25rem;
-        }
-
-        /* ABOUT GRID: mobile tek sütun */
-        #about .about-containers {
-          grid-template-columns: 1fr;
-        }
-
-        #about .about-containers .details-container:first-child {
-          grid-column: auto;
-        }
-      }
-      .project-slider {
-        position: relative;
-        width: 100%;
-        max-width: 420px;
-        margin: 0 auto 1.2rem auto;
-        overflow: hidden;
-        border-radius: 18px;
-        background: #f8f8f8;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-        min-height: 220px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .project-slide {
-        display: none;
-        width: 100%;
-        height: 220px;
-        object-fit: contain;
-        border-radius: 18px;
-        background: #fff;
-      }
-      .project-slide.active {
-        display: block;
-      }
-      .slider-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.8);
-        border: none;
-        border-radius: 50%;
-        width: 36px;
-        height: 36px;
-        font-size: 1.5rem;
-        color: #8a5c2e;
-        cursor: pointer;
-        z-index: 2;
-        transition: background 0.2s;
-      }
-      .slider-btn:hover {
-        background: #faebd7;
-      }
-      .slider-btn.prev {
-        left: 10px;
-      }
-      .slider-btn.next {
-        right: 10px;
-      }
-      @media (max-width: 600px) {
-        .project-slider,
-        .project-slide {
-          height: 140px;
-        }
-      }
-      .experience-details-container {
-        display: flex;
-        justify-content: center;
-      }
-      .about-containers {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-      }
-      .project1-container {
-        max-width: 480px;
-        width: 100%;
-        margin: 2rem auto 0 auto;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
-        border-radius: 24px;
-        background: #fff;
-        padding: 2rem 1.2rem 1.5rem 1.2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .project-slider {
-        position: relative;
-        width: 100%;
-        max-width: 420px;
-        margin: 0 auto 1.2rem auto;
-        overflow: hidden;
-        border-radius: 18px;
-        background: #f8f8f8;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-        min-height: 220px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .project-slide {
-        display: none;
-        width: 100%;
-        height: 220px;
-        object-fit: contain;
-        border-radius: 18px;
-        background: #fff;
-      }
-      .project-slide.active {
-        display: block;
-      }
-      .slider-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.8);
-        border: none;
-        border-radius: 50%;
-        width: 36px;
-        height: 36px;
-        font-size: 1.5rem;
-        color: #8a5c2e;
-        cursor: pointer;
-        z-index: 2;
-        transition: background 0.2s;
-      }
-      .slider-btn:hover {
-        background: #faebd7;
-      }
-      .slider-btn.prev {
-        left: 10px;
-      }
-      .slider-btn.next {
-        right: 10px;
-      }
-      @media (max-width: 600px) {
-        .project1-container {
-          padding: 1.2rem 0.3rem 1rem 0.3rem;
-        }
-        .project-slider,
-        .project-slide {
-          height: 140px;
-        }
-      }
-      .github-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5em;
-        background: #24292f;
-        color: #fff;
-        font-weight: 500;
-        font-size: 1.05rem;
-        padding: 0.65em 1.4em;
-        border-radius: 24px;
-        text-decoration: none;
-        box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
-        transition: background 0.2s, color 0.2s;
-      }
-      .github-btn:hover {
-        background: #444d56;
-        color: #ffd700;
-      }
-      .github-btn i {
-        font-size: 1.2em;
-      }
-    </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kaan Can Kurt</title>
+    <meta
+      name="description"
+      content="Kaan Can Kurt — Flutter Developer, Web & Mobile Frontend Developer. Projeler, deneyim ve iletişim."
+    />
+    <title>Kaan Can Kurt — Flutter & Frontend Developer</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
     <link
@@ -387,7 +27,6 @@
           src="./assets/logo1.png"
           alt="Kaan Can Kurt Logo"
           class="logo-img"
-          style="height: 350px; width: auto; padding-top: 30px"
         />
       </a>
       <div class="nav-links-container">
@@ -426,7 +65,6 @@
           src="./assets/logo1.png"
           alt="Kaan Can Kurt Logo"
           class="logo-img"
-          style="height: 300px; width: auto; padding-top: 23px"
         />
       </a>
       <div class="hamburger-nav-right">
@@ -476,18 +114,11 @@
       </div>
     </nav>
     <section id="profile">
-      <div id="first-image" class="section__pic-container">
-        <img
-          src="./assets/profilfoto1.jpeg"
-          alt="Profil resmim"
-          class="about-pic"
-        />
-      </div>
-      <div class="section__text">
+      <div class="section__text" data-reveal>
         <p class="section__text__p1">Merhaba, ben</p>
         <h1 class="title">Kaan Can Kurt</h1>
         <p class="section__text__p2">
-          Flutter Developer <br />Web & mobile Frontend Developer
+          Flutter Developer <br />Web &amp; Mobile Frontend Developer
         </p>
         <div class="btn-container">
           <div class="cv-dropdown">
@@ -536,12 +167,19 @@
           />
         </div>
       </div>
+      <div id="first-image" class="section__pic-container" data-reveal>
+        <img
+          src="./assets/profilfoto1.jpeg"
+          alt="Profil resmim"
+          class="about-pic"
+        />
+      </div>
     </section>
     <section id="about">
-      <p class="section__text__p1">Daha Fazla Bilgi</p>
-      <h1 class="title">Hakkımda</h1>
+      <p class="section__text__p1" data-reveal>Daha Fazla Bilgi</p>
+      <h1 class="title" data-reveal>Hakkımda</h1>
       <div class="section-container">
-        <div id="second-image" class="section__pic-container">
+        <div id="second-image" class="section__pic-container" data-reveal>
           <img
             src="./assets/profilkaan.jpeg"
             alt="Profile picture"
@@ -550,7 +188,7 @@
         </div>
         <div class="about-details-container">
           <div class="about-containers">
-            <div class="details-container">
+            <div class="details-container" data-reveal>
               <img
                 src="./assets/experience.png"
                 alt="Experience icon"
@@ -568,7 +206,7 @@
                 </li>
               </ul>
             </div>
-            <div class="details-container">
+            <div class="details-container" data-reveal>
               <img
                 src="./assets/education.png"
                 alt="Education icon"
@@ -586,7 +224,7 @@
                 </li>
               </ul>
             </div>
-            <div class="details-container">
+            <div class="details-container" data-reveal>
               <img
                 src="./assets/language.png"
                 alt="Language icon"
@@ -612,7 +250,7 @@
               </ul>
             </div>
           </div>
-          <div class="text-container">
+          <div class="text-container" data-reveal>
             <p>
               Bilgisayar Mühendisliği lisans eğitimimi Tokat Gaziosmanpaşa
               Üniversitesi'nde tamamladım. Flutter ile mobil uygulama
@@ -633,33 +271,31 @@
       />
     </section>
     <section id="experience">
-      <p class="section__text__p1">Yetkinliklerime Göz Atın</p>
-      <h1 class="title">Deneyim</h1>
+      <p class="section__text__p1" data-reveal>Yetkinliklerime Göz Atın</p>
+      <h1 class="title" data-reveal>Deneyim</h1>
       <div class="experience-details-container">
         <div class="about-containers">
-          <div class="details-container">
+          <div class="details-container" data-reveal>
             <h2 class="experience-sub-title">
-              Web & Mobil Geliştirme ve Diller
+              Web &amp; Mobil Geliştirme ve Diller
             </h2>
             <div class="article-container">
               <article class="skill" data-level="90">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                  alt="Flutter"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
-                  <h3>Flutter & Dart</h3>
+                  <h3>Flutter &amp; Dart</h3>
                   <p>Experienced</p>
                 </div>
                 <div class="bar"><div class="bar-fill"></div></div>
               </article>
               <article class="skill" data-level="85">
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-plug skill-fa" aria-hidden="true"></i>
                 <div class="skill-meta">
                   <h3>REST API</h3>
                   <p>Experienced</p>
@@ -668,21 +304,25 @@
               </article>
               <article class="skill" data-level="80">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                  alt="HTML5 & CSS3"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
-                  <h3>HTML & CSS</h3>
+                  <h3>HTML &amp; CSS</h3>
                   <p>Experienced</p>
                 </div>
                 <div class="bar"><div class="bar-fill"></div></div>
               </article>
               <article class="skill" data-level="60">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                  alt="JavaScript"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>JavaScript</h3>
@@ -692,9 +332,11 @@
               </article>
               <article class="skill" data-level="70">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                  alt="Java"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>Java</h3>
@@ -704,9 +346,11 @@
               </article>
               <article class="skill" data-level="70">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                  alt="PHP"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>PHP</h3>
@@ -716,9 +360,11 @@
               </article>
               <article class="skill" data-level="75">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                  alt="Python"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>Python</h3>
@@ -728,9 +374,11 @@
               </article>
               <article class="skill" data-level="65">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+                  alt="C#"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>C#</h3>
@@ -739,11 +387,7 @@
                 <div class="bar"><div class="bar-fill"></div></div>
               </article>
               <article class="skill" data-level="85">
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-bolt skill-fa" aria-hidden="true"></i>
                 <div class="skill-meta">
                   <h3>GetX</h3>
                   <p>Experienced</p>
@@ -752,9 +396,11 @@
               </article>
               <article class="skill" data-level="70">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
+                  alt="Android Studio"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>Android Studio</h3>
@@ -764,9 +410,11 @@
               </article>
               <article class="skill" data-level="60">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"
+                  alt="ASP.NET"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>ASP.NET</h3>
@@ -775,11 +423,7 @@
                 <div class="bar"><div class="bar-fill"></div></div>
               </article>
               <article class="skill" data-level="80">
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-mobile-screen-button skill-fa" aria-hidden="true"></i>
                 <div class="skill-meta">
                   <h3>Responsive Arayüz</h3>
                   <p>Experienced</p>
@@ -787,11 +431,7 @@
                 <div class="bar"><div class="bar-fill"></div></div>
               </article>
               <article class="skill" data-level="70">
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-pen-ruler skill-fa" aria-hidden="true"></i>
                 <div class="skill-meta">
                   <h3>UI/UX Tasarımı</h3>
                   <p>Intermediate</p>
@@ -800,26 +440,30 @@
               </article>
             </div>
           </div>
-          <div class="details-container">
+          <div class="details-container" data-reveal>
             <h2 class="experience-sub-title">Araçlar ve Veritabanı</h2>
             <div class="article-container">
               <article class="skill" data-level="90">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                  alt="Git & GitHub"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
-                  <h3>Git & GitHub</h3>
+                  <h3>Git &amp; GitHub</h3>
                   <p>Experienced</p>
                 </div>
                 <div class="bar"><div class="bar-fill"></div></div>
               </article>
               <article class="skill" data-level="75">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                  alt="Figma"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>Figma</h3>
@@ -829,9 +473,11 @@
               </article>
               <article class="skill" data-level="85">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
+                  alt="Postman"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>Postman</h3>
@@ -841,9 +487,11 @@
               </article>
               <article class="skill" data-level="70">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg"
+                  alt="SQLite"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>SQLite</h3>
@@ -853,9 +501,11 @@
               </article>
               <article class="skill" data-level="50">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                  alt="Firebase"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>Firebase</h3>
@@ -864,11 +514,7 @@
                 <div class="bar"><div class="bar-fill"></div></div>
               </article>
               <article class="skill" data-level="80">
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <i class="fas fa-database skill-fa" aria-hidden="true"></i>
                 <div class="skill-meta">
                   <h3>SQL</h3>
                   <p>Experienced</p>
@@ -877,9 +523,11 @@
               </article>
               <article class="skill" data-level="80">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                  alt="MySQL"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>MySQL</h3>
@@ -889,9 +537,11 @@
               </article>
               <article class="skill" data-level="75">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                  alt="PostgreSQL"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>PostgreSQL</h3>
@@ -901,9 +551,11 @@
               </article>
               <article class="skill" data-level="70">
                 <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
+                  alt="SQL Server"
+                  class="icon tech-icon"
+                  loading="lazy"
+                  onerror="this.src='./assets/checkmark.png'"
                 />
                 <div class="skill-meta">
                   <h3>SQL Server</h3>
@@ -923,12 +575,12 @@
       />
     </section>
     <section id="projects">
-      <p class="section__text__p1">Son Projelerime Göz Atın</p>
-      <h1 class="title">Projelerim</h1>
+      <p class="section__text__p1" data-reveal>Son Projelerime Göz Atın</p>
+      <h1 class="title" data-reveal>Projelerim</h1>
       <div class="experience-details-container">
         <div class="about-containers">
           <!-- Proje 1: Slider ve Açıklama Başlangıcı -->
-          <div class="details-container color-container project1-container">
+          <div class="details-container color-container project1-container" data-reveal>
             <div class="article-container">
               <div class="project-slider" id="project1-slider">
                 <img
@@ -959,54 +611,22 @@
                 <button class="slider-btn prev" type="button">&#10094;</button>
                 <button class="slider-btn next" type="button">&#10095;</button>
               </div>
-              <script>
-                (function () {
-                  var slider = document.getElementById("project1-slider");
-                  var slides = slider.querySelectorAll(".project-slide");
-                  var prevBtn = slider.querySelector(".slider-btn.prev");
-                  var nextBtn = slider.querySelector(".slider-btn.next");
-                  var current = 0;
-                  function showSlide(idx) {
-                    slides.forEach(function (slide, i) {
-                      slide.classList.toggle("active", i === idx);
-                    });
-                  }
-                  prevBtn.onclick = function () {
-                    current = (current - 1 + slides.length) % slides.length;
-                    showSlide(current);
-                  };
-                  nextBtn.onclick = function () {
-                    current = (current + 1) % slides.length;
-                    showSlide(current);
-                  };
-                  showSlide(current);
-                })();
-              </script>
             </div>
-            <h2
-              class="experience-sub-title project-title"
-              style="text-align: center"
-            >
+            <h2 class="experience-sub-title project-title">
               BeanSocial: Kahve Sosyal Medya Platformu
             </h2>
-            <p
-              style="
-                text-align: center;
-                max-width: 420px;
-                margin: 0 auto 1.5rem auto;
-              "
-            >
+            <p class="project-desc">
               Kullanıcıların kahve tariflerini paylaşabildiği, favori
               kahvelerini kaydedebildiği ve kahve çeşitleri hakkında bilgi
               alabildiği sosyal bir platformdur.
             </p>
-            <div
-              style="
-                display: flex;
-                justify-content: center;
-                margin-bottom: 1rem;
-              "
-            >
+            <div class="project-tags">
+              <span>Flutter</span>
+              <span>Dart</span>
+              <span>GetX</span>
+              <span>Firebase</span>
+            </div>
+            <div class="project-actions">
               <a
                 href="https://github.com/KaanCan1/beansocial_son"
                 target="_blank"
@@ -1030,8 +650,10 @@
 
     <!-- CONTACT SECTION -->
     <section id="contact">
+      <p class="section__text__p1" data-reveal>İletişime Geçin</p>
+      <h1 class="title" data-reveal>İletişim</h1>
       <div class="contact-grid">
-        <div class="contact-media">
+        <div class="contact-media" data-reveal>
           <lottie-player
             src="./assets/Welcome.json"
             background="transparent"
@@ -1040,8 +662,7 @@
             autoplay
           ></lottie-player>
         </div>
-        <div class="contact-form-container">
-          <h1 class="title">İletişim</h1>
+        <div class="contact-form-container" data-reveal>
           <form id="contact-form" class="contact-form">
             <div class="form-group">
               <label for="name" class="form-label">Adınız</label>
@@ -1054,7 +675,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="title" class="form-label">Konu</label>
+              <label for="subject" class="form-label">Konu</label>
               <input
                 type="text"
                 id="subject"
