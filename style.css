@@ -1459,6 +1459,220 @@ footer p {
 }
 
 /* =========================================================
+   PROJECT CASE-STUDY: details button + modal
+   ========================================================= */
+.details-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: var(--radius-pill);
+  background: var(--bg-elev);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease),
+    color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.details-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.details-btn i {
+  font-size: 0.78rem;
+  transition: transform 0.2s var(--ease);
+}
+
+.details-btn:hover i {
+  transform: translateX(3px);
+}
+
+.details-btn.sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.86rem;
+}
+
+/* secondary-card footer holds two actions */
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: auto;
+}
+
+/* Modal */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s var(--ease), visibility 0.3s var(--ease);
+}
+
+.project-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.project-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 19, 18, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.project-modal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 2.5rem;
+  transform: translateY(18px) scale(0.98);
+  transition: transform 0.35s var(--ease);
+}
+
+.project-modal.open .project-modal__dialog {
+  transform: translateY(0) scale(1);
+}
+
+.project-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  border-radius: 50%;
+  background: var(--bg-subtle);
+  color: var(--muted-color);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease),
+    transform 0.3s var(--ease);
+}
+
+.project-modal__close:hover {
+  background: var(--accent-tint);
+  color: var(--accent-strong);
+  transform: rotate(90deg);
+}
+
+.project-modal__kicker {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent-strong);
+  margin-bottom: 0.6rem;
+}
+
+.project-modal__title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.9rem;
+  padding-right: 2rem;
+}
+
+.project-modal__overview {
+  color: var(--muted-color);
+  line-height: 1.7;
+  margin-bottom: 1.9rem;
+}
+
+.project-modal__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem;
+  margin-bottom: 1.9rem;
+}
+
+.project-modal__label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+}
+
+.project-modal__role + .project-modal__label {
+  margin-top: 1.4rem;
+}
+
+.project-modal__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.project-modal__list li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--muted-color);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.project-modal__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.project-modal__role {
+  color: var(--muted-color);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.project-modal__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .project-modal__dialog {
+    padding: 1.9rem 1.4rem;
+  }
+  .project-modal__grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+  .project-modal__title {
+    font-size: 1.5rem;
+  }
+}
+
+/* =========================================================
    MOTION PREFERENCES
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
