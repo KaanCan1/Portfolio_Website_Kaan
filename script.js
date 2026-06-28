@@ -97,10 +97,11 @@ document.addEventListener("DOMContentLoaded", function () {
     revealEls.forEach((el) => revealObserver.observe(el));
   }
 
-  /* ----- Project slider ----- */
-  const slider = document.getElementById("project1-slider");
-  if (slider) {
+  /* ----- Project sliders (supports multiple) ----- */
+  const sliders = document.querySelectorAll(".project-slider");
+  sliders.forEach(function (slider) {
     const slides = slider.querySelectorAll(".project-slide");
+    if (!slides.length) return;
     const prevBtn = slider.querySelector(".slider-btn.prev");
     const nextBtn = slider.querySelector(".slider-btn.next");
     let current = 0;
@@ -122,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
     showSlide(current);
-  }
+  });
 
   /* ----- Theme toggle ----- */
   const themeToggle = document.getElementById("theme-toggle");
