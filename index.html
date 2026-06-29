@@ -119,11 +119,15 @@
       </a>
       <div class="nav-links-container">
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#experience" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="tr">TR</button>
+        </div>
         <!-- Minimal Dark Mode Toggle -->
         <div class="theme-toggle" id="theme-toggle">
           <div class="theme-label-container">
@@ -176,6 +180,10 @@
             <div class="menu-close" onclick="toggleMenu()" aria-label="Close">
               &times;
             </div>
+            <div class="lang-switch lang-switch--mobile" role="group" aria-label="Language">
+              <button type="button" class="lang-btn" data-lang="en">EN</button>
+              <button type="button" class="lang-btn" data-lang="tr">TR</button>
+            </div>
             <div
               class="theme-toggle mobile-theme-toggle"
               id="mobile-theme-toggle"
@@ -198,10 +206,10 @@
                 <div class="toggle-thumb"></div>
               </div>
             </div>
-            <li><a href="#about" onclick="toggleMenu()">About</a></li>
-            <li><a href="#experience" onclick="toggleMenu()">Skills</a></li>
-            <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            <li><a href="#about" onclick="toggleMenu()" data-i18n="nav.about">About</a></li>
+            <li><a href="#experience" onclick="toggleMenu()" data-i18n="nav.skills">Skills</a></li>
+            <li><a href="#projects" onclick="toggleMenu()" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="#contact" onclick="toggleMenu()" data-i18n="nav.contact">Contact</a></li>
           </div>
         </div>
       </div>
@@ -214,12 +222,12 @@
       <div class="section__text" data-reveal>
         <span class="status-pill">
           <span class="status-dot" aria-hidden="true"></span>
-          Available for new roles
+          <span data-i18n="hero.status">Available for new roles</span>
         </span>
-        <p class="section__text__p1">Hello, I'm</p>
+        <p class="section__text__p1" data-i18n="hero.hello">Hello, I'm</p>
         <h1 class="title">Kaan Can Kurt</h1>
-        <p class="section__text__p2">Flutter &amp; Full Stack Developer</p>
-        <p class="hero-lead">
+        <p class="section__text__p2" data-i18n="hero.role">Flutter &amp; Full Stack Developer</p>
+        <p class="hero-lead" data-i18n="hero.lead">
           I build cross-platform mobile apps with Flutter and ship full-stack
           web products, from the interface down to the API.
         </p>
@@ -229,7 +237,7 @@
               class="btn btn-color-2 cv-dropdown-btn"
               onclick="toggleCVDropdown()"
             >
-              Get My CV
+              <span data-i18n="hero.cv">Get My CV</span>
               <i class="fas fa-chevron-down dropdown-arrow"></i>
             </button>
             <div class="cv-dropdown-menu" id="cv-dropdown-menu">
@@ -239,7 +247,7 @@
                 class="cv-option"
               >
                 <i class="fas fa-file-pdf"></i>
-                English CV
+                <span data-i18n="cv.en">English CV</span>
               </a>
               <a
                 href="./assets/KaanCanKurt_CV.pdf"
@@ -247,11 +255,11 @@
                 class="cv-option"
               >
                 <i class="fas fa-file-pdf"></i>
-                Turkish CV
+                <span data-i18n="cv.tr">Turkish CV</span>
               </a>
             </div>
           </div>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+          <button class="btn btn-color-1" onclick="location.href='./#contact'" data-i18n="hero.contactBtn">
             Contact
           </button>
         </div>
@@ -321,7 +329,7 @@
          ABOUT
          ========================================================= -->
     <section id="about">
-      <h1 class="title" data-reveal>About Me</h1>
+      <h1 class="title" data-reveal data-i18n="about.title">About Me</h1>
       <div class="section-container">
         <div id="second-image" class="section__pic-container" data-reveal>
           <img
@@ -332,7 +340,7 @@
         </div>
         <div class="about-details-container">
           <div class="text-container" data-reveal>
-            <p>
+            <p data-i18n="about.bio">
               I hold a bachelor's degree in Computer Engineering from Tokat
               Gaziosmanpaşa University. I work across mobile and web, building
               interfaces in Flutter, wiring up REST APIs and databases, and
@@ -348,12 +356,12 @@
                 alt="Experience icon"
                 class="icon"
               />
-              <h3>Experience</h3>
+              <h3 data-i18n="about.experience">Experience</h3>
               <ul class="text-left-list">
                 <li>
-                  <h5>Computer Engineering Intern</h5>
-                  <p>EDUJI Ar-Ge Yazılım A.Ş. · Bornova, İzmir</p>
-                  <p>July 2024 - September 2024</p>
+                  <h5 data-i18n="about.expRole">Computer Engineering Intern</h5>
+                  <p data-i18n="about.expCompany">EDUJI Ar-Ge Yazılım A.Ş. · Bornova, İzmir</p>
+                  <p data-i18n="about.expDate">July 2024 - September 2024</p>
                 </li>
               </ul>
             </div>
@@ -363,15 +371,15 @@
                 alt="Education icon"
                 class="icon"
               />
-              <h3>Education</h3>
+              <h3 data-i18n="about.education">Education</h3>
               <ul class="text-left-list">
                 <li>
-                  <h5>Tokat Gaziosmanpaşa University</h5>
-                  <p>BSc Computer Engineering · 2021 - 2025</p>
+                  <h5 data-i18n="about.uni">Tokat Gaziosmanpaşa University</h5>
+                  <p data-i18n="about.uniDeg">BSc Computer Engineering · 2021 - 2025</p>
                 </li>
                 <li>
-                  <h5>Kepirtepe Anatolian High School</h5>
-                  <p>Graduated 2021</p>
+                  <h5 data-i18n="about.hs">Kepirtepe Anatolian High School</h5>
+                  <p data-i18n="about.hsDate">Graduated 2021</p>
                 </li>
               </ul>
             </div>
@@ -381,16 +389,16 @@
                 alt="Language icon"
                 class="icon"
               />
-              <h3>Languages</h3>
+              <h3 data-i18n="about.languages">Languages</h3>
               <ul class="text-left-list">
                 <li>
-                  <p><span class="lang-label">Turkish</span> Native</p>
+                  <p><span class="lang-label" data-i18n="lang.tr.name">Turkish</span> <span data-i18n="lang.tr.level">Native</span></p>
                 </li>
                 <li>
-                  <p><span class="lang-label">English</span> B2 Upper-Intermediate</p>
+                  <p><span class="lang-label" data-i18n="lang.en.name">English</span> <span data-i18n="lang.en.level">B2 Upper-Intermediate</span></p>
                 </li>
                 <li>
-                  <p><span class="lang-label">German</span> A1 Beginner</p>
+                  <p><span class="lang-label" data-i18n="lang.de.name">German</span> <span data-i18n="lang.de.level">A1 Beginner</span></p>
                 </li>
               </ul>
             </div>
@@ -409,11 +417,11 @@
          SKILLS
          ========================================================= -->
     <section id="experience">
-      <h1 class="title" data-reveal>Skills &amp; Tools</h1>
+      <h1 class="title" data-reveal data-i18n="skills.title">Skills &amp; Tools</h1>
       <div class="experience-details-container">
         <div class="about-containers">
           <div class="details-container" data-reveal>
-            <h2 class="experience-sub-title">Languages &amp; Frameworks</h2>
+            <h2 class="experience-sub-title" data-i18n="skills.langs">Languages &amp; Frameworks</h2>
             <div class="article-container">
               <article class="skill">
                 <img
@@ -514,7 +522,7 @@
             </div>
           </div>
           <div class="details-container" data-reveal>
-            <h2 class="experience-sub-title">Tools &amp; Databases</h2>
+            <h2 class="experience-sub-title" data-i18n="skills.tools">Tools &amp; Databases</h2>
             <div class="article-container">
               <article class="skill">
                 <img
@@ -628,8 +636,8 @@
          PROJECTS
          ========================================================= -->
     <section id="projects">
-      <p class="section__text__p1" data-reveal>Selected Work</p>
-      <h1 class="title" data-reveal>Projects</h1>
+      <p class="section__text__p1" data-reveal data-i18n="projects.eyebrow">Selected Work</p>
+      <h1 class="title" data-reveal data-i18n="projects.title">Projects</h1>
 
       <!-- Featured project: BeanSocial -->
       <article class="project-feature" data-reveal>
@@ -645,9 +653,9 @@
           </div>
         </div>
         <div class="project-feature-body">
-          <span class="project-kicker">Mobile App · Graduation Project</span>
+          <span class="project-kicker" data-i18n="proj.beansocial.kicker">Mobile App · Graduation Project</span>
           <h2 class="experience-sub-title project-title">BeanSocial</h2>
-          <p class="project-desc">
+          <p class="project-desc" data-i18n="proj.beansocial.desc">
             A social platform for coffee lovers to share recipes, save their
             favorite brews, and discover new types of coffee. Auth, real-time
             data, and state management handled end to end.
@@ -660,7 +668,7 @@
           </div>
           <div class="project-actions">
             <button class="details-btn" type="button" data-project="beansocial">
-              Case study <i class="fas fa-arrow-right"></i>
+              <span data-i18n="btn.caseStudy">Case study</span> <i class="fas fa-arrow-right"></i>
             </button>
             <a href="https://github.com/KaanCan1/beansocial_son" target="_blank" rel="noopener" class="github-btn">
               <i class="fab fa-github"></i> GitHub
@@ -682,9 +690,9 @@
           </div>
         </div>
         <div class="project-feature-body">
-          <span class="project-kicker">Mobile App + Backend</span>
+          <span class="project-kicker" data-i18n="proj.spendly.kicker">Mobile App + Backend</span>
           <h2 class="experience-sub-title project-title">Spendly</h2>
-          <p class="project-desc">
+          <p class="project-desc" data-i18n="proj.spendly.desc">
             A clean, minimal expense tracker that keeps you on top of your
             spending. Flutter front end backed by a Node.js API, containerized
             with Docker for a reproducible setup.
@@ -697,7 +705,7 @@
           </div>
           <div class="project-actions">
             <button class="details-btn" type="button" data-project="spendly">
-              Case study <i class="fas fa-arrow-right"></i>
+              <span data-i18n="btn.caseStudy">Case study</span> <i class="fas fa-arrow-right"></i>
             </button>
             <a href="https://github.com/KaanCan1/Spendly" target="_blank" rel="noopener" class="github-btn">
               <i class="fab fa-github"></i> GitHub
@@ -710,9 +718,9 @@
       <div class="project-grid">
         <article class="project-card" data-reveal>
           <img class="project-card-mark" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" loading="lazy" aria-hidden="true" />
-          <span class="project-kicker">Machine Learning</span>
+          <span class="project-kicker" data-i18n="proj.sentiment.kicker">Machine Learning</span>
           <h3 class="project-card-title">Film Review Sentiment Analysis</h3>
-          <p class="project-card-desc">
+          <p class="project-card-desc" data-i18n="proj.sentiment.desc">
             Classifies movie reviews as positive or negative. Text cleaning and
             tokenization feed several models (Naive Bayes, Logistic Regression,
             SVM, Random Forest) compared on accuracy and F1.
@@ -724,7 +732,7 @@
           </div>
           <div class="card-actions">
             <button class="details-btn sm" type="button" data-project="sentiment">
-              Case study <i class="fas fa-arrow-right"></i>
+              <span data-i18n="btn.caseStudy">Case study</span> <i class="fas fa-arrow-right"></i>
             </button>
             <a href="https://github.com/KaanCan1/Film-Yorumlari-Duygu-Analizi" target="_blank" rel="noopener" class="project-card-link">
               <i class="fab fa-github"></i> GitHub
@@ -734,9 +742,9 @@
 
         <article class="project-card" data-reveal>
           <img class="project-card-mark" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="" loading="lazy" aria-hidden="true" />
-          <span class="project-kicker">Native Android</span>
+          <span class="project-kicker" data-i18n="proj.moodaktif.kicker">Native Android</span>
           <h3 class="project-card-title">MoodAktif</h3>
-          <p class="project-card-desc">
+          <p class="project-card-desc" data-i18n="proj.moodaktif.desc">
             A mood-focused Android application built natively with Java and
             Android Studio, exploring activity-based UI and local state on
             device.
@@ -747,7 +755,7 @@
           </div>
           <div class="card-actions">
             <button class="details-btn sm" type="button" data-project="moodaktif">
-              Case study <i class="fas fa-arrow-right"></i>
+              <span data-i18n="btn.caseStudy">Case study</span> <i class="fas fa-arrow-right"></i>
             </button>
             <a href="https://github.com/KaanCan1/MoodAktif" target="_blank" rel="noopener" class="project-card-link">
               <i class="fab fa-github"></i> GitHub
@@ -757,9 +765,9 @@
 
         <article class="project-card" data-reveal>
           <img class="project-card-mark" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" loading="lazy" aria-hidden="true" />
-          <span class="project-kicker">Data Visualization</span>
+          <span class="project-kicker" data-i18n="proj.chart.kicker">Data Visualization</span>
           <h3 class="project-card-title">Simple Chart Plotter</h3>
-          <p class="project-card-desc">
+          <p class="project-card-desc" data-i18n="proj.chart.desc">
             A lightweight Python tool for reading data and plotting it into
             clean charts, built to make quick visual exploration of datasets
             painless.
@@ -770,7 +778,7 @@
           </div>
           <div class="card-actions">
             <button class="details-btn sm" type="button" data-project="chartplotter">
-              Case study <i class="fas fa-arrow-right"></i>
+              <span data-i18n="btn.caseStudy">Case study</span> <i class="fas fa-arrow-right"></i>
             </button>
             <a href="https://github.com/KaanCan1/Simple-Chart-Plotter" target="_blank" rel="noopener" class="project-card-link">
               <i class="fab fa-github"></i> GitHub
@@ -781,7 +789,7 @@
 
       <div class="projects-footer" data-reveal>
         <a href="https://github.com/KaanCan1" target="_blank" rel="noopener" class="btn btn-color-2">
-          <i class="fab fa-github"></i>&nbsp; See all repositories
+          <i class="fab fa-github"></i>&nbsp; <span data-i18n="btn.allRepos">See all repositories</span>
         </a>
       </div>
       <img
@@ -796,7 +804,7 @@
          CONTACT
          ========================================================= -->
     <section id="contact">
-      <h1 class="title" data-reveal>Get in Touch</h1>
+      <h1 class="title" data-reveal data-i18n="contact.title">Get in Touch</h1>
       <div class="contact-grid">
         <div class="contact-media" data-reveal>
           <lottie-player
@@ -824,22 +832,22 @@
         <div class="contact-form-container" data-reveal>
           <form id="contact-form" class="contact-form">
             <div class="form-group">
-              <label for="name" class="form-label">Your Name</label>
+              <label for="name" class="form-label" data-i18n="form.name">Your Name</label>
               <input type="text" id="name" name="name" class="form-input" required />
             </div>
             <div class="form-group">
-              <label for="subject" class="form-label">Subject</label>
+              <label for="subject" class="form-label" data-i18n="form.subject">Subject</label>
               <input type="text" id="subject" name="title" class="form-input" required />
             </div>
             <div class="form-group">
-              <label for="email" class="form-label">Email</label>
+              <label for="email" class="form-label" data-i18n="form.email">Email</label>
               <input type="email" id="email" name="email" class="form-input" required />
             </div>
             <div class="form-group">
-              <label for="message" class="form-label">Your Message</label>
+              <label for="message" class="form-label" data-i18n="form.message">Your Message</label>
               <textarea id="message" name="message" class="form-textarea" required></textarea>
             </div>
-            <button type="submit" class="form-submit-btn">Send Message</button>
+            <button type="submit" class="form-submit-btn" data-i18n="form.send">Send Message</button>
             <div id="status-message" class="status-message"></div>
           </form>
         </div>
@@ -870,13 +878,13 @@
         <p class="project-modal__overview" id="pm-overview"></p>
         <div class="project-modal__grid">
           <div class="project-modal__col">
-            <h3 class="project-modal__label">What I built</h3>
+            <h3 class="project-modal__label" data-i18n="modal.built">What I built</h3>
             <ul class="project-modal__list" id="pm-highlights"></ul>
           </div>
           <div class="project-modal__col">
-            <h3 class="project-modal__label">My role</h3>
+            <h3 class="project-modal__label" data-i18n="modal.role">My role</h3>
             <p class="project-modal__role" id="pm-role"></p>
-            <h3 class="project-modal__label">Stack</h3>
+            <h3 class="project-modal__label" data-i18n="modal.stack">Stack</h3>
             <div class="project-tags" id="pm-tags"></div>
           </div>
         </div>
@@ -888,14 +896,14 @@
       <nav>
         <div class="nav-links-container">
           <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#experience" data-i18n="nav.skills">Skills</a></li>
+            <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </div>
       </nav>
-      <p>Copyright &#169; 2025 Kaan Can Kurt. All Rights Reserved.</p>
+      <p data-i18n="footer.copyright">Copyright &#169; 2025 Kaan Can Kurt. All Rights Reserved.</p>
     </footer>
 
     <!-- Bottom Fade Effect -->

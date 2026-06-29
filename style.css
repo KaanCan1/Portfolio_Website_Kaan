@@ -687,12 +687,14 @@ nav {
 
 #about .about-pic {
   width: 100%;
-  max-width: 360px;
-  aspect-ratio: 4 / 5;
+  max-width: 330px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  /* drop shadow + gap + subtle gold ring, all follow the circle */
+  box-shadow: var(--shadow-md), 0 0 0 8px var(--bg-color),
+    0 0 0 9px var(--accent-tint), 0 0 0 10px var(--accent);
+  border: none;
 }
 
 #about .section__pic-container {
@@ -1456,6 +1458,47 @@ footer p {
   background: linear-gradient(to top, var(--bg-color) 0%, transparent 100%);
   pointer-events: none;
   z-index: 10;
+}
+
+/* =========================================================
+   LANGUAGE SWITCH (EN / TR)
+   ========================================================= */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-pill);
+  background: var(--bg-elev);
+}
+
+.lang-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.26rem 0.62rem;
+  border: none;
+  background: transparent;
+  color: var(--muted-color);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.lang-btn:hover {
+  color: var(--text-color);
+}
+
+.lang-btn.active {
+  background: var(--accent);
+  color: #131211;
+}
+
+.lang-switch--mobile {
+  align-self: flex-start;
+  margin: 0 1.6rem 0.5rem;
 }
 
 /* =========================================================
