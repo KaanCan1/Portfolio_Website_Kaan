@@ -84,9 +84,12 @@
           "Dart",
           "Full Stack Development",
           "Node.js",
+          "Express",
+          "PostgreSQL",
           "Firebase",
           "Python",
-          "Mobile Development"
+          "Mobile Development",
+          "AI Integration"
         ],
         "alumniOf": {
           "@type": "CollegeOrUniversity",
@@ -639,8 +642,48 @@
       <p class="section__text__p1" data-reveal data-i18n="projects.eyebrow">Selected Work</p>
       <h1 class="title" data-reveal data-i18n="projects.title">Projects</h1>
 
-      <!-- Featured project: BeanSocial -->
+      <!-- Featured project: Portfolio Tracker -->
       <article class="project-feature" data-reveal>
+        <div class="project-feature-media">
+          <div class="project-slider" id="tracker-slider">
+            <img src="./assets/tracker_1.jpg" class="project-slide active" alt="Portfolio Tracker overview dashboard" />
+            <img src="./assets/tracker_2.jpg" class="project-slide" alt="Portfolio Tracker radar scoring screen" />
+            <img src="./assets/tracker_3.jpg" class="project-slide" alt="Portfolio Tracker Claude thesis desk" />
+            <img src="./assets/tracker_4.jpg" class="project-slide" alt="Portfolio Tracker swing journal" />
+            <img src="./assets/tracker_5.jpg" class="project-slide" alt="Portfolio Tracker notes journal" />
+            <button class="slider-btn prev" type="button" aria-label="Previous screenshot">&#10094;</button>
+            <button class="slider-btn next" type="button" aria-label="Next screenshot">&#10095;</button>
+          </div>
+        </div>
+        <div class="project-feature-body">
+          <span class="project-kicker" data-i18n="proj.tracker.kicker">Full-Stack Web App · AI Integration</span>
+          <h2 class="experience-sub-title project-title">Portfolio Tracker</h2>
+          <p class="project-desc" data-i18n="proj.tracker.desc">
+            A self-hosted stock portfolio and swing-trading discipline
+            dashboard. A vanilla JavaScript SPA on top of an Express API and
+            PostgreSQL, with a Claude-powered thesis desk, automated trade
+            audits and an MCP server. My most recent project and daily driver.
+          </p>
+          <div class="project-tags">
+            <span>JavaScript</span>
+            <span>Express</span>
+            <span>PostgreSQL</span>
+            <span>Claude API</span>
+            <span>MCP</span>
+          </div>
+          <div class="project-actions">
+            <button class="details-btn" type="button" data-project="tracker">
+              <span data-i18n="btn.caseStudy">Case study</span> <i class="fas fa-arrow-right"></i>
+            </button>
+            <a href="https://github.com/KaanCan1/portfolio-tracker" target="_blank" rel="noopener" class="github-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Featured project: BeanSocial -->
+      <article class="project-feature reverse" data-reveal>
         <div class="project-feature-media">
           <div class="project-slider" id="project1-slider">
             <img src="./assets/proje1_1.png" class="project-slide active" alt="BeanSocial screenshot 1" />
@@ -677,8 +720,8 @@
         </div>
       </article>
 
-      <!-- Featured project: Spendly (reversed) -->
-      <article class="project-feature reverse" data-reveal>
+      <!-- Featured project: Spendly -->
+      <article class="project-feature" data-reveal>
         <div class="project-feature-media">
           <div class="project-slider" id="project2-slider">
             <img src="./assets/spendly_1.png" class="project-slide active" alt="Spendly home screen" />

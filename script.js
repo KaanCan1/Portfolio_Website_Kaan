@@ -218,6 +218,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "skills.tools": "Tools & Databases",
       "projects.eyebrow": "Selected Work",
       "projects.title": "Projects",
+      "proj.tracker.kicker": "Full-Stack Web App · AI Integration",
+      "proj.tracker.desc":
+        "A self-hosted stock portfolio and swing-trading discipline dashboard. A vanilla JavaScript SPA on top of an Express API and PostgreSQL, with a Claude-powered thesis desk, automated trade audits and an MCP server. My most recent project and daily driver.",
       "proj.beansocial.kicker": "Mobile App · Graduation Project",
       "proj.beansocial.desc":
         "A social platform for coffee lovers to share recipes, save their favorite brews, and discover new types of coffee. Auth, real-time data, and state management handled end to end.",
@@ -286,6 +289,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "skills.tools": "Araçlar & Veritabanları",
       "projects.eyebrow": "Seçili Çalışmalar",
       "projects.title": "Projeler",
+      "proj.tracker.kicker": "Full-Stack Web Uygulaması · Yapay Zekâ Entegrasyonu",
+      "proj.tracker.desc":
+        "Kendi sunucumda çalışan bir hisse portföyü ve swing trade disiplin panosu. Express API ve PostgreSQL üzerine kurulu, framework kullanmayan bir JavaScript SPA; Claude destekli tez masası, otomatik işlem denetimi ve bir MCP sunucusu içeriyor. En son yaptığım ve her gün kullandığım proje.",
       "proj.beansocial.kicker": "Mobil Uygulama · Bitirme Projesi",
       "proj.beansocial.desc":
         "Kahve severlerin tarif paylaştığı, favori demlemelerini kaydettiği ve yeni kahve türlerini keşfettiği bir sosyal platform. Kimlik doğrulama, gerçek zamanlı veri ve durum yönetimi baştan sona kuruldu.",
@@ -320,6 +326,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Project case-study content (bilingual). tags/links are shared.
   const PROJECTS = {
+    tracker: {
+      title: "Portfolio Tracker",
+      tags: [
+        "JavaScript",
+        "Express",
+        "PostgreSQL",
+        "Claude API",
+        "MCP",
+        "Node.js",
+      ],
+      github: "https://github.com/KaanCan1/portfolio-tracker",
+      demo: null,
+      en: {
+        kicker: "Full-Stack Web App · AI Integration",
+        overview:
+          "A self-hosted stock portfolio and swing-trading discipline dashboard, built end to end as a solo project: product, design, backend, data pipelines and AI integration. Instead of just charting prices, it enforces the trading rules I set for myself — positions without a stop plan get flagged, new entries are blocked when the market regime is bad, and profits trigger a suggestion to pull the initial capital back out.",
+        role: "Solo project: product decisions, UI, Express backend, market-data pipelines, scoring engines and the Claude AI layer.",
+        highlights: [
+          "Vanilla JavaScript SPA with no framework and no build step, talking to a single Express API — 3 runtime dependencies in total",
+          "Radar engine: one 0–100 score per ticker from momentum, analyst consensus, fundamentals and insider activity, plus breakout/pullback setup detection and a market-regime gate",
+          "Claude thesis desk: an adversarial bull/bear analysis grounded only in the app's own data, returned as structured JSON output (json_schema) and cached per symbol",
+          "Deterministic first, LLM second: a rule engine grades every trade of the day and Claude only interprets the evidence pack it produces",
+          "Guardian: hourly server-side checks that e-mail alerts for breached stops, concentration limits and zero-cost exit opportunities",
+          "Risk desk with correlation matrix, 95% VaR, portfolio beta and a Monte-Carlo net-worth forecast",
+          "An MCP server exposing the whole API to Claude Code / Claude Desktop as 6 tools",
+          "Provider-agnostic data layer (Finnhub + Twelve Data) with TTL caches sized for free-tier quotas, Postgres persistence and a mock server for dev/prod parity",
+        ],
+      },
+      tr: {
+        kicker: "Full-Stack Web Uygulaması · Yapay Zekâ Entegrasyonu",
+        overview:
+          "Kendi sunucumda çalışan bir hisse portföyü ve swing trade disiplin panosu; ürün, tasarım, backend, veri hatları ve yapay zekâ entegrasyonu dâhil baştan sona bireysel olarak geliştirildi. Sadece fiyat göstermek yerine kendime koyduğum kuralları uyguluyor: stop planı olmayan pozisyonları işaretliyor, piyasa rejimi bozukken yeni girişleri engelliyor ve kâr belirli bir seviyeye ulaştığında ana parayı çekme önerisi çıkarıyor.",
+        role: "Bireysel proje: ürün kararları, arayüz, Express backend, piyasa verisi hatları, skorlama motorları ve Claude yapay zekâ katmanı.",
+        highlights: [
+          "Framework ve build adımı olmayan, tek bir Express API ile konuşan saf JavaScript SPA — toplam 3 çalışma zamanı bağımlılığı",
+          "Radar motoru: momentum, analist konsensüsü, temeller ve içeriden işlemlerden hisse başına tek bir 0–100 skoru, kırılım/geri çekilme kurulum tespiti ve piyasa rejimi filtresi",
+          "Claude tez masası: yalnızca uygulamanın kendi verisine dayanan boğa/ayı karşıt analizi; yapılandırılmış JSON çıktısı (json_schema) olarak dönüyor ve hisse bazında önbelleğe alınıyor",
+          "Önce deterministik, sonra LLM: kural motoru günün her işlemini notlandırıyor, Claude yalnızca üretilen kanıt paketini yorumluyor",
+          "Guardian: stop ihlali, yoğunlaşma limiti ve sıfır maliyet fırsatlarında e-posta uyarısı gönderen saatlik sunucu taraflı kontroller",
+          "Korelasyon matrisi, %95 VaR, portföy betası ve Monte Carlo net değer projeksiyonu içeren risk masası",
+          "Tüm API'yi Claude Code / Claude Desktop'a 6 araç olarak açan bir MCP sunucusu",
+          "Sağlayıcıdan bağımsız veri katmanı (Finnhub + Twelve Data), ücretsiz kotalara göre ayarlanmış TTL önbellekleri, Postgres kalıcılığı ve geliştirme/üretim eşitliği için mock sunucu",
+        ],
+      },
+    },
     beansocial: {
       title: "BeanSocial",
       tags: ["Flutter", "Dart", "GetX", "Firebase"],
