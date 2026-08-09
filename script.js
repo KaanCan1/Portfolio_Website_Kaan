@@ -185,7 +185,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "nav.skills": "Skills",
       "nav.projects": "Projects",
       "nav.contact": "Contact",
-      "hero.status": "Available for new roles",
       "hero.hello": "Hello, I'm",
       "hero.role": "Flutter & Full Stack Developer",
       "hero.lead":
@@ -256,7 +255,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "nav.skills": "Yetenekler",
       "nav.projects": "Projeler",
       "nav.contact": "İletişim",
-      "hero.status": "Yeni rollere açığım",
       "hero.hello": "Merhaba, ben",
       "hero.role": "Flutter & Full Stack Geliştirici",
       "hero.lead":
