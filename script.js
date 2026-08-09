@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "A self-hosted stock portfolio and swing-trading discipline dashboard. A vanilla JavaScript SPA on top of an Express API and PostgreSQL, with a Claude-powered thesis desk, automated trade audits and an MCP server. My most recent project and daily driver.",
       "proj.beansocial.kicker": "Mobile App · Graduation Project",
       "proj.beansocial.desc":
-        "A social platform for coffee lovers to share recipes, save their favorite brews, and discover new types of coffee. Auth, real-time data, and state management handled end to end.",
+        "A social platform for coffee lovers to share recipes, follow each other, and discover new types of coffee. Flutter client with GetX, backed by my own Express API on PostgreSQL — built end to end.",
       "proj.spendly.kicker": "Mobile App + Backend",
       "proj.spendly.desc":
         "A clean, minimal expense tracker that keeps you on top of your spending. Flutter front end backed by a Node.js API, containerized with Docker for a reproducible setup.",
@@ -296,7 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Kendi sunucumda çalışan bir hisse portföyü ve swing trade disiplin panosu. Express API ve PostgreSQL üzerine kurulu, framework kullanmayan bir JavaScript SPA; Claude destekli tez masası, otomatik işlem denetimi ve bir MCP sunucusu içeriyor. En son yaptığım ve her gün kullandığım proje.",
       "proj.beansocial.kicker": "Mobil Uygulama · Bitirme Projesi",
       "proj.beansocial.desc":
-        "Kahve severlerin tarif paylaştığı, favori demlemelerini kaydettiği ve yeni kahve türlerini keşfettiği bir sosyal platform. Kimlik doğrulama, gerçek zamanlı veri ve durum yönetimi baştan sona kuruldu.",
+        "Kahve severlerin tarif paylaştığı, birbirini takip ettiği ve yeni kahve türlerini keşfettiği bir sosyal platform. GetX ile yazılmış Flutter istemci, PostgreSQL üzerinde çalışan kendi Express API'mden besleniyor — baştan sona geliştirildi.",
       "proj.spendly.kicker": "Mobil Uygulama + Backend",
       "proj.spendly.desc":
         "Harcamalarını takip etmeni sağlayan sade, minimal bir gider takip uygulaması. Node.js API ile beslenen Flutter arayüz, tekrarlanabilir kurulum için Docker ile paketlendi.",
@@ -379,32 +379,34 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     beansocial: {
       title: "BeanSocial",
-      tags: ["Flutter", "Dart", "GetX", "Firebase"],
+      tags: ["Flutter", "Dart", "GetX", "Express", "Prisma", "PostgreSQL"],
       github: "https://github.com/KaanCan1/beansocial_son",
       demo: null,
       en: {
         kicker: "Mobile App · Graduation Project",
         overview:
-          "A social platform for coffee lovers to share recipes, save their favorite brews, and discover new types of coffee. Built end to end as my graduation project.",
-        role: "Solo project: UI design, full Flutter build, and Firebase backend.",
+          "A social platform for coffee lovers to share recipes, follow each other, and discover new types of coffee. Built end to end as my graduation project — Flutter client and a custom REST API, both written from scratch.",
+        role: "Solo project: UI design, the full Flutter build, and my own Node.js/Express API with its database schema.",
         highlights: [
-          "User accounts and profiles with Firebase Authentication",
+          "Custom Express REST API with Prisma over PostgreSQL — users, posts, comments, likes, follows and coffee recipes",
+          "Sign-up and login with hashed passwords and JWT-based sessions",
           "Create, share and browse coffee recipes",
-          "Save favorites and build a personal collection",
-          "Real-time data sync with Cloud Firestore",
+          "Social graph: follow other users and interact with their posts",
+          "Image uploads handled server-side with multer",
           "App-wide state handled with GetX",
         ],
       },
       tr: {
         kicker: "Mobil Uygulama · Bitirme Projesi",
         overview:
-          "Kahve severlerin tarif paylaştığı, favori demlemelerini kaydettiği ve yeni kahve türlerini keşfettiği bir sosyal platform. Bitirme projem olarak baştan sona geliştirildi.",
-        role: "Bireysel proje: arayüz tasarımı, tüm Flutter geliştirmesi ve Firebase backend.",
+          "Kahve severlerin tarif paylaştığı, birbirini takip ettiği ve yeni kahve türlerini keşfettiği bir sosyal platform. Bitirme projem olarak baştan sona geliştirildi — hem Flutter istemci hem de kendi REST API'm sıfırdan yazıldı.",
+        role: "Bireysel proje: arayüz tasarımı, tüm Flutter geliştirmesi ve veritabanı şemasıyla birlikte kendi Node.js/Express API'm.",
         highlights: [
-          "Firebase Authentication ile kullanıcı hesapları ve profiller",
+          "PostgreSQL üzerinde Prisma kullanan özel Express REST API — kullanıcı, gönderi, yorum, beğeni, takip ve kahve tarifleri",
+          "Hash'lenmiş parolalar ve JWT tabanlı oturumlarla kayıt ve giriş",
           "Kahve tarifleri oluşturma, paylaşma ve keşfetme",
-          "Favorileri kaydetme ve kişisel koleksiyon oluşturma",
-          "Cloud Firestore ile gerçek zamanlı veri senkronizasyonu",
+          "Sosyal graf: diğer kullanıcıları takip etme ve gönderileriyle etkileşim",
+          "Sunucu tarafında multer ile görsel yükleme",
           "Uygulama genelinde GetX ile durum yönetimi",
         ],
       },
