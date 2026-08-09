@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Editor / tooling
+.vscode/
+.claude/
+.playwright-mcp/
+
+# Logs
+*.log

@@ -243,6 +243,10 @@ document.addEventListener("DOMContentLoaded", function () {
       "form.email": "Email",
       "form.message": "Your Message",
       "form.send": "Send Message",
+      "form.sending": "Sending…",
+      "form.success": "✅ Your message has been sent. I'll get back to you soon.",
+      "form.error":
+        "❌ Sending failed. Please try again, or email me at kaancan368368@gmail.com.",
       "footer.copyright": "Copyright © 2025 Kaan Can Kurt. All Rights Reserved.",
       "modal.built": "What I built",
       "modal.role": "My role",
@@ -313,6 +317,10 @@ document.addEventListener("DOMContentLoaded", function () {
       "form.email": "E-posta",
       "form.message": "Mesajınız",
       "form.send": "Mesaj Gönder",
+      "form.sending": "Gönderiliyor…",
+      "form.error":
+        "❌ Gönderilemedi. Lütfen tekrar dene ya da kaancan368368@gmail.com adresine yaz.",
+      "form.success": "✅ Mesajın ulaştı. En kısa sürede döneceğim.",
       "footer.copyright": "Telif © 2025 Kaan Can Kurt. Tüm Hakları Saklıdır.",
       "modal.built": "Neler yaptım",
       "modal.role": "Rolüm",
@@ -645,8 +653,61 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  /* ----- Contact form (EmailJS) ----- */
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm && window.emailjs) {
+    emailjs.init("vOCHwW1SJjORmGB6z");
+
+    const statusMessage = document.getElementById("status-message");
+    const submitBtn = contactForm.querySelector(".form-submit-btn");
+    const honeypot = contactForm.querySelector("#website");
+
+    function setStatus(key, kind) {
+      statusMessage.className = "status-message";
+      statusMessage.textContent = I18N[currentLang][key] || I18N.en[key];
+      if (kind) statusMessage.classList.add("show", kind);
+    }
+
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // A bot filled the hidden field — pretend it worked, send nothing.
+      if (honeypot && honeypot.value) {
+        setStatus("form.success", "success");
+        contactForm.reset();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      setStatus("form.sending", null);
+      statusMessage.classList.add("show");
+
+      emailjs.sendForm("service_ganvnbc", "template_chyavpa", contactForm).then(
+        function () {
+          setStatus("form.success", "success");
+          contactForm.reset();
+          submitBtn.disabled = false;
+          setTimeout(function () {
+            statusMessage.classList.remove("show", "success");
+          }, 6000);
+        },
+        function (error) {
+          setStatus("form.error", "error");
+          submitBtn.disabled = false;
+          console.error("EmailJS:", error);
+          setTimeout(function () {
+            statusMessage.classList.remove("show", "error");
+          }, 8000);
+        }
+      );
+    });
+  }
+
+  // ?lang=tr / ?lang=en wins, so shared links land in the right language
+  const urlLang = new URLSearchParams(location.search).get("lang");
   const savedLang = localStorage.getItem("lang");
   const initialLang =
+    (urlLang && I18N[urlLang] ? urlLang : null) ||
     savedLang ||
     (navigator.language && navigator.language.toLowerCase().indexOf("tr") === 0
       ? "tr"

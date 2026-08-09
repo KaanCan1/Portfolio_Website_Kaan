@@ -1218,6 +1218,21 @@ nav {
   transform: translateY(1px) scale(0.99);
 }
 
+.form-submit-btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Honeypot — off-screen instead of display:none so bots still fill it */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .status-message {
   margin-top: 0.5rem;
   padding: 0.85rem;

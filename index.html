@@ -16,6 +16,9 @@
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://kaancankurt.vercel.app/" />
+    <link rel="alternate" hreflang="en" href="https://kaancankurt.vercel.app/?lang=en" />
+    <link rel="alternate" hreflang="tr" href="https://kaancankurt.vercel.app/?lang=tr" />
+    <link rel="alternate" hreflang="x-default" href="https://kaancankurt.vercel.app/" />
     <meta name="theme-color" content="#fcfbf9" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#131211" media="(prefers-color-scheme: dark)" />
 
@@ -42,6 +45,7 @@
       content="Kaan Can Kurt — Flutter & Full Stack Developer"
     />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="tr_TR" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -104,7 +108,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       referrerpolicy="no-referrer"
     />
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script defer src="https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js"></script>
   </head>
   <body>
     <nav id="main-nav">
@@ -268,20 +272,23 @@
             alt="My LinkedIn profile"
             class="icon"
             onclick="location.href='https://linkedin.com/in/kaan-can-kurt-805990299'"
-          />
+        loading="lazy"
+      />
           <img
             src="./assets/github.png"
             alt="My Github profile"
             class="icon"
             onclick="location.href='https://github.com/KaanCan1'"
-          />
+        loading="lazy"
+      />
         </div>
       </div>
       <div id="first-image" class="section__pic-container" data-reveal>
         <img
-          src="./assets/profilfoto1.jpeg"
+          src="./assets/profilfoto1.webp"
           alt="Kaan Can Kurt"
           class="about-pic"
+          fetchpriority="high"
         />
       </div>
     </section>
@@ -292,34 +299,34 @@
     <div class="tech-strip" aria-label="Technologies I work with">
       <div class="tech-track">
         <div class="tech-set">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" loading="lazy" />
+          <img src="./assets/icons/flutter-original.svg" alt="Flutter" loading="lazy" />
+          <img src="./assets/icons/dart-original.svg" alt="Dart" loading="lazy" />
+          <img src="./assets/icons/javascript-original.svg" alt="JavaScript" loading="lazy" />
+          <img src="./assets/icons/python-original.svg" alt="Python" loading="lazy" />
+          <img src="./assets/icons/java-original.svg" alt="Java" loading="lazy" />
+          <img src="./assets/icons/csharp-original.svg" alt="C#" loading="lazy" />
+          <img src="./assets/icons/php-original.svg" alt="PHP" loading="lazy" />
+          <img src="./assets/icons/nodejs-original.svg" alt="Node.js" loading="lazy" />
+          <img src="./assets/icons/firebase-plain.svg" alt="Firebase" loading="lazy" />
+          <img src="./assets/icons/postgresql-original.svg" alt="PostgreSQL" loading="lazy" />
+          <img src="./assets/icons/mysql-original.svg" alt="MySQL" loading="lazy" />
+          <img src="./assets/icons/git-original.svg" alt="Git" loading="lazy" />
+          <img src="./assets/icons/figma-original.svg" alt="Figma" loading="lazy" />
         </div>
         <div class="tech-set" aria-hidden="true">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" loading="lazy" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/flutter-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/dart-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/javascript-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/python-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/java-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/csharp-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/php-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/nodejs-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/firebase-plain.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/postgresql-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/mysql-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/git-original.svg" alt="" loading="lazy" />
+          <img src="./assets/icons/figma-original.svg" alt="" loading="lazy" />
         </div>
       </div>
     </div>
@@ -328,13 +335,14 @@
          ABOUT
          ========================================================= -->
     <section id="about">
-      <h1 class="title" data-reveal data-i18n="about.title">About Me</h1>
+      <h2 class="title" data-reveal data-i18n="about.title">About Me</h2>
       <div class="section-container">
         <div id="second-image" class="section__pic-container" data-reveal>
           <img
-            src="./assets/profilkaan.jpeg"
+            src="./assets/profilkaan.webp"
             alt="Kaan Can Kurt"
             class="about-pic"
+            loading="lazy"
           />
         </div>
         <div class="about-details-container">
@@ -354,7 +362,8 @@
                 src="./assets/experience.png"
                 alt="Experience icon"
                 class="icon"
-              />
+        loading="lazy"
+      />
               <h3 data-i18n="about.experience">Experience</h3>
               <ul class="text-left-list">
                 <li>
@@ -369,7 +378,8 @@
                 src="./assets/education.png"
                 alt="Education icon"
                 class="icon"
-              />
+        loading="lazy"
+      />
               <h3 data-i18n="about.education">Education</h3>
               <ul class="text-left-list">
                 <li>
@@ -387,7 +397,8 @@
                 src="./assets/language.png"
                 alt="Language icon"
                 class="icon"
-              />
+        loading="lazy"
+      />
               <h3 data-i18n="about.languages">Languages</h3>
               <ul class="text-left-list">
                 <li>
@@ -409,6 +420,7 @@
         alt="Arrow icon"
         class="icon arrow"
         onclick="location.href='./#experience'"
+        loading="lazy"
       />
     </section>
 
@@ -416,7 +428,7 @@
          SKILLS
          ========================================================= -->
     <section id="experience">
-      <h1 class="title" data-reveal data-i18n="skills.title">Skills &amp; Tools</h1>
+      <h2 class="title" data-reveal data-i18n="skills.title">Skills &amp; Tools</h2>
       <div class="experience-details-container">
         <div class="about-containers">
           <div class="details-container" data-reveal>
@@ -424,7 +436,7 @@
             <div class="article-container">
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                  src="./assets/icons/flutter-original.svg"
                   alt="Flutter"
                   class="icon tech-icon"
                   loading="lazy"
@@ -436,7 +448,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                  src="./assets/icons/html5-original.svg"
                   alt="HTML5 & CSS3"
                   class="icon tech-icon"
                   loading="lazy"
@@ -448,7 +460,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                  src="./assets/icons/javascript-original.svg"
                   alt="JavaScript"
                   class="icon tech-icon"
                   loading="lazy"
@@ -460,7 +472,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                  src="./assets/icons/java-original.svg"
                   alt="Java"
                   class="icon tech-icon"
                   loading="lazy"
@@ -472,7 +484,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                  src="./assets/icons/php-original.svg"
                   alt="PHP"
                   class="icon tech-icon"
                   loading="lazy"
@@ -484,7 +496,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                  src="./assets/icons/python-original.svg"
                   alt="Python"
                   class="icon tech-icon"
                   loading="lazy"
@@ -496,7 +508,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+                  src="./assets/icons/csharp-original.svg"
                   alt="C#"
                   class="icon tech-icon"
                   loading="lazy"
@@ -508,7 +520,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"
+                  src="./assets/icons/dotnetcore-original.svg"
                   alt="ASP.NET"
                   class="icon tech-icon"
                   loading="lazy"
@@ -525,7 +537,7 @@
             <div class="article-container">
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                  src="./assets/icons/git-original.svg"
                   alt="Git & GitHub"
                   class="icon tech-icon"
                   loading="lazy"
@@ -537,7 +549,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                  src="./assets/icons/figma-original.svg"
                   alt="Figma"
                   class="icon tech-icon"
                   loading="lazy"
@@ -549,7 +561,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
+                  src="./assets/icons/postman-original.svg"
                   alt="Postman"
                   class="icon tech-icon"
                   loading="lazy"
@@ -561,7 +573,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                  src="./assets/icons/firebase-plain.svg"
                   alt="Firebase"
                   class="icon tech-icon"
                   loading="lazy"
@@ -573,7 +585,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg"
+                  src="./assets/icons/sqlite-original.svg"
                   alt="SQLite"
                   class="icon tech-icon"
                   loading="lazy"
@@ -585,7 +597,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                  src="./assets/icons/mysql-original.svg"
                   alt="MySQL"
                   class="icon tech-icon"
                   loading="lazy"
@@ -597,7 +609,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                  src="./assets/icons/postgresql-original.svg"
                   alt="PostgreSQL"
                   class="icon tech-icon"
                   loading="lazy"
@@ -609,7 +621,7 @@
               </article>
               <article class="skill">
                 <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
+                  src="./assets/icons/microsoftsqlserver-plain.svg"
                   alt="SQL Server"
                   class="icon tech-icon"
                   loading="lazy"
@@ -628,6 +640,7 @@
         alt="Arrow icon"
         class="icon arrow"
         onclick="location.href='./#projects'"
+        loading="lazy"
       />
     </section>
 
@@ -636,17 +649,17 @@
          ========================================================= -->
     <section id="projects">
       <p class="section__text__p1" data-reveal data-i18n="projects.eyebrow">Selected Work</p>
-      <h1 class="title" data-reveal data-i18n="projects.title">Projects</h1>
+      <h2 class="title" data-reveal data-i18n="projects.title">Projects</h2>
 
       <!-- Featured project: Portfolio Tracker -->
       <article class="project-feature" data-reveal>
         <div class="project-feature-media">
           <div class="project-slider" id="tracker-slider">
-            <img src="./assets/tracker_1.jpg" class="project-slide active" alt="Portfolio Tracker overview dashboard" />
-            <img src="./assets/tracker_2.jpg" class="project-slide" alt="Portfolio Tracker radar scoring screen" />
-            <img src="./assets/tracker_3.jpg" class="project-slide" alt="Portfolio Tracker Claude thesis desk" />
-            <img src="./assets/tracker_4.jpg" class="project-slide" alt="Portfolio Tracker swing journal" />
-            <img src="./assets/tracker_5.jpg" class="project-slide" alt="Portfolio Tracker notes journal" />
+            <img src="./assets/tracker_1.jpg" class="project-slide active" alt="Portfolio Tracker overview dashboard" loading="lazy" />
+            <img src="./assets/tracker_2.jpg" class="project-slide" alt="Portfolio Tracker radar scoring screen" loading="lazy" />
+            <img src="./assets/tracker_3.jpg" class="project-slide" alt="Portfolio Tracker Claude thesis desk" loading="lazy" />
+            <img src="./assets/tracker_4.jpg" class="project-slide" alt="Portfolio Tracker swing journal" loading="lazy" />
+            <img src="./assets/tracker_5.jpg" class="project-slide" alt="Portfolio Tracker notes journal" loading="lazy" />
             <button class="slider-btn prev" type="button" aria-label="Previous screenshot">&#10094;</button>
             <button class="slider-btn next" type="button" aria-label="Next screenshot">&#10095;</button>
           </div>
@@ -682,11 +695,11 @@
       <article class="project-feature reverse" data-reveal>
         <div class="project-feature-media">
           <div class="project-slider" id="project1-slider">
-            <img src="./assets/proje1_1.png" class="project-slide active" alt="BeanSocial screenshot 1" />
-            <img src="./assets/proje1_2.png" class="project-slide" alt="BeanSocial screenshot 2" />
-            <img src="./assets/proje1_3.png" class="project-slide" alt="BeanSocial screenshot 3" />
-            <img src="./assets/proje1_4.png" class="project-slide" alt="BeanSocial screenshot 4" />
-            <img src="./assets/proje1_5.png" class="project-slide" alt="BeanSocial screenshot 5" />
+            <img src="./assets/proje1_1.png" class="project-slide active" alt="BeanSocial screenshot 1" loading="lazy" />
+            <img src="./assets/proje1_2.png" class="project-slide" alt="BeanSocial screenshot 2" loading="lazy" />
+            <img src="./assets/proje1_3.png" class="project-slide" alt="BeanSocial screenshot 3" loading="lazy" />
+            <img src="./assets/proje1_4.png" class="project-slide" alt="BeanSocial screenshot 4" loading="lazy" />
+            <img src="./assets/proje1_5.png" class="project-slide" alt="BeanSocial screenshot 5" loading="lazy" />
             <button class="slider-btn prev" type="button" aria-label="Previous screenshot">&#10094;</button>
             <button class="slider-btn next" type="button" aria-label="Next screenshot">&#10095;</button>
           </div>
@@ -720,10 +733,10 @@
       <article class="project-feature" data-reveal>
         <div class="project-feature-media">
           <div class="project-slider" id="project2-slider">
-            <img src="./assets/spendly_1.png" class="project-slide active" alt="Spendly home screen" />
-            <img src="./assets/spendly_2.png" class="project-slide" alt="Spendly add-expense screen" />
-            <img src="./assets/spendly_3.png" class="project-slide" alt="Spendly weekly summary" />
-            <img src="./assets/spendly_4.png" class="project-slide" alt="Spendly transactions" />
+            <img src="./assets/spendly_1.png" class="project-slide active" alt="Spendly home screen" loading="lazy" />
+            <img src="./assets/spendly_2.png" class="project-slide" alt="Spendly add-expense screen" loading="lazy" />
+            <img src="./assets/spendly_3.png" class="project-slide" alt="Spendly weekly summary" loading="lazy" />
+            <img src="./assets/spendly_4.png" class="project-slide" alt="Spendly transactions" loading="lazy" />
             <button class="slider-btn prev" type="button" aria-label="Previous screenshot">&#10094;</button>
             <button class="slider-btn next" type="button" aria-label="Next screenshot">&#10095;</button>
           </div>
@@ -756,7 +769,7 @@
       <!-- Secondary projects grid -->
       <div class="project-grid">
         <article class="project-card" data-reveal>
-          <img class="project-card-mark" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" loading="lazy" aria-hidden="true" />
+          <img class="project-card-mark" src="./assets/icons/python-original.svg" alt="" loading="lazy" aria-hidden="true" />
           <span class="project-kicker" data-i18n="proj.sentiment.kicker">Machine Learning</span>
           <h3 class="project-card-title">Film Review Sentiment Analysis</h3>
           <p class="project-card-desc" data-i18n="proj.sentiment.desc">
@@ -780,7 +793,7 @@
         </article>
 
         <article class="project-card" data-reveal>
-          <img class="project-card-mark" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="" loading="lazy" aria-hidden="true" />
+          <img class="project-card-mark" src="./assets/icons/androidstudio-original.svg" alt="" loading="lazy" aria-hidden="true" />
           <span class="project-kicker" data-i18n="proj.moodaktif.kicker">Native Android</span>
           <h3 class="project-card-title">MoodAktif</h3>
           <p class="project-card-desc" data-i18n="proj.moodaktif.desc">
@@ -803,7 +816,7 @@
         </article>
 
         <article class="project-card" data-reveal>
-          <img class="project-card-mark" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" loading="lazy" aria-hidden="true" />
+          <img class="project-card-mark" src="./assets/icons/python-original.svg" alt="" loading="lazy" aria-hidden="true" />
           <span class="project-kicker" data-i18n="proj.chart.kicker">Data Visualization</span>
           <h3 class="project-card-title">Simple Chart Plotter</h3>
           <p class="project-card-desc" data-i18n="proj.chart.desc">
@@ -836,6 +849,7 @@
         alt="Arrow icon"
         class="icon arrow"
         onclick="location.href='./#contact'"
+        loading="lazy"
       />
     </section>
 
@@ -843,7 +857,7 @@
          CONTACT
          ========================================================= -->
     <section id="contact">
-      <h1 class="title" data-reveal data-i18n="contact.title">Get in Touch</h1>
+      <h2 class="title" data-reveal data-i18n="contact.title">Get in Touch</h2>
       <div class="contact-grid">
         <div class="contact-media" data-reveal>
           <lottie-player
@@ -872,22 +886,27 @@
           <form id="contact-form" class="contact-form">
             <div class="form-group">
               <label for="name" class="form-label" data-i18n="form.name">Your Name</label>
-              <input type="text" id="name" name="name" class="form-input" required />
+              <input type="text" id="name" name="name" class="form-input" autocomplete="name" required />
             </div>
             <div class="form-group">
               <label for="subject" class="form-label" data-i18n="form.subject">Subject</label>
-              <input type="text" id="subject" name="title" class="form-input" required />
+              <input type="text" id="subject" name="title" class="form-input" autocomplete="off" required />
             </div>
             <div class="form-group">
               <label for="email" class="form-label" data-i18n="form.email">Email</label>
-              <input type="email" id="email" name="email" class="form-input" required />
+              <input type="email" id="email" name="email" class="form-input" autocomplete="email" required />
             </div>
             <div class="form-group">
               <label for="message" class="form-label" data-i18n="form.message">Your Message</label>
               <textarea id="message" name="message" class="form-textarea" required></textarea>
             </div>
+            <!-- Honeypot: hidden from people, filled in by bots -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
             <button type="submit" class="form-submit-btn" data-i18n="form.send">Send Message</button>
-            <div id="status-message" class="status-message"></div>
+            <div id="status-message" class="status-message" role="status" aria-live="polite"></div>
           </form>
         </div>
       </div>
@@ -952,50 +971,11 @@
         src="./assets/arrow.png"
         alt="Scroll to top"
         class="icon back-to-top-icon"
+        loading="lazy"
       />
     </button>
-    <script src="script.js"></script>
-    <!-- EmailJS Script -->
+    <!-- EmailJS SDK (contact form) -->
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-      (function () {
-        emailjs.init("vOCHwW1SJjORmGB6z");
-      })();
-
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const statusMessage = document.getElementById("status-message");
-
-          // Clear and hide the current message
-          statusMessage.innerText = "";
-          statusMessage.className = "status-message"; // Remove all classes
-
-          emailjs.sendForm("service_ganvnbc", "template_chyavpa", this).then(
-            function () {
-              // On success
-              statusMessage.innerText = "✅ Your message has been sent successfully!";
-              statusMessage.classList.add("show", "success");
-
-              // Reload the page after 2 seconds
-              setTimeout(() => {
-                window.location.reload();
-              }, 2000);
-            },
-            function (error) {
-              statusMessage.innerText =
-                "❌ Sending failed. Please try again.";
-              statusMessage.classList.add("show", "error");
-              console.error("Error:", error);
-
-              setTimeout(() => {
-                statusMessage.classList.remove("show", "error");
-              }, 5000);
-            }
-          );
-        });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
