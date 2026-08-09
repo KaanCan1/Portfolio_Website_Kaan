@@ -653,10 +653,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ----- Contact form (EmailJS) ----- */
+  /* ----- Contact form (EmailJS v4) ----- */
   const contactForm = document.getElementById("contact-form");
   if (contactForm && window.emailjs) {
-    emailjs.init("vOCHwW1SJjORmGB6z");
+    emailjs.init({ publicKey: "vOCHwW1SJjORmGB6z" });
 
     const statusMessage = document.getElementById("status-message");
     const submitBtn = contactForm.querySelector(".form-submit-btn");
