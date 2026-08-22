@@ -651,8 +651,49 @@
       <p class="section__text__p1" data-reveal data-i18n="projects.eyebrow">Selected Work</p>
       <h2 class="title" data-reveal data-i18n="projects.title">Projects</h2>
 
-      <!-- Featured project: Portfolio Tracker -->
+      <!-- Featured project: Sepet -->
       <article class="project-feature" data-reveal>
+        <div class="project-feature-media">
+          <div class="project-slider" id="sepet-slider">
+            <img src="./assets/sepet_1.webp" class="project-slide active" alt="Sepet personal inflation index screen" loading="lazy" />
+            <img src="./assets/sepet_2.webp" class="project-slide" alt="Sepet scanned receipt with parsed lines" loading="lazy" />
+            <img src="./assets/sepet_3.webp" class="project-slide" alt="Sepet match confirmation sheet" loading="lazy" />
+            <img src="./assets/sepet_4.webp" class="project-slide" alt="Sepet product price history" loading="lazy" />
+            <img src="./assets/sepet_5.webp" class="project-slide" alt="Sepet shareable monthly card" loading="lazy" />
+            <button class="slider-btn prev" type="button" aria-label="Previous screenshot">&#10094;</button>
+            <button class="slider-btn next" type="button" aria-label="Next screenshot">&#10095;</button>
+          </div>
+        </div>
+        <div class="project-feature-body">
+          <span class="project-kicker" data-i18n="proj.sepet.kicker">Mobile App · On-Device OCR + AI</span>
+          <h2 class="experience-sub-title project-title">Sepet</h2>
+          <p class="project-desc" data-i18n="proj.sepet.desc">
+            A Flutter app that builds a personal inflation index from your own
+            grocery receipts and puts it next to the official figures. OCR runs
+            on device, so the photo never leaves the phone; Claude is called
+            only for the receipt lines the matcher is unsure about.
+          </p>
+          <div class="project-tags">
+            <span>Flutter</span>
+            <span>Dart</span>
+            <span>Apple Vision OCR</span>
+            <span>Claude API</span>
+            <span>Express</span>
+            <span>PostgreSQL</span>
+          </div>
+          <div class="project-actions">
+            <button class="details-btn" type="button" data-project="sepet">
+              <span data-i18n="btn.caseStudy">Case study</span> <i class="fas fa-arrow-right"></i>
+            </button>
+            <a href="https://github.com/KaanCan1/Sepet" target="_blank" rel="noopener" class="github-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Featured project: Portfolio Tracker -->
+      <article class="project-feature reverse" data-reveal>
         <div class="project-feature-media">
           <div class="project-slider" id="tracker-slider">
             <img src="./assets/tracker_1.jpg" class="project-slide active" alt="Portfolio Tracker overview dashboard" loading="lazy" />
@@ -671,7 +712,7 @@
             A self-hosted stock portfolio and swing-trading discipline
             dashboard. A vanilla JavaScript SPA on top of an Express API and
             PostgreSQL, with a Claude-powered thesis desk, automated trade
-            audits and an MCP server. My most recent project and daily driver.
+            audits and an MCP server — the project I use every day.
           </p>
           <div class="project-tags">
             <span>JavaScript</span>
@@ -692,7 +733,7 @@
       </article>
 
       <!-- Featured project: BeanSocial -->
-      <article class="project-feature reverse" data-reveal>
+      <article class="project-feature" data-reveal>
         <div class="project-feature-media">
           <div class="project-slider" id="project1-slider">
             <img src="./assets/proje1_1.png" class="project-slide active" alt="BeanSocial screenshot 1" loading="lazy" />
@@ -731,7 +772,7 @@
       </article>
 
       <!-- Featured project: Spendly -->
-      <article class="project-feature" data-reveal>
+      <article class="project-feature reverse" data-reveal>
         <div class="project-feature-media">
           <div class="project-slider" id="project2-slider">
             <img src="./assets/spendly_1.png" class="project-slide active" alt="Spendly home screen" loading="lazy" />

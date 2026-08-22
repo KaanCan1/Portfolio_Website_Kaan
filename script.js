@@ -217,9 +217,12 @@ document.addEventListener("DOMContentLoaded", function () {
       "skills.tools": "Tools & Databases",
       "projects.eyebrow": "Selected Work",
       "projects.title": "Projects",
+      "proj.sepet.kicker": "Mobile App · On-Device OCR + AI",
+      "proj.sepet.desc":
+        "A Flutter app that builds a personal inflation index from your own grocery receipts and puts it next to the official figures. OCR runs on device, so the photo never leaves the phone; Claude is called only for the receipt lines the matcher is unsure about.",
       "proj.tracker.kicker": "Full-Stack Web App · AI Integration",
       "proj.tracker.desc":
-        "A self-hosted stock portfolio and swing-trading discipline dashboard. A vanilla JavaScript SPA on top of an Express API and PostgreSQL, with a Claude-powered thesis desk, automated trade audits and an MCP server. My most recent project and daily driver.",
+        "A self-hosted stock portfolio and swing-trading discipline dashboard. A vanilla JavaScript SPA on top of an Express API and PostgreSQL, with a Claude-powered thesis desk, automated trade audits and an MCP server — the project I use every day.",
       "proj.beansocial.kicker": "Mobile App · Graduation Project",
       "proj.beansocial.desc":
         "A social platform for coffee lovers to share recipes, follow each other, and discover new types of coffee. Flutter client with GetX, backed by my own Express API on PostgreSQL — built end to end.",
@@ -291,9 +294,12 @@ document.addEventListener("DOMContentLoaded", function () {
       "skills.tools": "Araçlar & Veritabanları",
       "projects.eyebrow": "Seçili Çalışmalar",
       "projects.title": "Projeler",
+      "proj.sepet.kicker": "Mobil Uygulama · Cihaz Üstü OCR + Yapay Zekâ",
+      "proj.sepet.desc":
+        "Market fişlerinden kendi enflasyonunu hesaplayıp resmî rakamların yanına koyan bir Flutter uygulaması. OCR cihaz üstünde çalışıyor, fişin fotoğrafı telefondan çıkmıyor; Claude yalnızca eşleştirmenin emin olamadığı fiş satırları için devreye giriyor.",
       "proj.tracker.kicker": "Full-Stack Web Uygulaması · Yapay Zekâ Entegrasyonu",
       "proj.tracker.desc":
-        "Kendi sunucumda çalışan bir hisse portföyü ve swing trade disiplin panosu. Express API ve PostgreSQL üzerine kurulu, framework kullanmayan bir JavaScript SPA; Claude destekli tez masası, otomatik işlem denetimi ve bir MCP sunucusu içeriyor. En son yaptığım ve her gün kullandığım proje.",
+        "Kendi sunucumda çalışan bir hisse portföyü ve swing trade disiplin panosu. Express API ve PostgreSQL üzerine kurulu, framework kullanmayan bir JavaScript SPA; Claude destekli tez masası, otomatik işlem denetimi ve bir MCP sunucusu içeriyor — her gün kullandığım proje.",
       "proj.beansocial.kicker": "Mobil Uygulama · Bitirme Projesi",
       "proj.beansocial.desc":
         "Kahve severlerin tarif paylaştığı, birbirini takip ettiği ve yeni kahve türlerini keşfettiği bir sosyal platform. GetX ile yazılmış Flutter istemci, PostgreSQL üzerinde çalışan kendi Express API'mden besleniyor — baştan sona geliştirildi.",
@@ -332,6 +338,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Project case-study content (bilingual). tags/links are shared.
   const PROJECTS = {
+    sepet: {
+      title: "Sepet",
+      tags: [
+        "Flutter",
+        "Dart",
+        "Apple Vision OCR",
+        "Claude API",
+        "Express",
+        "PostgreSQL",
+      ],
+      github: "https://github.com/KaanCan1/Sepet",
+      demo: null,
+      en: {
+        kicker: "Mobile App · On-Device OCR + AI",
+        overview:
+          "Official inflation measures the price change of one fixed basket meant to represent a whole country — but nobody actually buys that basket. Sepet reads your grocery receipts, builds a price index from the products you really buy, and puts it next to the official (TÜİK) and independent (ENAG) series without interpreting either. Built solo: product, design, Flutter client, the matching model and the backend it talks to.",
+        role: "Solo project: product decisions, design system, Flutter client, receipt normalization pipeline, Node.js/Express + PostgreSQL backend and the CI/release setup.",
+        highlights: [
+          "Core loop — scan, match, measure, share: photo → on-device OCR → editable draft → saved receipt → your 12-month index",
+          "On-device OCR with Apple Vision: the receipt photo never leaves the phone, only matched lines are sent to the server",
+          "The heart of the app is the ambiguity case — when normalization cannot tell which canonical product a line means, it asks instead of guessing; a silent mismatch would corrupt the index invisibly",
+          "Claude is used as an ambiguity resolver only, not per line: confirmed matches are cached per market receipt format, so cost scales with uncertainty instead of with volume",
+          "Laspeyres index computed backend-side over canonical products, aliases and price observations, compared against monthly TÜİK CPI and ENAG E-CPI series",
+          "Two design layers: paper-receipt content (serif headings, monospace numbers, colour spent only on price hikes) under an iOS 26 Liquid Glass chrome with a floating capsule tab bar",
+          "Built for KVKK from the start: separate disclosure and explicit-consent screens per the Board's 2026/347 decision, optional permissions off by default, and a test that asserts no consent toggle exists on the disclosure screen",
+          "Green main: protected branch, PR-only flow, squash merges, and CI running format, analyze --fatal-infos, tests with coverage plus Android and iOS builds; tagged releases publish APK + AAB",
+          "Flutter version pinned via FVM and read from the same file by CI, so local and CI can't drift",
+        ],
+      },
+      tr: {
+        kicker: "Mobil Uygulama · Cihaz Üstü OCR + Yapay Zekâ",
+        overview:
+          "Resmî enflasyon, bütün bir ülkeyi temsil etmesi beklenen sabit bir sepetin fiyat değişimini ölçüyor — ama kimse tam olarak o sepeti almıyor. Sepet, market fişlerini okuyup fiilen aldığın ürünlerden bir fiyat endeksi kuruyor ve bunu resmî (TÜİK) ile bağımsız (ENAG) serilerin yanına, hiçbirini yorumlamadan koyuyor. Ürün, tasarım, Flutter istemci, eşleştirme modeli ve konuştuğu backend bireysel olarak geliştirildi.",
+        role: "Bireysel proje: ürün kararları, tasarım sistemi, Flutter istemci, fiş normalizasyon hattı, Node.js/Express + PostgreSQL backend ve CI/release kurulumu.",
+        highlights: [
+          "Çekirdek döngü — tara, eşle, ölç, paylaş: fotoğraf → cihaz üstünde OCR → düzeltilebilir taslak → kayıtlı fiş → 12 aylık kendi endeksin",
+          "Apple Vision ile cihaz üstü OCR: fişin fotoğrafı telefondan çıkmıyor, sunucuya yalnızca eşleşmiş satırlar gidiyor",
+          "Uygulamanın kalbi belirsizlik durumu — normalizasyon bir satırın hangi kanonik ürüne gittiğini çözemediğinde tahmin etmiyor, soruyor; sessiz bir yanlış eşleşme endeksi kullanıcı fark etmeden bozardı",
+          "Claude satır başına değil, yalnızca belirsizlik çözücü olarak kullanılıyor: onaylanan eşleşmeler market fiş formatı bazında önbelleğe alınıyor, yani maliyet hacimle değil belirsizlikle ölçekleniyor",
+          "Kanonik ürünler, alias tablosu ve fiyat gözlemleri üzerinden backend'de hesaplanan Laspeyres endeksi; aylık TÜİK TÜFE ve ENAG E-TÜFE serileriyle karşılaştırılıyor",
+          "İki tasarım katmanı: kâğıt fiş içeriği (serif başlıklar, monospace sayılar, rengin yalnızca zamlarda harcanması) ve üzerinde yüzen kapsül sekme çubuğuyla iOS 26 Liquid Glass kromu",
+          "Baştan KVKK'ya göre kurgulandı: Kurul'un 2026/347 sayılı kararı gereği ayrı aydınlatma ve açık rıza ekranları, varsayılan kapalı isteğe bağlı izinler ve aydınlatma ekranında hiçbir onay anahtarı bulunmadığını doğrulayan bir test",
+          "main her zaman yeşil: korumalı dal, yalnızca PR akışı, squash merge ve her PR'da format, analyze --fatal-infos, kapsamlı testler ile Android/iOS derlemelerini çalıştıran CI; etiketli sürümler APK + AAB yayınlıyor",
+          "Flutter sürümü FVM ile sabitlenmiş ve CI aynı dosyadan okuyor, böylece yerel ile CI'ın ayrışması mümkün değil",
+        ],
+      },
+    },
     tracker: {
       title: "Portfolio Tracker",
       tags: [
