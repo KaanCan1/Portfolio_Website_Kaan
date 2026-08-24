@@ -353,14 +353,16 @@ document.addEventListener("DOMContentLoaded", function () {
       en: {
         kicker: "Mobile App · On-Device OCR + AI",
         overview:
-          "Official inflation measures the price change of one fixed basket meant to represent a whole country — but nobody actually buys that basket. Sepet reads your grocery receipts, builds a price index from the products you really buy, and puts it next to the official (TÜİK) and independent (ENAG) series without interpreting either. Built solo: product, design, Flutter client, the matching model and the backend it talks to.",
+          "Official inflation measures the price change of one fixed basket meant to represent a whole country — but nobody actually buys that basket. Sepet reads your grocery receipts, builds a price index from the products you really buy, and puts it next to the official TÜİK series without interpreting it. Built solo: product, design, Flutter client, the matching model and the backend it talks to.",
         role: "Solo project: product decisions, design system, Flutter client, receipt normalization pipeline, Node.js/Express + PostgreSQL backend and the CI/release setup.",
         highlights: [
           "Core loop — scan, match, measure, share: photo → on-device OCR → editable draft → saved receipt → your 12-month index",
           "On-device OCR with Apple Vision: the receipt photo never leaves the phone, only matched lines are sent to the server",
-          "The heart of the app is the ambiguity case — when normalization cannot tell which canonical product a line means, it asks instead of guessing; a silent mismatch would corrupt the index invisibly",
+          "The heart of the app is the ambiguity case — the server resolves brand and product by fuzzy matching, but a receipt never says whether it was the 1 kg or the 3 kg, so the app asks instead of guessing and shows the unit price each option would feed into the index",
           "Claude is used as an ambiguity resolver only, not per line: confirmed matches are cached per market receipt format, so cost scales with uncertainty instead of with volume",
-          "Laspeyres index computed backend-side over canonical products, aliases and price observations, compared against monthly TÜİK CPI and ENAG E-CPI series",
+          "Laspeyres index computed in PostgreSQL functions next to the data — four SQL stages in one transaction — over canonical products, aliases and price observations",
+          "Official TÜİK CPI pulled through the TCMB EVDS API — the machine-readable channel, since TÜİK's own portal is closed to automated access — refreshed at most once a month, with manual entry as a fallback when no key is set",
+          "Breakdown screen by category and brand, each series reweighted within its own set so the percentages never pretend to add up",
           "Two design layers: paper-receipt content (serif headings, monospace numbers, colour spent only on price hikes) under an iOS 26 Liquid Glass chrome with a floating capsule tab bar",
           "Built for KVKK from the start: separate disclosure and explicit-consent screens per the Board's 2026/347 decision, optional permissions off by default, and a test that asserts no consent toggle exists on the disclosure screen",
           "Green main: protected branch, PR-only flow, squash merges, and CI running format, analyze --fatal-infos, tests with coverage plus Android and iOS builds; tagged releases publish APK + AAB",
@@ -370,14 +372,16 @@ document.addEventListener("DOMContentLoaded", function () {
       tr: {
         kicker: "Mobil Uygulama · Cihaz Üstü OCR + Yapay Zekâ",
         overview:
-          "Resmî enflasyon, bütün bir ülkeyi temsil etmesi beklenen sabit bir sepetin fiyat değişimini ölçüyor — ama kimse tam olarak o sepeti almıyor. Sepet, market fişlerini okuyup fiilen aldığın ürünlerden bir fiyat endeksi kuruyor ve bunu resmî (TÜİK) ile bağımsız (ENAG) serilerin yanına, hiçbirini yorumlamadan koyuyor. Ürün, tasarım, Flutter istemci, eşleştirme modeli ve konuştuğu backend bireysel olarak geliştirildi.",
+          "Resmî enflasyon, bütün bir ülkeyi temsil etmesi beklenen sabit bir sepetin fiyat değişimini ölçüyor — ama kimse tam olarak o sepeti almıyor. Sepet, market fişlerini okuyup fiilen aldığın ürünlerden bir fiyat endeksi kuruyor ve bunu resmî TÜİK serisinin yanına, yorumlamadan koyuyor. Ürün, tasarım, Flutter istemci, eşleştirme modeli ve konuştuğu backend bireysel olarak geliştirildi.",
         role: "Bireysel proje: ürün kararları, tasarım sistemi, Flutter istemci, fiş normalizasyon hattı, Node.js/Express + PostgreSQL backend ve CI/release kurulumu.",
         highlights: [
           "Çekirdek döngü — tara, eşle, ölç, paylaş: fotoğraf → cihaz üstünde OCR → düzeltilebilir taslak → kayıtlı fiş → 12 aylık kendi endeksin",
           "Apple Vision ile cihaz üstü OCR: fişin fotoğrafı telefondan çıkmıyor, sunucuya yalnızca eşleşmiş satırlar gidiyor",
-          "Uygulamanın kalbi belirsizlik durumu — normalizasyon bir satırın hangi kanonik ürüne gittiğini çözemediğinde tahmin etmiyor, soruyor; sessiz bir yanlış eşleşme endeksi kullanıcı fark etmeden bozardı",
+          "Uygulamanın kalbi belirsizlik durumu — marka ve ürünü sunucu bulanık eşleştirmeyle çözüyor, ama 1 kg mı 3 kg mı sorusunun cevabı fişte yazmıyor; uygulama orada tahmin etmiyor, soruyor ve her seçeneğin yanında endekse girecek birim fiyatı gösteriyor",
           "Claude satır başına değil, yalnızca belirsizlik çözücü olarak kullanılıyor: onaylanan eşleşmeler market fiş formatı bazında önbelleğe alınıyor, yani maliyet hacimle değil belirsizlikle ölçekleniyor",
-          "Kanonik ürünler, alias tablosu ve fiyat gözlemleri üzerinden backend'de hesaplanan Laspeyres endeksi; aylık TÜİK TÜFE ve ENAG E-TÜFE serileriyle karşılaştırılıyor",
+          "Laspeyres endeksi uygulama kodunda değil verinin yanında: kanonik ürünler, alias tablosu ve fiyat gözlemleri üzerinde tek işlemde çalışan dört PostgreSQL fonksiyonu",
+          "Resmî TÜİK TÜFE serisi TCMB EVDS API'si üzerinden çekiliyor — TÜİK'in kendi portalı otomatik erişime kapalı olduğu için makine okunur kanal bu; seri ayda en fazla bir kez tazeleniyor, anahtar yoksa aylar elle girilebiliyor",
+          "Kategori ve marka kırılımı ekranı: her seri kendi kümesinde yeniden ağırlıklandırılıyor, yani yüzdeler toplanıyormuş gibi yapmıyor",
           "İki tasarım katmanı: kâğıt fiş içeriği (serif başlıklar, monospace sayılar, rengin yalnızca zamlarda harcanması) ve üzerinde yüzen kapsül sekme çubuğuyla iOS 26 Liquid Glass kromu",
           "Baştan KVKK'ya göre kurgulandı: Kurul'un 2026/347 sayılı kararı gereği ayrı aydınlatma ve açık rıza ekranları, varsayılan kapalı isteğe bağlı izinler ve aydınlatma ekranında hiçbir onay anahtarı bulunmadığını doğrulayan bir test",
           "main her zaman yeşil: korumalı dal, yalnızca PR akışı, squash merge ve her PR'da format, analyze --fatal-infos, kapsamlı testler ile Android/iOS derlemelerini çalıştıran CI; etiketli sürümler APK + AAB yayınlıyor",
