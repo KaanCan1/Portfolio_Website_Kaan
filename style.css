@@ -273,10 +273,23 @@ nav {
   position: sticky;
   top: 0;
   z-index: 50;
+  /* The frosted bar lives on ::before, not here. A backdrop-filter on
+     this element would make it the containing block for its own
+     position:fixed children — which turns the off-canvas menu drawer
+     into an absolutely placed box that widens the whole page. */
+  background: transparent;
+  border-bottom: 1px solid var(--border-color);
+}
+
+#hamburger-nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: var(--nav-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-color);
+  pointer-events: none;
 }
 
 .hamburger-nav-right {
