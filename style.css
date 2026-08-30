@@ -852,6 +852,16 @@ nav {
   margin-bottom: 3.5rem;
 }
 
+/* A phone shot needs far less width than a browser shot, so the
+   column tracks the shape of the media rather than splitting evenly. */
+.project-feature[data-media="portrait"] {
+  grid-template-columns: 0.68fr 1fr;
+}
+
+.project-feature[data-media="portrait"].reverse {
+  grid-template-columns: 1fr 0.68fr;
+}
+
 .project-feature.reverse .project-feature-media {
   order: 2;
 }
@@ -930,70 +940,238 @@ nav {
   font-size: 1.05rem;
 }
 
-/* Project media / slider */
+/* =========================================================
+   Project media — filmstrip carousel
+   Each slider is sized to its own screenshots' native ratio
+   (--shot), so shots sit edge to edge with no letterboxing.
+   ========================================================= */
 .project-feature-media {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .project-slider {
+  --frame-max: 100%;
+  --slide-gap: 0px;
   position: relative;
   width: 100%;
+  max-width: var(--frame-max);
+}
+
+/* Phone shots would be ~1200px tall at full column width, so cap
+   them to a hand-held size and let the column breathe around it. */
+.project-slider[data-orientation="portrait"] {
+  --frame-max: 296px;
+}
+
+/* Ambient wash behind the narrow portrait frames — keeps the wide
+   column from reading as empty space. Anchored to the column, not the
+   frame: bleeding past the frame in percentages pushed the page wider
+   than the viewport on phones. */
+.project-feature[data-media="portrait"] .project-feature-media::before {
+  content: "";
+  position: absolute;
+  inset: -4% 0 -3%;
+  border-radius: 50%;
+  background: radial-gradient(
+    58% 48% at 50% 46%,
+    var(--accent),
+    transparent 72%
+  );
+  opacity: 0.16;
+  filter: blur(6px);
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.45s var(--ease);
+}
+
+.project-feature[data-media="portrait"] .project-feature-media:hover::before {
+  opacity: 0.24;
+}
+
+/* The frame is the artifact: it clips the strip, carries the
+   elevation, and never pads the image. */
+.project-frame {
+  position: relative;
+  aspect-ratio: var(--shot, 16 / 10);
   overflow: hidden;
   border-radius: var(--radius);
-  background: var(--bg-subtle);
   border: 1px solid var(--border-color);
+  background: var(--bg-subtle);
   box-shadow: var(--shadow-md);
-  min-height: 440px;
+  transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.project-slider:hover .project-frame {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* One continuous strip — every shot moves together, not one
+   fading over another. */
+.project-track {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.72s var(--ease);
+}
+
+.project-track.no-anim {
+  transition: none;
 }
 
 .project-slide {
-  display: none;
-  width: 100%;
-  height: 460px;
-  object-fit: contain;
-  padding: 1.25rem;
+  flex: 0 0 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.project-slide.active {
+.project-shot {
   display: block;
-  animation: slideFade 0.5s var(--ease);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--shot-pos, center top);
+  /* A touch of counter-drift so the strip reads with depth
+     rather than as a flat sheet sliding past. */
+  transition: transform 0.72s var(--ease);
 }
 
-@keyframes slideFade {
-  from { opacity: 0; transform: scale(0.99); }
-  to { opacity: 1; transform: scale(1); }
-}
-
+/* ----- Controls ----- */
 .slider-btn {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-elev);
+  width: 38px;
+  height: 38px;
+  padding: 0;
   border: 1px solid var(--border-color);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 1.1rem;
-  color: var(--accent-strong);
+  background: var(--bg-elev);
+  color: var(--text-color);
   cursor: pointer;
   z-index: 2;
   box-shadow: var(--shadow-sm);
-  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+  opacity: 0;
+  transition: opacity 0.28s var(--ease), background 0.2s var(--ease),
+    color 0.2s var(--ease), transform 0.28s var(--ease);
+}
+
+.slider-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.slider-btn.prev {
+  left: 10px;
+  transform: translate(-6px, -50%);
+}
+
+.slider-btn.next {
+  right: 10px;
+  transform: translate(6px, -50%);
+}
+
+.project-slider:hover .slider-btn,
+.project-slider:focus-within .slider-btn {
+  opacity: 1;
+  transform: translate(0, -50%);
 }
 
 .slider-btn:hover {
-  background: var(--accent-tint);
-  transform: translateY(-50%) scale(1.08);
+  background: var(--primary-color);
+  color: var(--bg-color);
+  border-color: var(--primary-color);
 }
 
-.slider-btn.prev { left: 12px; }
-.slider-btn.next { right: 12px; }
+.slider-btn:focus-visible {
+  opacity: 1;
+  transform: translate(0, -50%);
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+/* ----- Dots double as the autoplay clock ----- */
+.slider-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 1rem;
+}
+
+.slider-dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--border-color);
+  cursor: pointer;
+  overflow: hidden;
+  transition: width 0.45s var(--ease), background 0.3s var(--ease);
+}
+
+.slider-dot:hover {
+  background: var(--accent-soft);
+}
+
+.slider-dot[aria-current="true"] {
+  width: 30px;
+  background: var(--accent-tint);
+}
+
+/* The fill drains the dot in step with the autoplay timer, so the
+   indicator reports how long the shot has left. */
+.slider-dot[aria-current="true"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--accent-strong);
+  transform-origin: left center;
+  transform: scaleX(var(--fill, 0));
+}
+
+.slider-dot[aria-current="true"].animate::after {
+  transition: transform linear var(--dur, 4600ms);
+}
+
+.slider-dot:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-track,
+  .project-shot,
+  .project-frame,
+  .slider-dot[aria-current="true"]::after {
+    transition: none;
+  }
+
+  .project-slider:hover .project-frame {
+    transform: none;
+  }
+
+  .slider-btn {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
 
 /* Secondary project cards */
 .project-grid {

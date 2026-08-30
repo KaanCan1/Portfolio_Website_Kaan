@@ -80,9 +80,15 @@
     grid-template-columns: 1fr;
   }
 
-  /* Featured projects stack: media first for both directions */
+  /* Featured projects stack: media first for both directions.
+     Repeats the data-media attribute so the stacked layout still
+     outranks the per-shape column split from style.css. */
   .project-feature,
-  .project-feature.reverse {
+  .project-feature.reverse,
+  .project-feature[data-media="portrait"],
+  .project-feature[data-media="portrait"].reverse,
+  .project-feature[data-media="landscape"],
+  .project-feature[data-media="landscape"].reverse {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
@@ -109,6 +115,12 @@
   .project-feature .project-tags,
   .project-feature .project-actions {
     justify-content: center;
+  }
+
+  /* Arrows have no hover on touch, so keep them visible once stacked */
+  .slider-btn {
+    opacity: 1;
+    transform: translate(0, -50%);
   }
 
   /* Secondary project grid -> two up */
@@ -155,14 +167,14 @@
     padding: 1.5rem;
   }
 
-  /* Project sliders shrink */
-  .project-slider {
-    min-height: 360px;
+  /* Slider frames stay edge to edge; only the portrait cap moves */
+  .project-slider[data-orientation="portrait"] {
+    --frame-max: 252px;
   }
 
-  .project-slide {
-    height: 380px;
-    padding: 0.75rem;
+  .slider-btn {
+    width: 34px;
+    height: 34px;
   }
 
   /* Secondary project grid single column */

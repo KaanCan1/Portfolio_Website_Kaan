@@ -97,32 +97,247 @@ document.addEventListener("DOMContentLoaded", function () {
     revealEls.forEach((el) => revealObserver.observe(el));
   }
 
-  /* ----- Project sliders (supports multiple) ----- */
-  const sliders = document.querySelectorAll(".project-slider");
-  sliders.forEach(function (slider) {
+  /* ----- Project sliders: auto-advancing filmstrip ----- */
+  document.querySelectorAll(".project-slider").forEach(function (slider) {
+    const track = slider.querySelector(".project-track");
     const slides = slider.querySelectorAll(".project-slide");
-    if (!slides.length) return;
+    if (!track || slides.length < 1) return;
+
     const prevBtn = slider.querySelector(".slider-btn.prev");
     const nextBtn = slider.querySelector(".slider-btn.next");
-    let current = 0;
+    const dotsWrap = slider.querySelector(".slider-dots");
+    const delay = parseInt(slider.dataset.autoplay, 10) || 4800;
+    const count = slides.length;
 
-    function showSlide(idx) {
-      slides.forEach((slide, i) => slide.classList.toggle("active", i === idx));
+    /* Clone the end shots so the reel can run forward forever: the
+       strip never rewinds across every slide to get back to the start. */
+    const loop = count > 1;
+    if (loop) {
+      const head = slides[0].cloneNode(true);
+      const tail = slides[count - 1].cloneNode(true);
+      [head, tail].forEach(function (clone) {
+        clone.setAttribute("aria-hidden", "true");
+        clone.classList.add("is-clone");
+        const img = clone.querySelector("img");
+        if (img) img.removeAttribute("loading");
+      });
+      track.appendChild(head);
+      track.insertBefore(tail, slides[0]);
+    }
+
+    let current = 0; /* logical slide the visitor is looking at */
+    let pos = loop ? 1 : 0; /* physical offset including the clones */
+    let timer = null;
+    let visible = false;
+    let hovered = false;
+
+    /* Dots are the only progress readout, so build them from the
+       actual slide count rather than hard-coding markup. */
+    const dots = [];
+    if (dotsWrap) {
+      for (let i = 0; i < count; i++) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "slider-dot";
+        dot.setAttribute("aria-label", "Screenshot " + (i + 1) + " of " + count);
+        dot.addEventListener("click", function () {
+          goTo(i);
+          restart();
+        });
+        dotsWrap.appendChild(dot);
+        dots.push(dot);
+      }
+    }
+
+    function paintDots() {
+      dots.forEach(function (dot, i) {
+        const on = i === current;
+        if (on) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+        dot.classList.remove("animate");
+        dot.style.removeProperty("--dur");
+        dot.style.setProperty("--fill", on && !canAnimate() ? "1" : "0");
+      });
+    }
+
+    function canAnimate() {
+      return !prefersReducedMotion && count > 1;
+    }
+
+    /* Drain the active dot in step with the pending advance. */
+    function runDotClock() {
+      const dot = dots[current];
+      if (!dot || !canAnimate()) return;
+      dot.style.setProperty("--dur", delay + "ms");
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          dot.classList.add("animate");
+          dot.style.setProperty("--fill", "1");
+        });
+      });
+    }
+
+    function place(instant, silent) {
+      track.classList.toggle("no-anim", instant === true || prefersReducedMotion);
+      track.style.transform = "translate3d(" + -pos * 100 + "%, 0, 0)";
+      if (instant === true) {
+        /* Flush the un-animated jump before anything re-enables motion. */
+        void track.offsetWidth;
+        track.classList.toggle("no-anim", prefersReducedMotion);
+      }
+      /* A clone swap is not a slide change, so leave the dot clock alone. */
+      if (silent === true) return;
+      slides.forEach(function (slide, i) {
+        slide.setAttribute("aria-hidden", i === current ? "false" : "true");
+      });
+      paintDots();
+      if (timer) runDotClock();
+    }
+
+    /* Step one frame in either direction, riding through a clone at
+       the ends so the motion always continues the same way. */
+    function step(dir) {
+      current = ((current + dir) % count + count) % count;
+      pos += dir;
+      place(false);
+    }
+
+    function goTo(idx, instant) {
+      current = ((idx % count) + count) % count;
+      pos = loop ? current + 1 : current;
+      place(instant);
+    }
+
+    /* Once a clone has finished sliding in, swap to the real slide
+       it copies. Same pixels, so the snap is invisible. */
+    track.addEventListener("transitionend", function (e) {
+      if (e.target !== track || e.propertyName !== "transform" || !loop) return;
+      if (pos === count + 1) {
+        pos = 1;
+        place(true, true);
+      } else if (pos === 0) {
+        pos = count;
+        place(true, true);
+      }
+    });
+
+    function stop() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+      paintDots();
+    }
+
+    function start() {
+      /* Only run when the strip is on screen, unattended, and the
+         visitor has not asked for reduced motion. */
+      if (timer || !canAnimate() || !visible || hovered) return;
+      timer = setInterval(function () {
+        step(1);
+      }, delay);
+      runDotClock();
+    }
+
+    function restart() {
+      stop();
+      start();
     }
 
     if (prevBtn)
       prevBtn.addEventListener("click", function () {
-        current = (current - 1 + slides.length) % slides.length;
-        showSlide(current);
+        step(-1);
+        restart();
       });
 
     if (nextBtn)
       nextBtn.addEventListener("click", function () {
-        current = (current + 1) % slides.length;
-        showSlide(current);
+        step(1);
+        restart();
       });
 
-    showSlide(current);
+    /* Pointer and keyboard focus both mean "someone is reading this". */
+    ["mouseenter", "focusin"].forEach(function (evt) {
+      slider.addEventListener(evt, function () {
+        hovered = true;
+        stop();
+      });
+    });
+
+    ["mouseleave", "focusout"].forEach(function (evt) {
+      slider.addEventListener(evt, function () {
+        if (evt === "focusout" && slider.contains(document.activeElement)) return;
+        hovered = false;
+        start();
+      });
+    });
+
+    slider.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        step(-1);
+        restart();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        step(1);
+        restart();
+      }
+    });
+
+    /* Swipe — horizontal drags only, so vertical page scroll is untouched. */
+    let startX = 0;
+    let startY = 0;
+    let tracking = false;
+
+    slider.addEventListener(
+      "touchstart",
+      function (e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        tracking = true;
+        stop();
+      },
+      { passive: true }
+    );
+
+    slider.addEventListener(
+      "touchend",
+      function (e) {
+        if (!tracking) return;
+        tracking = false;
+        const dx = e.changedTouches[0].clientX - startX;
+        const dy = e.changedTouches[0].clientY - startY;
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+          step(dx < 0 ? 1 : -1);
+        }
+        start();
+      },
+      { passive: true }
+    );
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            visible = entry.isIntersecting;
+            if (visible) start();
+            else stop();
+          });
+        },
+        { threshold: 0.35 }
+      ).observe(slider);
+    } else {
+      visible = true;
+      start();
+    }
+
+    /* Background tabs should not burn through the reel. */
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) stop();
+      else start();
+    });
+
+    goTo(0, true);
   });
 
   /* ----- Theme toggle ----- */
