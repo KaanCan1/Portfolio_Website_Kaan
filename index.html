@@ -651,8 +651,54 @@
       <p class="section__text__p1" data-reveal data-i18n="projects.eyebrow">Selected Work</p>
       <h2 class="title" data-reveal data-i18n="projects.title">Projects</h2>
 
+      <!-- Featured project: Islet -->
+      <article data-media="landscape" class="project-feature" data-reveal>
+        <div class="project-feature-media">
+          <div
+            class="project-slider"
+            data-orientation="landscape"
+            style="--shot: 99 / 43"
+          >
+            <div class="project-frame">
+              <video
+                class="project-clip"
+                src="./assets/islet_demo.mp4"
+                poster="./assets/islet_poster.webp"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Islet demo: hovering the notch opens the music, timer and Claude usage panels"
+              ></video>
+            </div>
+          </div>
+        </div>
+        <div class="project-feature-body">
+          <span class="project-kicker" data-i18n="proj.islet.kicker">macOS App · SwiftUI</span>
+          <h2 class="experience-sub-title project-title">Islet</h2>
+          <p class="project-desc" data-i18n="proj.islet.desc">
+            A macOS menu bar app that turns the MacBook camera notch into a
+            panel: hover it and it grows into now-playing controls, a pomodoro
+            timer and your Claude Code usage, then disappears when you move
+            away. Players are read over AppleScript rather than private APIs.
+          </p>
+          <div class="project-tags">
+            <span>Swift</span>
+            <span>SwiftUI</span>
+            <span>macOS</span>
+            <span>AppleScript</span>
+            <span>Claude API</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/KaanCan1/Islet" target="_blank" rel="noopener" class="github-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+
       <!-- Featured project: Sepet -->
-      <article data-media="portrait" class="project-feature" data-reveal>
+      <article data-media="portrait" class="project-feature reverse" data-reveal>
         <div class="project-feature-media">
           <div
             class="project-slider"
@@ -708,7 +754,7 @@
       </article>
 
       <!-- Featured project: Portfolio Tracker -->
-      <article data-media="landscape" class="project-feature reverse" data-reveal>
+      <article data-media="landscape" class="project-feature" data-reveal>
         <div class="project-feature-media">
           <div
             class="project-slider"
@@ -763,7 +809,7 @@
       </article>
 
       <!-- Featured project: BeanSocial -->
-      <article data-media="landscape" class="project-feature" data-reveal>
+      <article data-media="landscape" class="project-feature reverse" data-reveal>
         <div class="project-feature-media">
           <div
             class="project-slider"
@@ -817,7 +863,7 @@
       </article>
 
       <!-- Featured project: Spendly -->
-      <article data-media="portrait" class="project-feature reverse" data-reveal>
+      <article data-media="portrait" class="project-feature" data-reveal>
         <div class="project-feature-media">
           <div
             class="project-slider"

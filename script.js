@@ -340,6 +340,46 @@ document.addEventListener("DOMContentLoaded", function () {
     goTo(0, true);
   });
 
+  /* ----- Project demo clips ----- */
+  document.querySelectorAll(".project-clip").forEach(function (clip) {
+    /* Muted is what makes autoplay permissible; set it in JS too so a
+       stripped attribute can't turn the page into a noise source. */
+    clip.muted = true;
+    clip.setAttribute("muted", "");
+
+    if (prefersReducedMotion) {
+      /* Leave the poster up and hand over the controls instead. */
+      clip.setAttribute("controls", "");
+      clip.setAttribute("preload", "metadata");
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      clip.setAttribute("controls", "");
+      return;
+    }
+
+    /* preload="none" keeps the clip off the wire until it is actually
+       scrolled to, so visitors who never reach it pay nothing. */
+    new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            const playing = clip.play();
+            if (playing && playing.catch) playing.catch(function () {});
+          } else {
+            clip.pause();
+          }
+        });
+      },
+      { threshold: 0.35 }
+    ).observe(clip);
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) clip.pause();
+    });
+  });
+
   /* ----- Theme toggle ----- */
   const themeToggle = document.getElementById("theme-toggle");
   const mobileThemeToggle = document.getElementById("mobile-theme-toggle");
@@ -435,6 +475,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "proj.sepet.kicker": "Mobile App · On-Device OCR + AI",
       "proj.sepet.desc":
         "A Flutter app that builds a personal inflation index from your own grocery receipts and puts it next to the official figures. OCR runs on device, so the photo never leaves the phone; Claude is called only for the receipt lines the matcher is unsure about.",
+      "proj.islet.kicker": "macOS App · SwiftUI",
+      "proj.islet.desc":
+        "A macOS menu bar app that turns the MacBook camera notch into a panel: hover it and it grows into now-playing controls, a pomodoro timer and your Claude Code usage, then disappears when you move away. Players are read over AppleScript rather than private APIs.",
       "proj.tracker.kicker": "Full-Stack Web App · AI Integration",
       "proj.tracker.desc":
         "A self-hosted stock portfolio and swing-trading discipline dashboard. A vanilla JavaScript SPA on top of an Express API and PostgreSQL, with a Claude-powered thesis desk, automated trade audits and an MCP server — the project I use every day.",
@@ -512,6 +555,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "proj.sepet.kicker": "Mobil Uygulama · Cihaz Üstü OCR + Yapay Zekâ",
       "proj.sepet.desc":
         "Market fişlerinden kendi enflasyonunu hesaplayıp resmî rakamların yanına koyan bir Flutter uygulaması. OCR cihaz üstünde çalışıyor, fişin fotoğrafı telefondan çıkmıyor; Claude yalnızca eşleştirmenin emin olamadığı fiş satırları için devreye giriyor.",
+      "proj.islet.kicker": "macOS Uygulaması · SwiftUI",
+      "proj.islet.desc":
+        "MacBook'un kamera çentiğini bir panele dönüştüren macOS menü çubuğu uygulaması: üstüne gelince çalan parça kontrolleri, pomodoro sayacı ve Claude Code kullanımınla birlikte açılıyor, uzaklaşınca tamamen kayboluyor. Oynatıcılar özel API'ler yerine AppleScript üzerinden okunuyor.",
       "proj.tracker.kicker": "Full-Stack Web Uygulaması · Yapay Zekâ Entegrasyonu",
       "proj.tracker.desc":
         "Kendi sunucumda çalışan bir hisse portföyü ve swing trade disiplin panosu. Express API ve PostgreSQL üzerine kurulu, framework kullanmayan bir JavaScript SPA; Claude destekli tez masası, otomatik işlem denetimi ve bir MCP sunucusu içeriyor — her gün kullandığım proje.",

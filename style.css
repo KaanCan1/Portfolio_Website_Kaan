@@ -1034,6 +1034,16 @@ nav {
   transition: transform 0.72s var(--ease);
 }
 
+/* A recorded demo fills its frame exactly like a screenshot does. */
+.project-clip {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: var(--bg-subtle);
+}
+
 .project-track.no-anim {
   transition: none;
 }
