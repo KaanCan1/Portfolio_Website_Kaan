@@ -8,6 +8,7 @@
       name="description"
       content="Kaan Can Kurt — Data &amp; Backend Developer. Data validation and transformation pipelines with SQL, PostgreSQL, Python and Node.js, plus LLM integration."
     />
+    <script defer src="https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js"></script>
     <title>Kaan Can Kurt — Data &amp; Backend Developer</title>
     <meta name="author" content="Kaan Can Kurt" />
     <meta
@@ -282,23 +283,13 @@
           </a>
         </div>
       </div>
-      <div class="hero-figure" data-reveal aria-hidden="true">
-        <div class="pipe">
-          <div class="pipe__step">
-            <span class="pipe__tag">raw</span>
-            <code class="pipe__code">"SUTAS TAM YAGLI SUT 1L&nbsp;&nbsp;47,90"</code>
-          </div>
-          <div class="pipe__link"><span></span></div>
-          <div class="pipe__step pipe__step--gate">
-            <span class="pipe__tag">validate</span>
-            <code class="pipe__code">schema &middot; unit test &middot; CI gate</code>
-          </div>
-          <div class="pipe__link"><span></span></div>
-          <div class="pipe__step">
-            <span class="pipe__tag">conformant</span>
-            <code class="pipe__code">{ product: "sut", size_l: 1, price: 47.90 }</code>
-          </div>
-        </div>
+      <div id="first-image" class="section__pic-container" data-reveal>
+        <img
+          src="./assets/profilfoto1.webp"
+          alt="Kaan Can Kurt"
+          class="about-pic"
+          fetchpriority="high"
+        />
       </div>
     </section>
 
@@ -1002,24 +993,13 @@
       <h2 class="title" data-reveal data-i18n="contact.title">Get in Touch</h2>
       <div class="contact-grid">
         <div class="contact-media" data-reveal>
-          <svg
-            class="contact-art"
-            viewBox="0 0 360 240"
-            role="img"
-            aria-label="An envelope with a message on its way"
-          >
-            <!-- dashed path the dot travels, then the envelope itself -->
-            <path
-              class="contact-art__trail"
-              d="M18 196 C 70 196, 88 96, 150 96 S 268 150, 322 92"
-              fill="none"
-            />
-            <circle class="contact-art__dot" r="4.5" cx="18" cy="196" />
-            <g class="contact-art__envelope" fill="none">
-              <rect x="108" y="120" width="144" height="96" rx="10" />
-              <path class="contact-art__flap" d="M108 132 L180 178 L252 132" />
-            </g>
-          </svg>
+          <lottie-player
+            src="./assets/Welcome.json"
+            background="transparent"
+            speed="1"
+            loop
+            autoplay
+          ></lottie-player>
           <ul class="contact-list">
             <li>
               <i class="fas fa-envelope"></i>
