@@ -35,6 +35,10 @@
     text-align: center;
   }
 
+  .hero-figure {
+    order: 1;
+  }
+
   #profile .section__text {
     order: 2;
     display: flex;
