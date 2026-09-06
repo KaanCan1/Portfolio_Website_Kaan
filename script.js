@@ -441,9 +441,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "nav.projects": "Projects",
       "nav.contact": "Contact",
       "hero.hello": "Hello, I'm",
-      "hero.role": "Flutter & Full Stack Developer",
+      "hero.role": "Data & Backend Developer",
       "hero.lead":
-        "I build cross-platform mobile apps with Flutter and ship full-stack web products, from the interface down to the API.",
+        "I build data validation and transformation pipelines with Python and Node.js on PostgreSQL, and turn free text into schema-conformant data.",
       "hero.cv": "Get My CV",
       "hero.contactBtn": "Contact",
       "cv.en": "English CV",
@@ -521,9 +521,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "nav.projects": "Projeler",
       "nav.contact": "İletişim",
       "hero.hello": "Merhaba, ben",
-      "hero.role": "Flutter & Full Stack Geliştirici",
+      "hero.role": "Veri & Backend Geliştirici",
       "hero.lead":
-        "Flutter ile çoklu platform mobil uygulamalar geliştiriyor, arayüzden API'ye kadar full-stack web ürünleri yayınlıyorum.",
+        "Python ve Node.js ile PostgreSQL üzerinde veri doğrulama ve dönüştürme pipeline'ları kuruyor, serbest metni şemaya uygun veriye dönüştürüyorum.",
       "hero.cv": "CV'mi Al",
       "hero.contactBtn": "İletişim",
       "cv.en": "İngilizce CV",
