@@ -453,119 +453,16 @@ nav {
   position: relative;
 }
 
-/* Hero figure: the pipeline the lead paragraph describes, shown rather
-   than stated. Decorative - the text beside it carries the meaning. */
-.hero-figure {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pipe {
-  width: 100%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.pipe__step {
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  background: var(--bg-elev);
-  box-shadow: var(--shadow-sm);
-  padding: 0.95rem 1.1rem;
-}
-
-.pipe__step--gate {
-  border-color: var(--accent);
-  background: var(--accent-tint);
-  box-shadow: none;
-}
-
-.pipe__tag {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted-color);
-  margin-bottom: 0.4rem;
-}
-
-.pipe__step--gate .pipe__tag {
-  color: var(--accent-strong);
-}
-
-.pipe__code {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  line-height: 1.5;
-  color: var(--text-color);
-  word-break: break-word;
-}
-
-/* the connector between steps */
-.pipe__link {
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.pipe__link::before {
-  content: "";
-  width: 2px;
-  height: 100%;
-  background: var(--border-color);
-}
-
-/* a pulse travelling down the pipe, once every few seconds */
-.pipe__link span {
-  position: absolute;
-  top: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-strong);
-  animation: pipeFlow 3.2s var(--ease) infinite;
-}
-
-.pipe__link:last-of-type span {
-  animation-delay: 0.5s;
-}
-
-@keyframes pipeFlow {
-  0%   { transform: translateY(-2px); opacity: 0; }
-  20%  { opacity: 1; }
-  80%  { opacity: 1; }
-  100% { transform: translateY(28px); opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pipe__link span { animation: none; opacity: 0; }
-}
-
 #profile .about-pic {
   width: 100%;
   max-width: 380px;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-color);
-}
-
-/* single clean accent frame behind hero photo */
-#profile .section__pic-container::before {
-  content: "";
-  position: absolute;
-  inset: 16px -16px -16px 16px;
-  border: 1.5px solid var(--accent);
-  border-radius: var(--radius-lg);
-  opacity: 0.4;
-  z-index: -1;
+  /* One frame, not two: the offset accent outline behind this used to
+     double it up. The photo carries itself. */
+  box-shadow: var(--shadow-md);
+  border: 0;
 }
 
 .about-pic {
@@ -801,9 +698,8 @@ nav {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
-  /* drop shadow + gap + subtle gold ring, all follow the circle */
-  box-shadow: var(--shadow-md), 0 0 0 8px var(--bg-color),
-    0 0 0 9px var(--accent-tint), 0 0 0 10px var(--accent);
+  /* A single hairline instead of the old three stacked rings. */
+  box-shadow: 0 0 0 1px var(--border-color);
   border: none;
 }
 
@@ -829,7 +725,7 @@ nav {
   background: var(--card-bg);
   border-radius: var(--radius);
   border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
   text-align: left;
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease),
     border-color 0.3s var(--ease);
@@ -1356,7 +1252,8 @@ nav {
   right: -14px;
   width: 96px;
   height: 96px;
-  opacity: 0.07;
+  opacity: 0.06;
+  filter: grayscale(1);
   transform: rotate(-8deg);
   pointer-events: none;
 }
@@ -1419,65 +1316,11 @@ nav {
   align-items: center;
 }
 
-/* Replaces a 195 KB Lottie file and its ~150 KB player with ~1 KB of
-   inline SVG. Same job: a quiet bit of life above the contact details. */
-.contact-art {
+.contact-media lottie-player {
   width: 100%;
   max-width: 360px;
   height: auto;
-  overflow: visible;
 }
-
-.contact-art__trail {
-  stroke: var(--border-color);
-  stroke-width: 2;
-  stroke-dasharray: 5 7;
-  stroke-linecap: round;
-}
-
-.contact-art__envelope {
-  stroke: var(--primary-color);
-  stroke-width: 2.5;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
-
-.contact-art__flap {
-  stroke: var(--accent-strong);
-}
-
-.contact-art__dot {
-  fill: var(--accent-strong);
-  offset-path: path("M18 196 C 70 196, 88 96, 150 96 S 268 150, 322 92");
-  offset-distance: 0%;
-  animation: contactTravel 5.5s var(--ease) infinite;
-}
-
-/* offset-path moves the dot along the trail; the cx/cy in the markup is
-   just the fallback position for engines without it. */
-@supports (offset-path: path("M0 0 L1 1")) {
-  .contact-art__dot {
-    cx: 0;
-    cy: 0;
-  }
-}
-
-@keyframes contactTravel {
-  0%   { offset-distance: 0%;   opacity: 0; }
-  12%  { opacity: 1; }
-  78%  { opacity: 1; }
-  88%  { offset-distance: 100%; opacity: 0; }
-  100% { offset-distance: 100%; opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contact-art__dot {
-    animation: none;
-    offset-distance: 100%;
-    opacity: 1;
-  }
-}
-
 .contact-list {
   list-style: none;
   width: 100%;
@@ -1523,7 +1366,7 @@ nav {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
   padding: 2.4rem;
 }
 
