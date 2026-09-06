@@ -9,6 +9,7 @@ function setMenu(open) {
 
   menu.classList.toggle("open", open);
   icon.classList.toggle("open", open);
+  icon.setAttribute("aria-expanded", open ? "true" : "false");
 
   if (overlay) {
     overlay.style.display = open ? "block" : "none";
@@ -45,9 +46,17 @@ document.addEventListener("click", function (event) {
 });
 
 document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    const dropdown = document.querySelector(".cv-dropdown");
-    if (dropdown) dropdown.classList.remove("open");
+  if (event.key !== "Escape") return;
+
+  const dropdown = document.querySelector(".cv-dropdown");
+  if (dropdown) dropdown.classList.remove("open");
+
+  /* Escape is the keyboard equivalent of clicking the backdrop. */
+  const menu = document.querySelector(".menu-links");
+  if (menu && menu.classList.contains("open")) {
+    closeMenu();
+    const icon = document.querySelector(".hamburger-icon");
+    if (icon) icon.focus();
   }
 });
 
@@ -390,6 +399,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateThemeDisplay(theme) {
     [themeToggle, mobileThemeToggle].filter(Boolean).forEach((toggle) => {
+      toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
       const lightIcon = toggle.querySelector(".light-icon");
       const moonIcon = toggle.querySelector(".moon-icon");
       const label = toggle.querySelector(".theme-label");
@@ -416,17 +426,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateThemeDisplay(savedTheme);
 
+  /* These are real <button>s now: Enter and Space fire click natively, and
+     the label lives in the markup. The old tabindex/role/keydown shim would
+     double-fire the toggle on Enter, so it is gone. */
   [themeToggle, mobileThemeToggle].filter(Boolean).forEach((toggle) => {
     toggle.addEventListener("click", toggleTheme);
-    toggle.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        toggleTheme();
-      }
-    });
-    toggle.setAttribute("tabindex", "0");
-    toggle.setAttribute("role", "button");
-    toggle.setAttribute("aria-label", "Toggle dark mode");
   });
 });
 
@@ -468,8 +472,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "lang.de.name": "German",
       "lang.de.level": "A1 Beginner",
       "skills.title": "Skills & Tools",
-      "skills.langs": "Languages & Frameworks",
-      "skills.tools": "Tools & Databases",
+      "skills.langs": "Languages & Tools",
+      "skills.tools": "Data & Databases",
       "projects.eyebrow": "Selected Work",
       "projects.title": "Projects",
       "proj.sepet.kicker": "Mobile App · On-Device OCR + AI",
@@ -548,8 +552,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "lang.de.name": "Almanca",
       "lang.de.level": "A1 Başlangıç",
       "skills.title": "Yetenekler & Araçlar",
-      "skills.langs": "Diller & Çatılar",
-      "skills.tools": "Araçlar & Veritabanları",
+      "skills.langs": "Diller & Araçlar",
+      "skills.tools": "Veri & Veritabanı",
       "projects.eyebrow": "Seçili Çalışmalar",
       "projects.title": "Projeler",
       "proj.sepet.kicker": "Mobil Uygulama · Cihaz Üstü OCR + Yapay Zekâ",
@@ -599,6 +603,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Project case-study content (bilingual). tags/links are shared.
   const PROJECTS = {
+    islet: {
+      title: "Islet",
+      tags: ["Swift", "SwiftUI", "macOS", "AppleScript", "Claude API"],
+      github: "https://github.com/KaanCan1/Islet",
+      demo: null,
+      en: {
+        kicker: "macOS App · SwiftUI",
+        overview:
+          "A macOS menu bar app that treats the MacBook camera notch as a control surface: hover it and it grows into a panel, move away and it disappears completely. Three columns live there — what is playing, a pomodoro timer, and how much of the current Claude Code block is spent. Built solo in Swift and SwiftUI.",
+        role: "Solo project: product decisions, SwiftUI interface, the notch and screen geometry, player integration, the Claude usage reader, and the install tooling.",
+        highlights: [
+          "Hover target sits over the notch itself, with a virtual one at the top centre on displays that have none",
+          "Music column reads Spotify and Apple Music over AppleScript, not private APIs — macOS 15.4 closed MediaRemote to unentitled apps",
+          "Claude column reads real usage from the account's own OAuth token when it is reachable, and falls back to an estimate from local transcripts; the panel always labels which of the two you are looking at",
+          "The estimate is honest about its error bars: nothing on disk states the account limits, so the ceiling is inferred from the moments Claude actually cut you off",
+          "Transcript scanning is incremental and runs off the main thread — only the first pass is slow, then it refreshes every minute",
+          "Asks before reading anything under ~/.claude, because macOS does not gate that directory itself",
+          "Pomodoro with Focus and Break modes, battery alerts on charger changes, and an option to stay visible on the lock screen",
+          "Ships as a menu bar app with no Dock icon; make install builds it, copies it to /Applications and launches it",
+        ],
+      },
+      tr: {
+        kicker: "macOS Uygulaması · SwiftUI",
+        overview:
+          "MacBook'un kamera çentiğini bir kontrol yüzeyine çeviren macOS menü çubuğu uygulaması: üstüne gelince panel olarak açılıyor, uzaklaşınca tamamen kayboluyor. Panelde üç sütun var — çalan parça, pomodoro sayacı ve içinde bulunduğun Claude Code bloğunun ne kadarını harcadığın. Swift ve SwiftUI ile tek başıma geliştirildi.",
+        role: "Tek kişilik proje: ürün kararları, SwiftUI arayüzü, çentik ve ekran geometrisi, oynatıcı entegrasyonu, Claude kullanım okuyucusu ve kurulum araçları.",
+        highlights: [
+          "Etkileşim alanı doğrudan çentiğin üzerinde; çentiği olmayan ekranlarda üst ortaya sanal bir çentik yerleştiriliyor",
+          "Müzik sütunu Spotify ve Apple Music'i özel API'ler yerine AppleScript üzerinden okuyor — macOS 15.4 MediaRemote'u yetkisiz uygulamalara kapattı",
+          "Claude sütunu, token erişilebilirken hesabın gerçek kullanım verisini okuyor; erişemezse yerel transkriptlerden tahmin üretiyor ve panel hangisine baktığını her zaman yazıyor",
+          "Tahmin hata payı konusunda dürüst: diskte hesabın limitini belirten bir bilgi yok, tavan yalnızca Claude'un gerçekten kestiği anlardan çıkarılıyor",
+          "Transkript taraması artımlı ve arka planda çalışıyor — yalnızca ilk geçiş yavaş, sonrasında dakikada bir tazeleniyor",
+          "~/.claude altındaki hiçbir şeyi sormadan okumuyor; macOS bu dizini kendisi korumadığı için izni uygulama kendi istiyor",
+          "Focus ve Break modlu pomodoro, şarj değişiminde pil uyarıları ve kilit ekranında görünür kalma seçeneği",
+          "Dock ikonu olmayan bir menü çubuğu uygulaması; make install derleyip /Applications'a kopyalıyor ve başlatıyor",
+        ],
+      },
+    },
     sepet: {
       title: "Sepet",
       tags: [

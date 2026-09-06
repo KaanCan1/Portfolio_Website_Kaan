@@ -69,6 +69,37 @@
   box-sizing: border-box;
 }
 
+/* These controls used to be <div>s. As real <button>s they are keyboard
+   reachable; this strips the UA chrome so they keep their old look.
+   Placed early on purpose - the specific rules further down still win. */
+.hamburger-icon,
+.menu-close,
+.theme-toggle {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+/* Social icons are links now; the wrapper carries the focus ring. */
+.icon-link {
+  display: inline-flex;
+  border-radius: 50%;
+}
+
+/* One visible focus style for everything that can take focus. */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
@@ -422,6 +453,100 @@ nav {
   position: relative;
 }
 
+/* Hero figure: the pipeline the lead paragraph describes, shown rather
+   than stated. Decorative - the text beside it carries the meaning. */
+.hero-figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pipe {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.pipe__step {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+  box-shadow: var(--shadow-sm);
+  padding: 0.95rem 1.1rem;
+}
+
+.pipe__step--gate {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+  box-shadow: none;
+}
+
+.pipe__tag {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted-color);
+  margin-bottom: 0.4rem;
+}
+
+.pipe__step--gate .pipe__tag {
+  color: var(--accent-strong);
+}
+
+.pipe__code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  word-break: break-word;
+}
+
+/* the connector between steps */
+.pipe__link {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.pipe__link::before {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background: var(--border-color);
+}
+
+/* a pulse travelling down the pipe, once every few seconds */
+.pipe__link span {
+  position: absolute;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-strong);
+  animation: pipeFlow 3.2s var(--ease) infinite;
+}
+
+.pipe__link:last-of-type span {
+  animation-delay: 0.5s;
+}
+
+@keyframes pipeFlow {
+  0%   { transform: translateY(-2px); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(28px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pipe__link span { animation: none; opacity: 0; }
+}
+
 #profile .about-pic {
   width: 100%;
   max-width: 380px;
@@ -463,6 +588,7 @@ nav {
   box-shadow: var(--shadow-sm);
 }
 
+#socials-container .icon-link:hover .icon,
 #socials-container .icon:hover {
   transform: translateY(-3px);
   border-color: var(--accent);
@@ -1293,10 +1419,63 @@ nav {
   align-items: center;
 }
 
-.contact-media lottie-player {
+/* Replaces a 195 KB Lottie file and its ~150 KB player with ~1 KB of
+   inline SVG. Same job: a quiet bit of life above the contact details. */
+.contact-art {
   width: 100%;
   max-width: 360px;
   height: auto;
+  overflow: visible;
+}
+
+.contact-art__trail {
+  stroke: var(--border-color);
+  stroke-width: 2;
+  stroke-dasharray: 5 7;
+  stroke-linecap: round;
+}
+
+.contact-art__envelope {
+  stroke: var(--primary-color);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.contact-art__flap {
+  stroke: var(--accent-strong);
+}
+
+.contact-art__dot {
+  fill: var(--accent-strong);
+  offset-path: path("M18 196 C 70 196, 88 96, 150 96 S 268 150, 322 92");
+  offset-distance: 0%;
+  animation: contactTravel 5.5s var(--ease) infinite;
+}
+
+/* offset-path moves the dot along the trail; the cx/cy in the markup is
+   just the fallback position for engines without it. */
+@supports (offset-path: path("M0 0 L1 1")) {
+  .contact-art__dot {
+    cx: 0;
+    cy: 0;
+  }
+}
+
+@keyframes contactTravel {
+  0%   { offset-distance: 0%;   opacity: 0; }
+  12%  { opacity: 1; }
+  78%  { opacity: 1; }
+  88%  { offset-distance: 100%; opacity: 0; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-art__dot {
+    animation: none;
+    offset-distance: 100%;
+    opacity: 1;
+  }
 }
 
 .contact-list {
