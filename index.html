@@ -8,7 +8,6 @@
       name="description"
       content="Kaan Can Kurt — Data &amp; Backend Developer. Data validation and transformation pipelines with SQL, PostgreSQL, Python and Node.js, plus LLM integration."
     />
-    <script defer src="https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js"></script>
     <title>Kaan Can Kurt — Data &amp; Backend Developer</title>
     <meta name="author" content="Kaan Can Kurt" />
     <meta
@@ -993,13 +992,25 @@
       <h2 class="title" data-reveal data-i18n="contact.title">Get in Touch</h2>
       <div class="contact-grid">
         <div class="contact-media" data-reveal>
-          <lottie-player
-            src="./assets/Welcome.json"
-            background="transparent"
-            speed="1"
-            loop
-            autoplay
-          ></lottie-player>
+          <svg
+            class="contact-art"
+            viewBox="0 0 380 210"
+            role="img"
+            aria-label="A message travelling into an envelope"
+          >
+            <!-- the route the message takes, then the envelope it lands in -->
+            <path
+              class="contact-art__trail"
+              d="M20 168 C 74 168, 84 60, 146 60 S 250 128, 300 74"
+              fill="none"
+            />
+            <g class="contact-art__envelope">
+              <rect x="128" y="96" width="152" height="98" rx="12" />
+              <path class="contact-art__flap" d="M128 110 L204 158 L280 110" />
+            </g>
+            <circle class="contact-art__dot" r="5" cx="20" cy="168" />
+            <circle class="contact-art__ping" cx="204" cy="145" r="10" />
+          </svg>
           <ul class="contact-list">
             <li>
               <i class="fas fa-envelope"></i>

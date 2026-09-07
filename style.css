@@ -1316,10 +1316,87 @@ nav {
   align-items: center;
 }
 
-.contact-media lottie-player {
+/* Contact art. Replaces a 195 KB Lottie and its ~150 KB player with a
+   little inline SVG that speaks the site's language: warm neutrals, one
+   gold accent, motion kept slow and quiet. */
+.contact-art {
   width: 100%;
   max-width: 360px;
   height: auto;
+  overflow: visible;
+}
+
+.contact-art__trail {
+  stroke: var(--border-color);
+  stroke-width: 2;
+  stroke-dasharray: 4 8;
+  stroke-linecap: round;
+}
+
+.contact-art__envelope {
+  fill: var(--bg-elev);
+  stroke: var(--primary-color);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.contact-art__flap {
+  fill: none;
+  stroke: var(--accent-strong);
+}
+
+.contact-art__dot {
+  fill: var(--accent-strong);
+  offset-path: path("M20 168 C 74 168, 84 60, 146 60 S 250 128, 300 74");
+  offset-distance: 0%;
+  animation: contactTravel 6s var(--ease) infinite;
+}
+
+/* offset-path drives the dot; cx/cy in the markup is only the fallback
+   spot for engines that do not support it. */
+@supports (offset-path: path("M0 0 L1 1")) {
+  .contact-art__dot {
+    cx: 0;
+    cy: 0;
+  }
+}
+
+/* a soft ring where the message lands, in time with the dot */
+.contact-art__ping {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  transform-origin: 204px 145px;
+  opacity: 0;
+  animation: contactPing 6s var(--ease) infinite;
+}
+
+@keyframes contactTravel {
+  0%   { offset-distance: 0%;   opacity: 0; }
+  10%  { opacity: 1; }
+  62%  { opacity: 1; }
+  70%  { offset-distance: 100%; opacity: 0; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+@keyframes contactPing {
+  0%, 62%  { transform: scale(0.4); opacity: 0; }
+  72%      { opacity: 0.55; }
+  88%      { transform: scale(1.5); opacity: 0; }
+  100%     { transform: scale(1.5); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-art__dot {
+    animation: none;
+    offset-distance: 100%;
+    opacity: 1;
+  }
+  .contact-art__ping {
+    animation: none;
+    opacity: 0;
+  }
 }
 .contact-list {
   list-style: none;
