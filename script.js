@@ -389,6 +389,50 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  /* ----- Contact animation ----- */
+  const contactArt = document.querySelector("lottie-player.contact-art");
+  if (contactArt) {
+    /* No autoplay attribute in the markup: playback is decided here, so
+       reduced-motion visitors get a still frame instead of a loop. */
+    /* Do not gate on the player's "ready" event: the library is deferred,
+       so it can fire before this listener exists and the animation then
+       never starts. play()/pause() are safe to call at any point, and the
+       load events only re-sync in case the file lands later. */
+    let artInView = false;
+
+    const syncArt = function () {
+      if (artInView && !prefersReducedMotion) contactArt.play();
+      else contactArt.pause();
+    };
+
+    const stopArt = function () {
+      contactArt.pause();
+    };
+
+    ["ready", "load"].forEach(function (evt) {
+      contactArt.addEventListener(evt, syncArt);
+    });
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            artInView = entry.isIntersecting;
+            syncArt();
+          });
+        },
+        { threshold: 0.25 }
+      ).observe(contactArt);
+    } else {
+      artInView = true;
+      syncArt();
+    }
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) stopArt();
+    });
+  }
+
   /* ----- Theme toggle ----- */
   const themeToggle = document.getElementById("theme-toggle");
   const mobileThemeToggle = document.getElementById("mobile-theme-toggle");

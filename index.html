@@ -992,15 +992,14 @@
       <h2 class="title" data-reveal data-i18n="contact.title">Get in Touch</h2>
       <div class="contact-grid">
         <div class="contact-media" data-reveal>
-          <img
+          <lottie-player
             class="contact-art"
-            src="./assets/contact-message.svg"
-            alt=""
-            width="1080"
-            height="1080"
-            loading="lazy"
-            decoding="async"
-          />
+            src="./assets/contact-message.json"
+            background="transparent"
+            speed="1"
+            loop
+            aria-hidden="true"
+          ></lottie-player>
           <ul class="contact-list">
             <li>
               <i class="fas fa-envelope"></i>
@@ -1109,6 +1108,7 @@
       />
     </button>
     <!-- EmailJS SDK v4 (contact form) -->
+    <script defer src="https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js"></script>
     <script src="https://unpkg.com/@emailjs/browser@4.4.1/dist/email.min.js"></script>
     <script src="script.js"></script>
   </body>
