@@ -1,0 +1,61 @@
+@page { size: A4; margin: 11mm 13mm 11mm 13mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9.15pt;
+  line-height: 1.32;
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: #1a56c4; text-decoration: none; }
+
+/* --- Baslik --- */
+.name {
+  text-align: center;
+  font-size: 21pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 5px;
+}
+.contact {
+  text-align: center;
+  font-size: 9.1pt;
+  color: #222;
+  margin: 0 0 2px;
+}
+.contact .sep { color: #888; padding: 0 3px; }
+
+/* --- Bolumler --- */
+h2 {
+  font-size: 9.6pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 9px 0 3px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #222;
+}
+.role { font-weight: 700; margin: 0; }
+.meta { font-style: italic; color: #333; margin: 0 0 3px; font-size: 9.3pt; }
+
+ul { margin: 0 0 0 0; padding-left: 13px; list-style: none; }
+li { margin: 0 0 2px; text-align: justify; position: relative; }
+li::before {
+  content: "•";
+  position: absolute;
+  left: -11px;
+  color: #333;
+}
+p.summary { margin: 0; text-align: justify; }
+
+/* --- Projeler --- */
+.proj-title { font-weight: 700; margin: 0 0 3px; }
+.proj-title .stack { font-weight: 400; }
+.proj + .proj { margin-top: 7px; }
+
+/* --- Beceriler --- */
+.skills p { margin: 0 0 2px; text-align: justify; }
+.skills b { font-weight: 700; }
+
+.proj-title a { white-space: nowrap; }

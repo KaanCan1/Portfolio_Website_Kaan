@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Kaan Can Kurt — CV</title>
+<link rel="stylesheet" href="cv.css">
+</head>
+<body>
+
+<h1 class="name">KAAN CAN KURT</h1>
+<p class="contact">+90 537 490 56 08 <span class="sep">|</span> <a href="mailto:kaancan368368@gmail.com">kaancan368368@gmail.com</a></p>
+<p class="contact"><a href="https://linkedin.com/in/kaan-can-kurt-805990299">linkedin.com/in/kaan-can-kurt-805990299</a> <span class="sep">|</span> <a href="https://github.com/KaanCan1">github.com/KaanCan1</a> <span class="sep">|</span> <a href="https://kaancankurt.vercel.app">kaancankurt.vercel.app</a></p>
+
+<h2>Özet</h2>
+<p class="summary">Bilgisayar Mühendisliği mezunuyum (Tokat Gaziosmanpaşa Üniversitesi, 2025). SQL ve PostgreSQL ile veri modelleme, veri işleme ve backend geliştirme alanlarında uygulamalı deneyime sahibim; Python ve Node.js ile veri doğrulama ve dönüştürme (ETL) pipeline'ları geliştirdim. Claude API entegrasyonu ile serbest metni şemaya uygun veriye dönüştüren işleme katmanları kurdum. Ana veri yönetimi (master data management), veri kalitesi ve süreç otomasyonu alanlarına güçlü ilgi duyuyorum.</p>
+
+<h2>Deneyim</h2>
+<p class="role">Bilgisayar Mühendisi Stajyeri | Eduji Ar-Ge Yazılım Tasarım ve Danışmanlık A.Ş.</p>
+<p class="meta">Bornova, İzmir | Temmuz 2024 – Eylül 2024</p>
+<ul>
+  <li>REST API entegrasyonu geliştirdim; sunucu tarafı filtreleme ve sayfalama (pagination) mantığıyla büyük veri kümeleri üzerinde sorgulama ve dönüşüm süreçlerinde görev aldım.</li>
+  <li>Anket tabanlı, ödüllü bir mobil uygulamanın Flutter ile geliştirilmesinde görev aldım; token tabanlı kimlik doğrulama ve GetX ile state management uyguladım, UI tasarımlarını Figma ile oluşturdum.</li>
+  <li>Backend API'lerini Postman ile test ederek veri sözleşmelerini doğruladım ve backend ekibiyle koordineli çalıştım.</li>
+</ul>
+
+<h2>Projeler</h2>
+
+<div class="proj">
+<p class="proj-title">Portfolio Tracker <span class="stack">| Node.js (Express), PostgreSQL, Python, pandas, Claude API &middot; <a href="https://github.com/KaanCan1/portfolio-tracker">github.com/KaanCan1/portfolio-tracker</a></span></p>
+<ul>
+  <li>Hisse, fon ve altın portföyünü canlı fiyatlarla takip eden, teknik analizle işlem sinyali üreten ve her sinyalin getirisini ölçen full-stack web uygulaması; tüm katmanları tarafımdan geliştirildi.</li>
+  <li>Express + PostgreSQL tabanlı 40+ endpoint'lik REST API ve ilişkisel veri modeli tasarladım; üç finansal veri sağlayıcısını (Finnhub, TwelveData, Yahoo) fallback zinciriyle entegre ettim ve Claude API structured outputs ile serbest metni yapılandırılmış veriye dönüştüren, şema doğrulamalı bir işleme katmanı kurdum.</li>
+  <li>283 birim testi ve GitHub Actions üzerinde CI/CD kurdum; uygulama Docker ile container'lanıp Render üzerinde canlı çalışıyor.</li>
+</ul>
+</div>
+
+<div class="proj">
+<p class="proj-title">Sepet — Kişisel Enflasyon Endeksi <span class="stack">| Flutter, Node.js, PostgreSQL, OCR &middot; <a href="https://github.com/KaanCan1/Sepet">github.com/KaanCan1/Sepet</a></span></p>
+<ul>
+  <li>Kullanıcının kendi fişlerinden kişisel enflasyon hesaplayan bir iOS uygulaması geliştirdim; TÜFE ile aynı yöntemi (zincirlenmiş Laspeyres) kullanıcının 12 aylık harcamasından türettiğim ağırlıklarla kurdum.</li>
+  <li>Node.js REST API ve normalize edilmiş PostgreSQL şeması tasarladım; fiş satırlarındaki kısaltılmış ürün adlarını kanonik ürün kataloğuna bağlayan eşleştirme katmanını veritabanı içinde yazdım.</li>
+  <li>OCR'ı cihaz üstünde çalıştırdım; sunucuya yalnızca ayrıştırılmış satırlar gidiyor, fiş fotoğrafı telefondan çıkmıyor. Bu karar backend maliyetini ve gecikmeyi de azalttı.</li>
+</ul>
+</div>
+
+<h2>Eğitim</h2>
+<p class="role">Tokat Gaziosmanpaşa Üniversitesi | Bilgisayar Mühendisliği (Lisans) | 2021 – 2025</p>
+<p class="meta">Not Ortalaması: 88,02 / 100</p>
+<ul>
+  <li>İlgili dersler: veritabanı yönetimi, veri yapıları ve algoritma analizi, yapay zekâ, makine öğrenmesi, istatistik ve ağ güvenliği.</li>
+  <li>Ders kapsamı dışında PHP/MySQL ile web projeleri ve Java/Android Studio ile native mobil uygulamalar geliştirdim.</li>
+</ul>
+
+<h2>Teknik Beceriler</h2>
+<div class="skills">
+<p><b>Veri ve Veritabanı:</b> SQL, PostgreSQL, MySQL, SQL Server, SQLite, veri modelleme, şema tasarımı, ETL / veri pipeline, veri doğrulama, veri kalitesi, REST API ile veri entegrasyonu, JSON</p>
+<p><b>Programlama Dilleri:</b> Python, SQL, JavaScript, Dart, Java, C#, PHP</p>
+<p><b>Backend ve Araçlar:</b> Node.js, Express, ASP.NET, REST API, Docker, CI/CD, GitHub Actions, Git, Postman, Render, birim test (node:test)</p>
+<p><b>Yapay Zekâ ve Veri Analizi:</b> Claude API (structured outputs, prompt engineering, MCP), pandas, scikit-learn, doğal dil işleme, makine öğrenmesi</p>
+<p><b>Mobil ve Web:</b> Flutter, GetX, Firebase, Firebase Cloud Messaging, Android Studio, OCR, HTML5, CSS3</p>
+<p><b>Diğer:</b> Nesneye yönelik programlama (OOP), Figma, UI/UX tasarımı, Agile/takım çalışması</p>
+</div>
+
+<h2>Sertifikalar ve Diller</h2>
+<div class="skills">
+<p><b>Sertifikalar:</b> Huawei &amp; CloudMetrik – Siber Güvenlik Bootcamp (2026) &middot; BTK Akademi – Siber Güvenlik</p>
+<p><b>Diller:</b> Türkçe — Ana Dil &middot; İngilizce — B2 (Upper-Intermediate) &middot; Almanca — A2 (Temel)</p>
+</div>
+
+</body>
+</html>
