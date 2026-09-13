@@ -525,7 +525,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "A Flutter app that builds a personal inflation index from your own grocery receipts and puts it next to the official figures. OCR runs on device, so the photo never leaves the phone; Claude is called only for the receipt lines the matcher is unsure about.",
       "proj.islet.kicker": "macOS App · SwiftUI",
       "proj.islet.desc":
-        "A macOS menu bar app that turns the MacBook camera notch into a panel: hover it and it grows into now-playing controls, a pomodoro timer and your Claude Code usage, then disappears when you move away. Players are read over AppleScript rather than private APIs.",
+        "A macOS menu bar app that turns the MacBook camera notch into a panel: hover it and it grows into now-playing controls, a screenshot shelf, a pomodoro timer, a posture tab and your Claude Code usage, then disappears when you move away. Players are read over AppleScript rather than private APIs.",
       "proj.tracker.kicker": "Full-Stack Web App · AI Integration",
       "proj.tracker.desc":
         "A self-hosted stock portfolio and swing-trading discipline dashboard. A vanilla JavaScript SPA on top of an Express API and PostgreSQL, with a Claude-powered thesis desk, automated trade audits and an MCP server — the project I use every day.",
@@ -605,7 +605,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Market fişlerinden kendi enflasyonunu hesaplayıp resmî rakamların yanına koyan bir Flutter uygulaması. OCR cihaz üstünde çalışıyor, fişin fotoğrafı telefondan çıkmıyor; Claude yalnızca eşleştirmenin emin olamadığı fiş satırları için devreye giriyor.",
       "proj.islet.kicker": "macOS Uygulaması · SwiftUI",
       "proj.islet.desc":
-        "MacBook'un kamera çentiğini bir panele dönüştüren macOS menü çubuğu uygulaması: üstüne gelince çalan parça kontrolleri, pomodoro sayacı ve Claude Code kullanımınla birlikte açılıyor, uzaklaşınca tamamen kayboluyor. Oynatıcılar özel API'ler yerine AppleScript üzerinden okunuyor.",
+        "MacBook'un kamera çentiğini bir panele dönüştüren macOS menü çubuğu uygulaması: üstüne gelince çalan parça kontrolleri, ekran görüntüsü rafı, pomodoro sayacı, duruş sekmesi ve Claude Code kullanımınla birlikte açılıyor, uzaklaşınca tamamen kayboluyor. Oynatıcılar özel API'ler yerine AppleScript üzerinden okunuyor.",
       "proj.tracker.kicker": "Full-Stack Web Uygulaması · Yapay Zekâ Entegrasyonu",
       "proj.tracker.desc":
         "Kendi sunucumda çalışan bir hisse portföyü ve swing trade disiplin panosu. Express API ve PostgreSQL üzerine kurulu, framework kullanmayan bir JavaScript SPA; Claude destekli tez masası, otomatik işlem denetimi ve bir MCP sunucusu içeriyor — her gün kullandığım proje.",
@@ -655,15 +655,19 @@ document.addEventListener("DOMContentLoaded", function () {
       en: {
         kicker: "macOS App · SwiftUI",
         overview:
-          "A macOS menu bar app that treats the MacBook camera notch as a control surface: hover it and it grows into a panel, move away and it disappears completely. Three columns live there — what is playing, a pomodoro timer, and how much of the current Claude Code block is spent. Built solo in Swift and SwiftUI.",
-        role: "Solo project: product decisions, SwiftUI interface, the notch and screen geometry, player integration, the Claude usage reader, and the install tooling.",
+          "A macOS menu bar app that treats the MacBook camera notch as a control surface: hover it and it grows into a panel, move away and it disappears completely. Five panels live there — what is playing, the screenshots you have just taken, a pomodoro timer, how far your head is tipped forward of upright, and how much of the current Claude Code block is spent. Built solo in Swift and SwiftUI.",
+        role: "Solo project: product decisions, SwiftUI interface, the notch and screen geometry, player integration, the screenshot shelf, the AirPods posture model, the Claude usage reader, and the install tooling.",
         highlights: [
           "Hover target sits over the notch itself, with a virtual one at the top centre on displays that have none",
+          "Five panels behind one gesture — music, screenshot shelf, pomodoro, posture and Claude usage — and the settings menu opens from the panel too, because a notch halves the menu bar and macOS quietly hides the status items that no longer fit",
           "Music column reads Spotify and Apple Music over AppleScript, not private APIs — macOS 15.4 closed MediaRemote to unentitled apps",
-          "Claude column reads real usage from the account's own OAuth token when it is reachable, and falls back to an estimate from local transcripts; the panel always labels which of the two you are looking at",
-          "The estimate is honest about its error bars: nothing on disk states the account limits, so the ceiling is inferred from the moments Claude actually cut you off",
-          "Transcript scanning is incremental and runs off the main thread — only the first pass is slow, then it refreshes every minute",
-          "Asks before reading anything under ~/.claude, because macOS does not gate that directory itself",
+          "Screenshot shelf catches a capture the moment it is written: it watches whichever folder com.apple.screencapture points at and only accepts files screencapture stamped with the kMDItemIsScreenCapture attribute, so nothing else on the Desktop counts and no Spotlight query is involved",
+          "The shelf stores references, never copies — the last four survive a restart, drag straight out into Finder or a mail draft, and drop off on their own if you move or delete the file; macOS's own thumbnail cannot be dragged once it has faded",
+          "Posture reads head angle from AirPods against a calibrated upright rather than the sensor's zero: a level head reports about −15°, so measuring from zero would call you slouched before you had moved",
+          "A nudge only fires after ninety seconds past the threshold within any three-minute window, then ten minutes of quiet — at a desk the angle crosses the line constantly, so a rule demanding one unbroken run would track perfectly and never speak",
+          "Claude column reads real usage from the OAuth token the claude CLI keeps in the login keychain, renewing it and writing the rotated pair back so reading your own figures cannot log you out of Claude Code; without it, usage is estimated from local transcripts and the panel always labels which of the two you are looking at",
+          "The estimate is honest about its error bars: nothing on disk states the account limits, so the ceiling is learned from the moments Claude actually cut you off — counting tokens against the median of those, a rule picked by replaying this machine's own rejections (median-of-tokens is out by 21 points on average, the minutes-and-largest it replaced by 42)",
+          "Transcript scanning is incremental and runs off the main thread — only the first pass is slow, then it refreshes every minute — and Islet asks before reading anything under ~/.claude, because macOS does not gate that directory itself",
           "Pomodoro with Focus and Break modes, battery alerts on charger changes, and an option to stay visible on the lock screen",
           "Ships as a menu bar app with no Dock icon; make install builds it, copies it to /Applications and launches it",
         ],
@@ -671,15 +675,19 @@ document.addEventListener("DOMContentLoaded", function () {
       tr: {
         kicker: "macOS Uygulaması · SwiftUI",
         overview:
-          "MacBook'un kamera çentiğini bir kontrol yüzeyine çeviren macOS menü çubuğu uygulaması: üstüne gelince panel olarak açılıyor, uzaklaşınca tamamen kayboluyor. Panelde üç sütun var — çalan parça, pomodoro sayacı ve içinde bulunduğun Claude Code bloğunun ne kadarını harcadığın. Swift ve SwiftUI ile tek başıma geliştirildi.",
-        role: "Tek kişilik proje: ürün kararları, SwiftUI arayüzü, çentik ve ekran geometrisi, oynatıcı entegrasyonu, Claude kullanım okuyucusu ve kurulum araçları.",
+          "MacBook'un kamera çentiğini bir kontrol yüzeyine çeviren macOS menü çubuğu uygulaması: üstüne gelince panel olarak açılıyor, uzaklaşınca tamamen kayboluyor. Panelde beş sekme var — çalan parça, az önce aldığın ekran görüntüleri, pomodoro sayacı, başının dik duruştan ne kadar öne eğik olduğu ve içinde bulunduğun Claude Code bloğunun ne kadarını harcadığın. Swift ve SwiftUI ile tek başıma geliştirildi.",
+        role: "Tek kişilik proje: ürün kararları, SwiftUI arayüzü, çentik ve ekran geometrisi, oynatıcı entegrasyonu, ekran görüntüsü rafı, AirPods duruş modeli, Claude kullanım okuyucusu ve kurulum araçları.",
         highlights: [
           "Etkileşim alanı doğrudan çentiğin üzerinde; çentiği olmayan ekranlarda üst ortaya sanal bir çentik yerleştiriliyor",
+          "Tek bir hareketin arkasında beş sekme — müzik, ekran görüntüsü rafı, pomodoro, duruş ve Claude kullanımı — ayarlar menüsü panelin kendisinden de açılıyor: çentik menü çubuğunu ikiye böldüğü için macOS sığmayan durum ikonlarını sessizce gizliyor",
           "Müzik sütunu Spotify ve Apple Music'i özel API'ler yerine AppleScript üzerinden okuyor — macOS 15.4 MediaRemote'u yetkisiz uygulamalara kapattı",
-          "Claude sütunu, token erişilebilirken hesabın gerçek kullanım verisini okuyor; erişemezse yerel transkriptlerden tahmin üretiyor ve panel hangisine baktığını her zaman yazıyor",
-          "Tahmin hata payı konusunda dürüst: diskte hesabın limitini belirten bir bilgi yok, tavan yalnızca Claude'un gerçekten kestiği anlardan çıkarılıyor",
-          "Transkript taraması artımlı ve arka planda çalışıyor — yalnızca ilk geçiş yavaş, sonrasında dakikada bir tazeleniyor",
-          "~/.claude altındaki hiçbir şeyi sormadan okumuyor; macOS bu dizini kendisi korumadığı için izni uygulama kendi istiyor",
+          "Ekran görüntüsü rafı görüntüyü diske yazıldığı anda yakalıyor: com.apple.screencapture'ın gösterdiği klasörü izliyor ve yalnızca screencapture'ın kMDItemIsScreenCapture özniteliğiyle damgaladığı dosyaları kabul ediyor — masaüstündeki diğer hiçbir şey sayılmıyor, Spotlight sorgusu da kullanılmıyor",
+          "Raf kopya değil referans tutuyor: son dört görüntü yeniden başlatmadan sonra da duruyor, doğrudan Finder'a veya bir e-posta taslağına sürüklenebiliyor, dosyayı taşırsan ya da silersen kendiliğinden düşüyor; macOS'un kendi küçük resmi soluklaştıktan sonra sürüklenemiyor",
+          "Duruş, AirPods'tan gelen baş açısını sensörün sıfırına göre değil kalibre edilmiş bir dikliğe göre ölçüyor: düz duran bir baş yaklaşık −15° okuyor, yani sıfırdan ölçmek sen daha kıpırdamadan seni kambur ilan ederdi",
+          "Uyarı ancak açı, herhangi bir üç dakikalık pencerede toplam doksan saniye eşiğin üzerinde kaldığında çıkıyor ve ardından on dakika susuyor — masa başında açı sürekli sınırı geçtiği için kesintisiz tek bir seri isteyen kural mükemmel çalışır ve hiç konuşmazdı",
+          "Claude sütunu, claude CLI'ın login keychain'inde tuttuğu OAuth token'ı ile hesabın gerçek kullanımını okuyor; token'ı yenileyip dönen çifti geri yazıyor, böylece kendi rakamlarını okumak seni Claude Code'dan düşürmüyor. Token yoksa kullanım yerel transkriptlerden tahmin ediliyor ve panel hangisine baktığını her zaman yazıyor",
+          "Tahmin hata payı konusunda dürüst: diskte hesabın limitini belirten bir bilgi yok, tavan yalnızca Claude'un gerçekten kestiği anlardan öğreniliyor — token sayıp bu anların medyanını almak, bu makinenin kendi retleri yeniden oynatılarak seçildi (medyan-token ortalama 21 puan, yerine geçtiği dakika-say-en-büyüğünü-al 42 puan sapıyor)",
+          "Transkript taraması artımlı ve arka planda çalışıyor — yalnızca ilk geçiş yavaş, sonrasında dakikada bir tazeleniyor — ve ~/.claude altındaki hiçbir şey sorulmadan okunmuyor; macOS bu dizini kendisi korumadığı için izni uygulama kendi istiyor",
           "Focus ve Break modlu pomodoro, şarj değişiminde pil uyarıları ve kilit ekranında görünür kalma seçeneği",
           "Dock ikonu olmayan bir menü çubuğu uygulaması; make install derleyip /Applications'a kopyalıyor ve başlatıyor",
         ],
