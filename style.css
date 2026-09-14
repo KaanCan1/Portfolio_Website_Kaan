@@ -398,29 +398,95 @@ nav {
 }
 
 /* =========================================================
-   PROFILE / HERO (asymmetric split)
+   HERO BANNER (blurs away as the hero scrolls past)
+   =========================================================
+   --banner-p runs 0 -> 1 as the card leaves the top of the
+   viewport (set from script.js). Everything below is derived
+   from it, so the whole effect is one number. */
+.hero-banner {
+  --banner-p: 0;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2172 / 724;
+  overflow: clip;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-subtle);
+}
+
+.hero-banner__inner {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  /* Blur + desaturate + drift away, the way a pinned panel
+     dissolves instead of just scrolling out of frame. The
+     scale keeps blurred edges covering the card's corners. */
+  filter: blur(calc(var(--banner-p) * 20px))
+    saturate(calc(1 - var(--banner-p) * 0.4));
+  opacity: clamp(0, calc(1.06 - var(--banner-p) * 1.15), 1);
+  transform: scale(calc(1 + var(--banner-p) * 0.12))
+    translate3d(0, calc(var(--banner-p) * -3%), 0);
+  transform-origin: 40% 45%;
+  will-change: filter, opacity, transform;
+}
+
+.hero-banner__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner__inner {
+    filter: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* On a phone the full 3:1 strip is only ~110px tall, too thin to carry
+   the hero. Crop to 16:9 anchored left: keeps the wordmark, the tagline
+   and his face, and drops only the badge on the far right. */
+@media (max-width: 640px) {
+  .hero-banner {
+    aspect-ratio: 16 / 9;
+  }
+
+  .hero-banner__img {
+    object-position: 25% center;
+  }
+}
+
+/* =========================================================
+   PROFILE / HERO (stacked: text over a full-width banner)
    ========================================================= */
 #profile {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  /* one column: the banner is 3:1, so it sits under the text
+     rather than squeezing into a narrow side column */
+  grid-template-columns: 1fr;
   align-items: center;
-  gap: 4.5rem;
+  gap: 2.5rem;
   min-height: calc(100dvh - 72px);
   padding-top: 2.5rem;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
 }
 
+/* Centred, not left-aligned: the banner under it runs the full width,
+   so a left-hung text block leaves the composition lopsided. */
 #profile .section__text {
-  text-align: left;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #profile .section__text__p1 {
-  text-align: left;
   margin-bottom: 0.4rem;
 }
 
 #profile .title {
-  text-align: left;
   font-size: clamp(2.9rem, 6vw, 4.6rem);
   font-weight: 800;
   letter-spacing: -0.035em;
@@ -440,7 +506,8 @@ nav {
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--muted-color);
-  max-width: 48ch;
+  max-width: 52ch;
+  margin-inline: auto;
 }
 
 .section__pic-container {
@@ -453,24 +520,13 @@ nav {
   position: relative;
 }
 
-#profile .about-pic {
-  width: 100%;
-  max-width: 380px;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: var(--radius-lg);
-  /* One frame, not two: the offset accent outline behind this used to
-     double it up. The photo carries itself. */
-  box-shadow: var(--shadow-md);
-  border: 0;
-}
-
 .about-pic {
   border-radius: var(--radius-lg);
 }
 
 #socials-container {
   display: flex;
+  justify-content: center;
   gap: 0.85rem;
   margin-top: 1.85rem;
 }
@@ -506,6 +562,7 @@ nav {
 .btn-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.9rem;
   flex-wrap: wrap;
   margin-top: 2rem;

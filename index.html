@@ -283,12 +283,22 @@
         </div>
       </div>
       <div id="first-image" class="section__pic-container" data-reveal>
-        <img
-          src="./assets/profilfoto1.webp"
-          alt="Kaan Can Kurt"
-          class="about-pic"
-          fetchpriority="high"
-        />
+        <!-- blurs away as the hero scrolls past; see --banner-p in script.js -->
+        <div class="hero-banner" id="hero-banner">
+          <div class="hero-banner__inner">
+            <img
+              src="./assets/banner.webp"
+              srcset="./assets/banner-1100.webp 1100w, ./assets/banner.webp 2172w"
+              sizes="(max-width: 1200px) 100vw, 1100px"
+              alt="Kaan Can Kurt — Code. Build. Ship."
+              class="hero-banner__img"
+              width="2172"
+              height="724"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+        </div>
       </div>
     </section>
 

@@ -78,6 +78,58 @@ document.addEventListener("DOMContentLoaded", function () {
     if (mainNav) mainNav.classList.toggle("scrolled", y > 12);
   }
 
+  /* ----- Banner: blurs and dissolves as it scrolls past -----
+     One number (--banner-p, 0 -> 1) drives blur, fade and scale; the
+     CSS derives the rest. Measured from the band's own position in the
+     viewport, not from scrollY, because it sits mid-page. Painted on
+     rAF so a fast scroll never queues more work than a frame can take. */
+  const heroBanner = document.getElementById("hero-banner");
+  let bannerRange = 1;
+  let bannerTicking = false;
+
+  function measureBanner() {
+    if (!heroBanner) return;
+    /* finish dissolving slightly before the band has fully left,
+       so what follows arrives to a clean page */
+    bannerRange = Math.max(heroBanner.offsetHeight * 0.8, 1);
+  }
+
+  function paintBanner() {
+    bannerTicking = false;
+    if (!heroBanner) return;
+    /* sharp until the band starts sliding under the nav, then dissolves */
+    const restingTop = mainNav ? mainNav.offsetHeight : 0;
+    const travelled = restingTop - heroBanner.getBoundingClientRect().top;
+    const p = Math.min(Math.max(travelled / bannerRange, 0), 1);
+    heroBanner.style.setProperty("--banner-p", p.toFixed(3));
+    /* stop compositing a blurred layer nobody can see */
+    heroBanner.style.visibility = p >= 1 ? "hidden" : "";
+  }
+
+  function queueBanner() {
+    if (bannerTicking) return;
+    bannerTicking = true;
+    requestAnimationFrame(paintBanner);
+  }
+
+  if (heroBanner && !prefersReducedMotion) {
+    measureBanner();
+    paintBanner();
+    window.addEventListener("scroll", queueBanner, { passive: true });
+    window.addEventListener("resize", function () {
+      measureBanner();
+      queueBanner();
+    });
+    /* the banner image settles the height once it decodes */
+    const bannerImg = heroBanner.querySelector(".hero-banner__img");
+    if (bannerImg && !bannerImg.complete) {
+      bannerImg.addEventListener("load", function () {
+        measureBanner();
+        queueBanner();
+      });
+    }
+  }
+
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
