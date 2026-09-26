@@ -1102,55 +1102,33 @@ nav {
   box-shadow: var(--shadow-lg);
 }
 
-/* Open Basket's simulator captures sit inside a device shell. The screen
-   remains a separate clip, so the existing carousel still slides normally. */
+/* These captures include the simulator's actual iPhone body and black corners.
+   Crop only the simulator window controls surrounding the phone. */
 .project-slider--phone .project-frame {
-  box-sizing: border-box;
-  padding: 7px;
-  overflow: visible;
-  border: 2px solid #626369;
-  border-radius: 43px;
-  background: linear-gradient(110deg, #34353a, #101114 42%, #303136);
-  box-shadow: inset 0 0 0 1px #0a0b0d, var(--shadow-lg);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .project-slider--phone:hover .project-frame {
-  box-shadow: inset 0 0 0 1px #0a0b0d, var(--shadow-lg);
+  box-shadow: none;
 }
 
 .project-slider--phone .phone-screen {
-  position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 34px;
-  background: #f8f8f6;
+  background: transparent;
 }
 
-.project-slider--phone .project-frame::before {
-  content: "";
-  position: absolute;
-  top: 18px;
-  left: 50%;
-  z-index: 2;
-  width: 28%;
-  height: 14px;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: #0a0b0d;
-  pointer-events: none;
-}
-
-.project-slider--phone .project-frame::after {
-  content: "";
-  position: absolute;
-  top: 16%;
-  left: -5px;
-  width: 4px;
-  height: 10%;
-  border-radius: 3px 0 0 3px;
-  background: #54555a;
-  pointer-events: none;
+.project-slider--phone .project-shot {
+  position: relative;
+  top: -8.1%;
+  left: -8.2%;
+  width: 116.5%;
+  height: auto;
+  max-width: none;
 }
 
 /* One continuous strip — every shot moves together, not one
