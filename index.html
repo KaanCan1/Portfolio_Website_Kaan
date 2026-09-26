@@ -648,6 +648,43 @@
       <p class="section__text__p1" data-reveal data-i18n="projects.eyebrow">Selected Work</p>
       <h2 class="title" data-reveal data-i18n="projects.title">Projects</h2>
 
+      <!-- Featured project: Open Basket -->
+      <article data-media="portrait" class="project-feature" data-reveal>
+        <div class="project-feature-media">
+          <div class="project-slider project-slider--phone" id="open-basket-slider" data-orientation="portrait" data-autoplay="4800" style="--shot: 296 / 623">
+            <div class="project-frame">
+              <div class="phone-screen">
+                <ul class="project-track">
+                <li class="project-slide"><img src="./assets/open-basket-01.png" class="project-shot" alt="Open Basket: an open basket on the iOS simulator" /></li>
+                <li class="project-slide"><img src="./assets/open-basket-02.png" class="project-shot" alt="Open Basket: opening a basket and setting its time" loading="lazy" /></li>
+                <li class="project-slide"><img src="./assets/open-basket-03.png" class="project-shot" alt="Open Basket: items appearing in the live shared basket" loading="lazy" /></li>
+                <li class="project-slide"><img src="./assets/open-basket-04.png" class="project-shot" alt="Open Basket: marking items and entering prices at checkout" loading="lazy" /></li>
+                <li class="project-slide"><img src="./assets/open-basket-05.png" class="project-shot" alt="Open Basket: the final amount each member owes" loading="lazy" /></li>
+                <li class="project-slide"><img src="./assets/open-basket-06.png" class="project-shot" alt="Open Basket: household after a completed shopping run" loading="lazy" /></li>
+                <li class="project-slide"><img src="./assets/open-basket-07.png" class="project-shot" alt="Open Basket: a completed run in history" loading="lazy" /></li>
+                </ul>
+              </div>
+            </div>
+            <button class="slider-btn prev" type="button" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="slider-btn next" type="button" aria-label="Next screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+            <div class="slider-dots" role="group" aria-label="Choose screenshot"></div>
+          </div>
+        </div>
+        <div class="project-feature-body">
+          <span class="project-kicker" data-i18n="proj.openbasket.kicker">Mobile App · BuilderBase Hackathon · Two-person team</span>
+          <h2 class="experience-sub-title project-title">Open Basket</h2>
+          <p class="project-desc" data-i18n="proj.openbasket.desc">A live shared shopping basket for families and housemates. Everyone adds items while one person shops; the server closes the basket on time and calculates who owes whom at checkout. Built by a two-person team for the BuilderBase Serverpod Hackathon.</p>
+          <div class="project-tags">
+            <span>Flutter</span><span>Dart</span><span>Serverpod</span><span>PostgreSQL</span><span>WebSocket</span>
+          </div>
+          <div class="project-actions">
+            <button class="details-btn" type="button" data-project="openbasket"><span data-i18n="btn.caseStudy">Case study</span> <i class="fas fa-arrow-right"></i></button>
+            <a href="https://open-basket.serverpod.space/" target="_blank" rel="noopener" class="github-btn" data-i18n="proj.openbasket.demo">Try the app</a>
+            <a href="https://github.com/KaanCan1/Open-Basket" target="_blank" rel="noopener" class="github-btn"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </article>
+
       <!-- Featured project: Islet -->
       <article data-media="landscape" class="project-feature" data-reveal>
         <div class="project-feature-media">
@@ -1078,6 +1115,10 @@
         <span class="project-modal__kicker" id="pm-kicker"></span>
         <h2 class="project-modal__title" id="pm-title"></h2>
         <p class="project-modal__overview" id="pm-overview"></p>
+        <figure class="project-modal__event" id="pm-event" hidden>
+          <img id="pm-event-image" alt="" loading="lazy" />
+          <figcaption id="pm-event-caption"></figcaption>
+        </figure>
         <div class="project-modal__grid">
           <div class="project-modal__col">
             <h3 class="project-modal__label" data-i18n="modal.built">What I built</h3>

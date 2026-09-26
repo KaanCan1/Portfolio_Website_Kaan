@@ -572,6 +572,10 @@ document.addEventListener("DOMContentLoaded", function () {
       "skills.tools": "Data & Databases",
       "projects.eyebrow": "Selected Work",
       "projects.title": "Projects",
+      "proj.openbasket.kicker": "Mobile App · BuilderBase Hackathon · Two-person team",
+      "proj.openbasket.desc":
+        "A live shared shopping basket for families and housemates. Everyone adds items while one person shops; the server closes the basket on time and calculates who owes whom at checkout. Built by a two-person team for the BuilderBase Serverpod Hackathon.",
+      "proj.openbasket.demo": "Try the app",
       "proj.sepet.kicker": "Mobile App · On-Device OCR + AI",
       "proj.sepet.desc":
         "A Flutter app that builds a personal inflation index from your own grocery receipts and puts it next to the official figures. OCR runs on device, so the photo never leaves the phone; Claude is called only for the receipt lines the matcher is unsure about.",
@@ -609,8 +613,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "form.error":
         "❌ Sending failed. Please try again, or email me at kaancan368368@gmail.com.",
       "footer.copyright": "Copyright © 2025 Kaan Can Kurt. All Rights Reserved.",
-      "modal.built": "What I built",
-      "modal.role": "My role",
+      "modal.built": "Highlights",
+      "modal.role": "Role / team",
       "modal.stack": "Stack",
       "modal.viewGithub": "View on GitHub",
       "modal.liveDemo": "Live Demo",
@@ -652,6 +656,10 @@ document.addEventListener("DOMContentLoaded", function () {
       "skills.tools": "Veri & Veritabanı",
       "projects.eyebrow": "Seçili Çalışmalar",
       "projects.title": "Projeler",
+      "proj.openbasket.kicker": "Mobil Uygulama · BuilderBase Hackathon · İki kişilik ekip",
+      "proj.openbasket.desc":
+        "Aileler ve ev arkadaşları için canlı, ortak alışveriş sepeti. Bir kişi alışveriş yaparken herkes ürün ekleyebiliyor; sepeti sunucu süresi dolunca kapatıyor ve kasada kimin kime ne kadar borçlu olduğunu hesaplıyor. BuilderBase Serverpod Hackathon için iki kişilik ekiple geliştirildi.",
+      "proj.openbasket.demo": "Uygulamayı dene",
       "proj.sepet.kicker": "Mobil Uygulama · Cihaz Üstü OCR + Yapay Zekâ",
       "proj.sepet.desc":
         "Market fişlerinden kendi enflasyonunu hesaplayıp resmî rakamların yanına koyan bir Flutter uygulaması. OCR cihaz üstünde çalışıyor, fişin fotoğrafı telefondan çıkmıyor; Claude yalnızca eşleştirmenin emin olamadığı fiş satırları için devreye giriyor.",
@@ -689,8 +697,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "❌ Gönderilemedi. Lütfen tekrar dene ya da kaancan368368@gmail.com adresine yaz.",
       "form.success": "✅ Mesajın ulaştı. En kısa sürede döneceğim.",
       "footer.copyright": "Telif © 2025 Kaan Can Kurt. Tüm Hakları Saklıdır.",
-      "modal.built": "Neler yaptım",
-      "modal.role": "Rolüm",
+      "modal.built": "Öne çıkanlar",
+      "modal.role": "Rol / ekip",
       "modal.stack": "Teknolojiler",
       "modal.viewGithub": "GitHub'da Gör",
       "modal.liveDemo": "Canlı Demo",
@@ -699,6 +707,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Project case-study content (bilingual). tags/links are shared.
   const PROJECTS = {
+    openbasket: {
+      title: "Open Basket",
+      tags: ["Flutter", "Dart", "Serverpod", "PostgreSQL", "WebSocket"],
+      github: "https://github.com/KaanCan1/Open-Basket",
+      demo: "https://open-basket.serverpod.space/",
+      eventImage: "./assets/open-basket-hackathon.png",
+      en: {
+        kicker: "Mobile App · BuilderBase Hackathon · Two-person team",
+        overview: "One person shops; everyone adds. Open Basket lets a household share a shopping basket for a set time, then settles the receipt so each member can see what they owe. Built as a two-person project for BuilderBase's Build Something Real: The Serverpod Hackathon.",
+        role: "Two-person team project. The team delivered the Flutter client and Serverpod backend, coordinating through shared product rules, a build plan and architecture decisions.",
+        eventCaption: "Built for BuilderBase's Build Something Real: The Serverpod Hackathon.",
+        eventAlt: "BuilderBase page for Build Something Real: The Serverpod Hackathon",
+        highlights: [
+          "The shopper opens a timed basket for a store; household members add items and notes that appear on every connected device through a Serverpod stream.",
+          "A Serverpod future call closes the basket at its deadline even when the phones are offline. Only the shopper can extend it once by five minutes.",
+          "At checkout, the shopper marks found items and enters prices and the receipt total; the server calculates each member's share in integer currency units.",
+          "Passwordless email sign-in, household roles, completed-run history and a PostgreSQL-backed typed Dart client complete the full-stack flow.",
+          "Walking-time suggestions are calculated on the phone; live location is never sent to the server."
+        ]
+      },
+      tr: {
+        kicker: "Mobil Uygulama · BuilderBase Hackathon · İki kişilik ekip",
+        overview: "Bir kişi alışveriş yapar, herkes sepete ekler. Open Basket, ev halkının belirli süre açık kalan ortak bir alışveriş sepeti kullanmasını ve fişin sonunda herkesin borcunu görmesini sağlar. BuilderBase'in Build Something Real: The Serverpod Hackathon etkinliği için iki kişilik ekiple geliştirildi.",
+        role: "İki kişilik ekip projesi. Ekip, Flutter istemciyi ve Serverpod backend'i ortak ürün kuralları, geliştirme planı ve mimari karar kayıtları üzerinden koordine ederek geliştirdi.",
+        eventCaption: "BuilderBase'in Build Something Real: The Serverpod Hackathon etkinliği için geliştirildi.",
+        eventAlt: "Build Something Real: The Serverpod Hackathon için BuilderBase sayfası",
+        highlights: [
+          "Alışverişi yapan kişi mağaza için süreli sepet açar; ev üyelerinin eklediği ürün ve notlar Serverpod akışıyla bağlı cihazlarda anında görünür.",
+          "Serverpod future call, telefonlar çevrimdışıyken bile süresi dolan sepeti kapatır. Süreyi yalnızca alışverişi yapan kişi bir kez, beş dakika uzatabilir.",
+          "Kasada bulunan ürünler işaretlenir, fiyatlar ve fiş toplamı girilir; sunucu herkesin payını kuruş bazında hesaplar.",
+          "E-posta koduyla şifresiz giriş, hane rolleri, tamamlanan alışveriş geçmişi ve PostgreSQL tabanlı tipli Dart istemcisi tam akışı oluşturur.",
+          "Yürüme süresi önerisi telefonda hesaplanır; canlı konum sunucuya gönderilmez."
+        ]
+      }
+    },
     islet: {
       title: "Islet",
       tags: ["Swift", "SwiftUI", "macOS", "AppleScript", "Claude API"],
@@ -1019,6 +1062,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const elKicker = document.getElementById("pm-kicker");
   const elTitle = document.getElementById("pm-title");
   const elOverview = document.getElementById("pm-overview");
+  const elEvent = document.getElementById("pm-event");
+  const elEventImage = document.getElementById("pm-event-image");
+  const elEventCaption = document.getElementById("pm-event-caption");
   const elHighlights = document.getElementById("pm-highlights");
   const elRole = document.getElementById("pm-role");
   const elTags = document.getElementById("pm-tags");
@@ -1044,6 +1090,16 @@ document.addEventListener("DOMContentLoaded", function () {
     elKicker.textContent = t.kicker;
     elTitle.textContent = p.title;
     elOverview.textContent = t.overview;
+    elEvent.hidden = !p.eventImage;
+    if (p.eventImage) {
+      elEventImage.src = p.eventImage;
+      elEventImage.alt = t.eventAlt;
+      elEventCaption.textContent = t.eventCaption;
+    } else {
+      elEventImage.removeAttribute("src");
+      elEventImage.alt = "";
+      elEventCaption.textContent = "";
+    }
 
     elHighlights.innerHTML = "";
     t.highlights.forEach(function (h) {
