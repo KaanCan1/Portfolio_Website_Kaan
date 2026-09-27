@@ -12,15 +12,15 @@
 <p class="contact"><a href="https://linkedin.com/in/kaan-can-kurt-805990299">linkedin.com/in/kaan-can-kurt-805990299</a> <span class="sep">|</span> <a href="https://github.com/KaanCan1">github.com/KaanCan1</a> <span class="sep">|</span> <a href="https://kaancankurt.vercel.app">kaancankurt.vercel.app</a></p>
 
 <h2>Özet</h2>
-<p class="summary">Bilgisayar Mühendisliği mezunuyum (Tokat Gaziosmanpaşa Üniversitesi, 2025). SQL ve PostgreSQL ile veri modelleme, veri işleme ve backend geliştirme alanlarında uygulamalı deneyime sahibim; Python ve Node.js ile veri doğrulama ve dönüştürme (ETL) pipeline'ları geliştirdim. Claude API entegrasyonu ile serbest metni şemaya uygun veriye dönüştüren işleme katmanları kurdum. Ana veri yönetimi (master data management), veri kalitesi ve süreç otomasyonu alanlarına güçlü ilgi duyuyorum.</p>
+<p class="summary">Bilgisayar Mühendisliği mezunuyum (2025). Node.js, PostgreSQL ve Flutter ile fikirden yayına mobil ve web uygulamaları geliştirdim; ortak alışveriş, kişisel enflasyon hesabı ve portföy takibi gibi günlük sorunlara odaklandım. REST API ve ilişkisel veri modeli tasarlama, farklı kaynaklardan gelen verileri doğrulama ve OCR ile Claude API'yi ürün akışlarına entegre etme deneyimine sahibim. Backend geliştirici rollerinde çalışmayı hedefliyorum.</p>
 
 <h2>Deneyim</h2>
 <p class="role">Bilgisayar Mühendisi Stajyeri | Eduji Ar-Ge Yazılım Tasarım ve Danışmanlık A.Ş.</p>
 <p class="meta">Bornova, İzmir | Temmuz 2024 – Eylül 2024</p>
 <ul>
-  <li>REST API entegrasyonu geliştirdim; sunucu tarafı filtreleme ve sayfalama (pagination) mantığıyla büyük veri kümeleri üzerinde sorgulama ve dönüşüm süreçlerinde görev aldım.</li>
-  <li>Anket tabanlı, ödüllü bir mobil uygulamanın Flutter ile geliştirilmesinde görev aldım; token tabanlı kimlik doğrulama ve GetX ile state management uyguladım, UI tasarımlarını Figma ile oluşturdum.</li>
-  <li>Backend API'lerini Postman ile test ederek veri sözleşmelerini doğruladım ve backend ekibiyle koordineli çalıştım.</li>
+  <li>REST API'leri entegre ederek büyük veri kümelerini sunucu tarafında filtreleme ve sayfalama ile sorguladım.</li>
+  <li>Anket ve ödül odaklı mobil uygulamanın Flutter geliştirmesine katkı sağladım; token tabanlı kimlik doğrulama ve GetX ile durum yönetimi uyguladım, arayüzleri Figma'da tasarladım.</li>
+  <li>Backend ekibiyle birlikte çalışarak API yanıtlarını ve veri sözleşmelerini Postman üzerinden test ettim.</li>
 </ul>
 
 <h2>Projeler</h2>
@@ -28,18 +28,27 @@
 <div class="proj">
 <p class="proj-title">Portfolio Tracker <span class="stack">| Node.js (Express), PostgreSQL, Python, pandas, Claude API &middot; <a href="https://github.com/KaanCan1/portfolio-tracker">github.com/KaanCan1/portfolio-tracker</a></span></p>
 <ul>
-  <li>Hisse, fon ve altın portföyünü canlı fiyatlarla takip eden, teknik analizle işlem sinyali üreten ve her sinyalin getirisini ölçen full-stack web uygulaması; tüm katmanları tarafımdan geliştirildi.</li>
-  <li>Express + PostgreSQL tabanlı 40+ endpoint'lik REST API ve ilişkisel veri modeli tasarladım; üç finansal veri sağlayıcısını (Finnhub, TwelveData, Yahoo) fallback zinciriyle entegre ettim ve Claude API structured outputs ile serbest metni yapılandırılmış veriye dönüştüren, şema doğrulamalı bir işleme katmanı kurdum.</li>
-  <li>283 birim testi ve GitHub Actions üzerinde CI/CD kurdum; uygulama Docker ile container'lanıp Render üzerinde canlı çalışıyor.</li>
+  <li>Hisse, fon ve altın yatırımlarını güncel fiyatlarla izleyen; teknik analiz sinyalleri üretip sonuçlarını ölçen web uygulamasını baştan sona geliştirdim.</li>
+  <li>Express ve PostgreSQL ile 40'tan fazla uç noktası olan bir REST API ve ilişkisel veri modeli tasarladım. Üç finansal veri kaynağı için yedekli akış kurdum; Claude API ile serbest metinden elde ettiğim verileri şemaya göre doğruladım.</li>
+  <li>283 birim testi ve GitHub Actions üzerinden CI/CD ekledim; Docker ile paketlenen uygulama Render'da çalışıyor.</li>
+</ul>
+</div>
+
+<div class="proj">
+<p class="proj-title">Open Basket <span class="stack">| Flutter, Dart, Serverpod, PostgreSQL, WebSocket &middot; <a href="https://github.com/KaanCan1/Open-Basket">github.com/KaanCan1/Open-Basket</a> &middot; <a href="https://open-basket.serverpod.space/">Canlı demo</a></span></p>
+<ul>
+  <li>BuilderBase Serverpod Hackathon'da iki kişilik ekiple geliştirdik: alışverişe çıkan kişi marketteyken ev halkı ortak sepete istediklerini ekliyor, uygulama kasada kimin kime ne borçlu olduğunu hesaplıyor.</li>
+  <li>17 modelden PostgreSQL şeması ve tipli Dart istemcisi ürettik. Hane başına tek açık sepet kuralını partial unique index ile uyguladık; borçları sunucuda kuruş bazında hesaplayıp güncellemeleri WebSocket ile ilettik.</li>
+  <li>Süresi dolan sepetleri sunucuda kapattık, entegrasyon testleri ve CI ekledik; backend Serverpod Cloud'da yayında.</li>
 </ul>
 </div>
 
 <div class="proj">
 <p class="proj-title">Sepet — Kişisel Enflasyon Endeksi <span class="stack">| Flutter, Node.js, PostgreSQL, OCR &middot; <a href="https://github.com/KaanCan1/Sepet">github.com/KaanCan1/Sepet</a></span></p>
 <ul>
-  <li>Kullanıcının kendi fişlerinden kişisel enflasyon hesaplayan bir iOS uygulaması geliştirdim; TÜFE ile aynı yöntemi (zincirlenmiş Laspeyres) kullanıcının 12 aylık harcamasından türettiğim ağırlıklarla kurdum.</li>
-  <li>Node.js REST API ve normalize edilmiş PostgreSQL şeması tasarladım; fiş satırlarındaki kısaltılmış ürün adlarını kanonik ürün kataloğuna bağlayan eşleştirme katmanını veritabanı içinde yazdım.</li>
-  <li>OCR'ı cihaz üstünde çalıştırdım; sunucuya yalnızca ayrıştırılmış satırlar gidiyor, fiş fotoğrafı telefondan çıkmıyor. Bu karar backend maliyetini ve gecikmeyi de azalttı.</li>
+  <li>Market fişlerinden kişisel enflasyon endeksi hesaplayan bir iOS uygulaması geliştirdim. Zincirlenmiş Laspeyres yönteminde kullanıcının 12 aylık harcamalarından elde edilen ağırlıkları kullandım.</li>
+  <li>Node.js REST API ve normalleştirilmiş PostgreSQL şeması tasarladım; fişlerdeki kısaltılmış ürün adlarını standart ürün kataloğuyla eşleştiren veritabanı katmanını geliştirdim.</li>
+  <li>OCR işlemini cihazda çalıştırdım. Fiş fotoğrafı telefondan çıkmıyor; sunucuya yalnızca ayrıştırılmış satırlar gönderiliyor.</li>
 </ul>
 </div>
 
@@ -48,17 +57,15 @@
 <p class="meta">Not Ortalaması: 88,02 / 100</p>
 <ul>
   <li>İlgili dersler: veritabanı yönetimi, veri yapıları ve algoritma analizi, yapay zekâ, makine öğrenmesi, istatistik ve ağ güvenliği.</li>
-  <li>Ders kapsamı dışında PHP/MySQL ile web projeleri ve Java/Android Studio ile native mobil uygulamalar geliştirdim.</li>
 </ul>
 
 <h2>Teknik Beceriler</h2>
 <div class="skills">
-<p><b>Veri ve Veritabanı:</b> SQL, PostgreSQL, MySQL, SQL Server, SQLite, veri modelleme, şema tasarımı, ETL / veri pipeline, veri doğrulama, veri kalitesi, REST API ile veri entegrasyonu, JSON</p>
-<p><b>Programlama Dilleri:</b> Python, SQL, JavaScript, Dart, Java, C#, PHP</p>
-<p><b>Backend ve Araçlar:</b> Node.js, Express, ASP.NET, REST API, Docker, CI/CD, GitHub Actions, Git, Postman, Render, birim test (node:test)</p>
-<p><b>Yapay Zekâ ve Veri Analizi:</b> Claude API (structured outputs, prompt engineering, MCP), pandas, scikit-learn, doğal dil işleme, makine öğrenmesi</p>
-<p><b>Mobil ve Web:</b> Flutter, GetX, Firebase, Firebase Cloud Messaging, Android Studio, OCR, HTML5, CSS3</p>
-<p><b>Diğer:</b> Nesneye yönelik programlama (OOP), Figma, UI/UX tasarımı, Agile/takım çalışması</p>
+<p><b>Backend:</b> Node.js, Express, ASP.NET, Serverpod, REST API, WebSocket</p>
+<p><b>Veritabanı:</b> PostgreSQL, MySQL, SQL Server, veri modelleme, ETL</p>
+<p><b>Programlama Dilleri:</b> Python, JavaScript, Dart, Java, C#, SQL</p>
+<p><b>Araçlar ve Test:</b> Docker, GitHub Actions (CI/CD), Git, Postman, birim ve entegrasyon testi</p>
+<p><b>Mobil ve Yapay Zekâ:</b> Flutter, Firebase, Claude API (structured outputs), MCP, OCR</p>
 </div>
 
 <h2>Sertifikalar ve Diller</h2>
