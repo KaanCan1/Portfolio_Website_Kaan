@@ -12,15 +12,15 @@
 <p class="contact"><a href="https://linkedin.com/in/kaan-can-kurt-805990299">linkedin.com/in/kaan-can-kurt-805990299</a> <span class="sep">|</span> <a href="https://github.com/KaanCan1">github.com/KaanCan1</a> <span class="sep">|</span> <a href="https://kaancankurt.vercel.app">kaancankurt.vercel.app</a></p>
 
 <h2>Summary</h2>
-<p class="summary">Computer Engineering graduate (Tokat Gaziosmanpaşa University, 2025) with hands-on experience in SQL, PostgreSQL, data modelling, data processing and backend development. Built data validation and transformation (ETL) pipelines with Python and Node.js over structured and unstructured data. Built processing layers that turn free text into schema-conformant data through Claude API integration. Strong interest in master data management, data quality and process automation.</p>
+<p class="summary">Computer Engineering graduate (2025) who has built and deployed web and mobile apps with Node.js, PostgreSQL and Flutter. My projects address everyday needs, from shared grocery shopping and personal inflation tracking to portfolio analysis. I have designed REST APIs and relational data models, validated data from multiple sources, and integrated OCR and the Claude API into product workflows. I am seeking backend developer roles.</p>
 
 <h2>Experience</h2>
 <p class="role">Computer Engineering Intern | Eduji R&amp;D Software Design and Consultancy Inc.</p>
 <p class="meta">Bornova, İzmir, Türkiye | July 2024 – September 2024</p>
 <ul>
-  <li>Implemented REST API integration and contributed to querying and transforming large data sets through server-side filtering and pagination logic.</li>
-  <li>Contributed to the development of a survey-based, reward-driven mobile application with Flutter; implemented token-based authentication and state management with GetX, and designed the UI in Figma.</li>
-  <li>Tested backend APIs with Postman to validate data contracts, working in close coordination with the backend team.</li>
+  <li>Integrated REST APIs and queried large data sets using server-side filtering and pagination.</li>
+  <li>Helped build a survey and rewards app in Flutter; implemented token-based authentication and GetX state management, and designed interfaces in Figma.</li>
+  <li>Worked with the backend team to test API responses and validate data contracts in Postman.</li>
 </ul>
 
 <h2>Projects</h2>
@@ -28,18 +28,27 @@
 <div class="proj">
 <p class="proj-title">Portfolio Tracker <span class="stack">| Node.js (Express), PostgreSQL, Python, pandas, Claude API &middot; <a href="https://github.com/KaanCan1/portfolio-tracker">github.com/KaanCan1/portfolio-tracker</a></span></p>
 <ul>
-  <li>A full-stack web application that tracks a stock, fund and gold portfolio on live prices, generates trading signals from technical analysis and measures the return of each signal; all layers built by me.</li>
-  <li>Designed a 40+ endpoint REST API and relational data model on Express + PostgreSQL; integrated three financial data providers (Finnhub, TwelveData, Yahoo) behind a fallback chain, and built a schema-validated processing layer using Claude API structured outputs to turn unstructured text into structured data.</li>
-  <li>Set up 283 unit tests and a GitHub Actions CI/CD pipeline; the application is containerised with Docker and runs live on Render.</li>
+  <li>Built a web app end to end to track stocks, funds and gold at current prices, generate technical analysis signals and measure their results.</li>
+  <li>Designed a relational data model and an Express/PostgreSQL REST API with more than 40 endpoints. Added fallback across three financial data providers and used Claude API structured outputs to validate data extracted from free text.</li>
+  <li>Added 283 unit tests and GitHub Actions CI/CD. The Dockerized app runs on Render.</li>
+</ul>
+</div>
+
+<div class="proj">
+<p class="proj-title">Open Basket <span class="stack">| Flutter, Dart, Serverpod, PostgreSQL, WebSocket &middot; <a href="https://github.com/KaanCan1/Open-Basket">github.com/KaanCan1/Open-Basket</a> &middot; <a href="https://open-basket.serverpod.space/">Live demo</a></span></p>
+<ul>
+  <li>Built with one teammate for the BuilderBase Serverpod Hackathon: while one person shops, the household adds what they need to a shared basket, and at checkout the app calculates who owes whom.</li>
+  <li>Generated a PostgreSQL schema and typed Dart client from 17 models; enforced one open basket per household with a partial unique index, calculated balances in integer minor units and pushed updates over WebSocket.</li>
+  <li>Added server-side expiry, integration tests and CI; the backend is deployed on Serverpod Cloud.</li>
 </ul>
 </div>
 
 <div class="proj">
 <p class="proj-title">Sepet — Personal Inflation Index <span class="stack">| Flutter, Node.js, PostgreSQL, OCR &middot; <a href="https://github.com/KaanCan1/Sepet">github.com/KaanCan1/Sepet</a></span></p>
 <ul>
-  <li>Built an iOS app that computes personal inflation from a user's own receipts, using the official index's method (chained Laspeyres) with weights derived from their 12-month spending.</li>
-  <li>Designed the Node.js REST API and a normalised PostgreSQL schema; wrote the matching layer inside the database that maps abbreviated receipt-line names onto a canonical product catalogue.</li>
-  <li>Ran the OCR on the device, so only parsed lines reach the server and the receipt image never leaves the phone — a decision that also cut backend cost and latency.</li>
+  <li>Built an iOS app that calculates a personal inflation index from grocery receipts. It uses the chained Laspeyres method with weights based on the user's spending over 12 months.</li>
+  <li>Designed the Node.js REST API and normalized PostgreSQL schema, including a database layer that matches abbreviated receipt items to a standard product catalogue.</li>
+  <li>Ran OCR on the device, keeping receipt photos on the phone and sending only parsed line items to the server.</li>
 </ul>
 </div>
 
@@ -47,18 +56,16 @@
 <p class="role">Tokat Gaziosmanpaşa University | BSc in Computer Engineering | 2021 – 2025</p>
 <p class="meta">GPA: 88.02 / 100</p>
 <ul>
-  <li>Relevant coursework: database management, data structures and algorithm analysis, artificial intelligence, machine learning, statistics and network security.</li>
-  <li>Extended coursework with dynamic web projects in PHP/MySQL and native mobile apps in Java/Android Studio.</li>
+  <li>Relevant coursework: databases, data structures and algorithms, AI, machine learning, statistics, network security.</li>
 </ul>
 
 <h2>Technical Skills</h2>
 <div class="skills">
-<p><b>Data &amp; Databases:</b> SQL, PostgreSQL, MySQL, SQL Server, SQLite, data modelling, schema design, ETL / data pipelines, data validation, data quality, data integration via REST APIs, JSON</p>
-<p><b>Programming Languages:</b> Python, SQL, JavaScript, Dart, Java, C#, PHP</p>
-<p><b>Backend &amp; Tools:</b> Node.js, Express, ASP.NET, REST API, Docker, CI/CD, GitHub Actions, Git, Postman, Render, unit testing (node:test)</p>
-<p><b>AI &amp; Data Analysis:</b> Claude API (structured outputs, prompt engineering, MCP), pandas, scikit-learn, natural language processing, machine learning</p>
-<p><b>Mobile &amp; Web:</b> Flutter, GetX, Firebase, Firebase Cloud Messaging, Android Studio, OCR, HTML5, CSS3</p>
-<p><b>Other:</b> Object-oriented programming (OOP), Figma, UI/UX design, Agile/teamwork</p>
+<p><b>Backend:</b> Node.js, Express, ASP.NET, Serverpod, REST API, WebSocket</p>
+<p><b>Databases:</b> PostgreSQL, MySQL, SQL Server, data modelling, ETL</p>
+<p><b>Programming Languages:</b> Python, JavaScript, Dart, Java, C#, SQL</p>
+<p><b>Tools &amp; Testing:</b> Docker, GitHub Actions (CI/CD), Git, Postman, unit and integration testing</p>
+<p><b>Mobile &amp; AI:</b> Flutter, Firebase, Claude API (structured outputs), MCP, OCR</p>
 </div>
 
 <h2>Certificates and Languages</h2>
