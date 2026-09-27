@@ -490,7 +490,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileThemeToggle = document.getElementById("mobile-theme-toggle");
   const body = document.body;
 
-  const savedTheme = localStorage.getItem("theme") || "light";
+  const savedTheme = localStorage.getItem("theme") || "dark";
   body.setAttribute("data-theme", savedTheme);
 
   function updateThemeDisplay(theme) {
@@ -541,9 +541,14 @@ document.addEventListener("DOMContentLoaded", function () {
       "nav.projects": "Projects",
       "nav.contact": "Contact",
       "hero.hello": "Hello, I'm",
+      "hero.identity": "Kaan Can Kurt · Data & Backend",
+      "hero.line1": "Data.",
+      "hero.line2": "Systems.",
+      "hero.line3": "Products.",
+      "hero.projectsBtn": "Explore projects",
+      "hero.aboutBtn": "About me ↗",
       "hero.role": "Data & Backend Developer",
-      "hero.lead":
-        "I build data validation and transformation pipelines with Python and Node.js on PostgreSQL, and turn free text into schema-conformant data.",
+      "hero.lead": "I turn reliable systems into products people want to use.",
       "hero.cv": "Get My CV",
       "hero.contactBtn": "Contact",
       "cv.en": "English CV",
@@ -571,7 +576,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "skills.langs": "Languages & Tools",
       "skills.tools": "Data & Databases",
       "projects.eyebrow": "Selected Work",
-      "projects.title": "Projects",
+      "projects.title": "Selected projects.",
+      "projects.intro": "Working products first. The systems behind them follow.",
       "proj.openbasket.kicker": "Mobile App · BuilderBase Hackathon · Two-person team",
       "proj.openbasket.desc":
         "A live shared shopping basket for families and housemates. Everyone adds items while one person shops; the server closes the basket on time and calculates who owes whom at checkout. Built by a two-person team for the BuilderBase Serverpod Hackathon.",
@@ -625,9 +631,14 @@ document.addEventListener("DOMContentLoaded", function () {
       "nav.projects": "Projeler",
       "nav.contact": "İletişim",
       "hero.hello": "Merhaba, ben",
+      "hero.identity": "Kaan Can Kurt · Veri & Backend",
+      "hero.line1": "Veri.",
+      "hero.line2": "Altyapı.",
+      "hero.line3": "Ürün.",
+      "hero.projectsBtn": "Projeleri gör",
+      "hero.aboutBtn": "Hakkımda ↗",
       "hero.role": "Veri & Backend Geliştirici",
-      "hero.lead":
-        "Python ve Node.js ile PostgreSQL üzerinde veri doğrulama ve dönüştürme pipeline'ları kuruyor, serbest metni şemaya uygun veriye dönüştürüyorum.",
+      "hero.lead": "Güvenilir sistemleri, insanların kullanmak isteyeceği ürünlere dönüştürüyorum.",
       "hero.cv": "CV'mi Al",
       "hero.contactBtn": "İletişim",
       "cv.en": "İngilizce CV",
@@ -655,7 +666,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "skills.langs": "Diller & Araçlar",
       "skills.tools": "Veri & Veritabanı",
       "projects.eyebrow": "Seçili Çalışmalar",
-      "projects.title": "Projeler",
+      "projects.title": "Yaptığım işler.",
+      "projects.intro": "Önce çalışan ürünler. Sonra onları mümkün kılan teknoloji.",
       "proj.openbasket.kicker": "Mobil Uygulama · BuilderBase Hackathon · İki kişilik ekip",
       "proj.openbasket.desc":
         "Aileler ve ev arkadaşları için canlı, ortak alışveriş sepeti. Bir kişi alışveriş yaparken herkes ürün ekleyebiliyor; sepeti sunucu süresi dolunca kapatıyor ve kasada kimin kime ne kadar borçlu olduğunu hesaplıyor. BuilderBase Serverpod Hackathon için iki kişilik ekiple geliştirildi.",
