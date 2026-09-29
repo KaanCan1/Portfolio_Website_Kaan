@@ -574,78 +574,51 @@
         </div>
       </article>
 
-      <!-- Secondary projects grid -->
-      <div class="project-grid">
-        <article class="project-card" data-reveal>
-          <img class="project-card-mark" src="./assets/icons/python-original.svg" alt="" loading="lazy" aria-hidden="true" />
+      <!-- Featured project: Film Review Sentiment Analysis (no screenshots; the media is a dataset sample) -->
+      <article data-media="landscape" class="project-feature project-feature--wide" data-reveal>
+        <div class="project-feature-media">
+          <figure class="review-panel" aria-label="Sample rows from the 5,000-review training set">
+            <figcaption class="review-panel-head">
+              <span class="review-panel-file">yorumlar_5000.csv</span>
+              <span data-i18n="proj.sentiment.panelCount">5,000 labelled reviews</span>
+            </figcaption>
+            <div class="review-balance" aria-hidden="true">
+              <span class="is-pos" style="flex: 2542">positive · 2,542</span>
+              <span class="is-neg" style="flex: 2457">negative · 2,457</span>
+            </div>
+            <ul class="review-list">
+              <li><q lang="tr">kitaptan cok güzel uyarlanmis bir film... bence herkes izlemeli</q><span class="review-label is-pos">positive</span></li>
+              <li><q lang="tr">berbat bi filmdi sadece zaman kaybi</q><span class="review-label is-neg">negative</span></li>
+              <li><q lang="tr">sakin bir pazar sabahi izlenebilecek eglenceli bir macera</q><span class="review-label is-pos">positive</span></li>
+              <li><q lang="tr">çok gereksiz bir psikolojik film. izlemezseniz hiç bir sey kaybetmezsiniz</q><span class="review-label is-neg">negative</span></li>
+            </ul>
+          </figure>
+        </div>
+        <div class="project-feature-body">
           <span class="project-kicker" data-i18n="proj.sentiment.kicker">Machine Learning</span>
-          <h3 class="project-card-title">Film Review Sentiment Analysis</h3>
-          <p class="project-card-desc" data-i18n="proj.sentiment.desc">
-            Classifies movie reviews as positive or negative. Text cleaning and
-            tokenization feed several models (Naive Bayes, Logistic Regression,
-            SVM, Random Forest) compared on accuracy and F1.
+          <h2 class="experience-sub-title project-title">Film Review Sentiment Analysis</h2>
+          <p class="project-desc" data-i18n="proj.sentiment.desc">
+            Classifies Turkish movie reviews as positive or negative. Reviews
+            are cleaned (emoji turned into words, stop words removed), turned
+            into 1–3-gram bag-of-words vectors and fed to a regularised Keras
+            neural network.
           </p>
           <div class="project-tags">
             <span>Python</span>
+            <span>Keras</span>
             <span>scikit-learn</span>
             <span>NLP</span>
           </div>
-          <div class="card-actions">
-            <button class="details-btn sm" type="button" data-project="sentiment">
+          <div class="project-actions">
+            <button class="details-btn" type="button" data-project="sentiment">
               <span data-i18n="btn.caseStudy">Case study</span> <i class="fas fa-arrow-right"></i>
             </button>
-            <a href="https://github.com/KaanCan1/Film-Yorumlari-Duygu-Analizi" target="_blank" rel="noopener" class="project-card-link">
+            <a href="https://github.com/KaanCan1/Film-Yorumlari-Duygu-Analizi" target="_blank" rel="noopener" class="github-btn">
               <i class="fab fa-github"></i> GitHub
             </a>
           </div>
-        </article>
-
-        <article class="project-card" data-reveal>
-          <img class="project-card-mark" src="./assets/icons/androidstudio-original.svg" alt="" loading="lazy" aria-hidden="true" />
-          <span class="project-kicker" data-i18n="proj.moodaktif.kicker">Native Android</span>
-          <h3 class="project-card-title">MoodAktif</h3>
-          <p class="project-card-desc" data-i18n="proj.moodaktif.desc">
-            A mood-focused Android application built natively with Java and
-            Android Studio, exploring activity-based UI and local state on
-            device.
-          </p>
-          <div class="project-tags">
-            <span>Java</span>
-            <span>Android Studio</span>
-          </div>
-          <div class="card-actions">
-            <button class="details-btn sm" type="button" data-project="moodaktif">
-              <span data-i18n="btn.caseStudy">Case study</span> <i class="fas fa-arrow-right"></i>
-            </button>
-            <a href="https://github.com/KaanCan1/MoodAktif" target="_blank" rel="noopener" class="project-card-link">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-          </div>
-        </article>
-
-        <article class="project-card" data-reveal>
-          <img class="project-card-mark" src="./assets/icons/python-original.svg" alt="" loading="lazy" aria-hidden="true" />
-          <span class="project-kicker" data-i18n="proj.chart.kicker">Data Visualization</span>
-          <h3 class="project-card-title">Simple Chart Plotter</h3>
-          <p class="project-card-desc" data-i18n="proj.chart.desc">
-            A lightweight Python tool for reading data and plotting it into
-            clean charts, built to make quick visual exploration of datasets
-            painless.
-          </p>
-          <div class="project-tags">
-            <span>Python</span>
-            <span>Matplotlib</span>
-          </div>
-          <div class="card-actions">
-            <button class="details-btn sm" type="button" data-project="chartplotter">
-              <span data-i18n="btn.caseStudy">Case study</span> <i class="fas fa-arrow-right"></i>
-            </button>
-            <a href="https://github.com/KaanCan1/Simple-Chart-Plotter" target="_blank" rel="noopener" class="project-card-link">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-          </div>
-        </article>
-      </div>
+        </div>
+      </article>
 
       <div class="projects-footer" data-reveal>
         <a href="https://github.com/KaanCan1" target="_blank" rel="noopener" class="btn btn-color-2">

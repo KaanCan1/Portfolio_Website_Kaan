@@ -599,13 +599,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "A clean, minimal expense tracker that keeps you on top of your spending. Flutter front end backed by a Node.js API, containerized with Docker for a reproducible setup.",
       "proj.sentiment.kicker": "Machine Learning",
       "proj.sentiment.desc":
-        "Classifies movie reviews as positive or negative. Text cleaning and tokenization feed several models (Naive Bayes, Logistic Regression, SVM, Random Forest) compared on accuracy and F1.",
-      "proj.moodaktif.kicker": "Native Android",
-      "proj.moodaktif.desc":
-        "A mood-focused Android application built natively with Java and Android Studio, exploring activity-based UI and local state on device.",
-      "proj.chart.kicker": "Data Visualization",
-      "proj.chart.desc":
-        "A lightweight Python tool for reading data and plotting it into clean charts, built to make quick visual exploration of datasets painless.",
+        "Classifies Turkish movie reviews as positive or negative. Reviews are cleaned (emoji turned into words, stop words removed), turned into 1–3-gram bag-of-words vectors and fed to a regularised Keras neural network.",
+      "proj.sentiment.panelCount": "5,000 labelled reviews",
       "btn.caseStudy": "Case study",
       "btn.allRepos": "See all repositories",
       "contact.title": "Get in Touch",
@@ -689,13 +684,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "Harcamalarını takip etmeni sağlayan sade, minimal bir gider takip uygulaması. Node.js API ile beslenen Flutter arayüz, tekrarlanabilir kurulum için Docker ile paketlendi.",
       "proj.sentiment.kicker": "Makine Öğrenmesi",
       "proj.sentiment.desc":
-        "Film yorumlarını olumlu/olumsuz olarak sınıflandırır. Metin temizleme ve tokenizasyon birden çok modeli (Naive Bayes, Lojistik Regresyon, SVM, Random Forest) besler; doğruluk ve F1 ile karşılaştırılır.",
-      "proj.moodaktif.kicker": "Yerel Android",
-      "proj.moodaktif.desc":
-        "Java ve Android Studio ile yerel olarak geliştirilen; aktivite tabanlı arayüz ve cihaz üzerinde durum yönetimini keşfeden, ruh hâli odaklı bir Android uygulaması.",
-      "proj.chart.kicker": "Veri Görselleştirme",
-      "proj.chart.desc":
-        "Veri okuyup temiz grafiklere döken hafif bir Python aracı; veri kümelerini hızlıca görsel olarak incelemeyi kolaylaştırmak için yapıldı.",
+        "Türkçe film yorumlarını olumlu/olumsuz olarak sınıflandırır. Yorumlar temizlenir (emojiler kelimeye çevrilir, durak kelimeler ayıklanır), 1–3 gramlık kelime torbası vektörlerine dönüştürülür ve düzenlileştirilmiş bir Keras sinir ağına verilir.",
+      "proj.sentiment.panelCount": "5.000 etiketli yorum",
       "btn.caseStudy": "Vaka çalışması",
       "btn.allRepos": "Tüm repoları gör",
       "contact.title": "İletişime Geç",
@@ -964,87 +954,31 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     sentiment: {
       title: "Film Review Sentiment Analysis",
-      tags: ["Python", "scikit-learn", "NLP", "pandas"],
+      tags: ["Python", "TensorFlow / Keras", "scikit-learn", "NLTK", "pandas"],
       github: "https://github.com/KaanCan1/Film-Yorumlari-Duygu-Analizi",
       demo: null,
       en: {
         kicker: "Machine Learning",
         overview:
-          "An NLP project that classifies movie reviews as positive or negative, comparing several classic machine-learning models on a labeled review dataset.",
-        role: "Group project for an Introduction to Information Engineering course.",
+          "An NLP project that classifies Turkish movie reviews as positive or negative, training a small Keras neural network on 5,000 labelled reviews.",
+        role: "Group project for an Introduction to Knowledge Engineering course.",
         highlights: [
-          "Text cleaning, stop-word removal and tokenization",
-          "Trained Naive Bayes, Logistic Regression, SVM and Random Forest",
-          "Compared models on accuracy, F1 score and confusion matrix",
-          "End-to-end pipeline from raw reviews to evaluation",
+          "Cleaning: HTML and links stripped, emoji turned into Turkish words, NLTK stop words removed",
+          "1–3-gram bag-of-words features with scikit-learn's CountVectorizer",
+          "Dense 128-64-32-16 network with L2 regularisation, dropout and early stopping",
+          "80/20 train/test split, test accuracy and loss/accuracy curves, plus live prediction for a typed review",
         ],
       },
       tr: {
         kicker: "Makine Öğrenmesi",
         overview:
-          "Film yorumlarını olumlu veya olumsuz olarak sınıflandıran, birkaç klasik makine öğrenmesi modelini etiketli bir veri kümesinde karşılaştıran bir NLP projesi.",
-        role: "Bilişim Mühendisliğine Giriş dersi için grup projesi.",
+          "Türkçe film yorumlarını olumlu veya olumsuz olarak sınıflandıran, 5.000 etiketli yorumla küçük bir Keras sinir ağı eğiten bir NLP projesi.",
+        role: "Bilgi Mühendisliğine Giriş dersi için grup projesi.",
         highlights: [
-          "Metin temizleme, durak kelime ayıklama ve tokenizasyon",
-          "Naive Bayes, Lojistik Regresyon, SVM ve Random Forest eğitimi",
-          "Modelleri doğruluk, F1 skoru ve hata matrisiyle karşılaştırma",
-          "Ham yorumdan değerlendirmeye uçtan uca akış",
-        ],
-      },
-    },
-    moodaktif: {
-      title: "MoodAktif",
-      tags: ["Java", "Android Studio"],
-      github: "https://github.com/KaanCan1/MoodAktif",
-      demo: null,
-      en: {
-        kicker: "Native Android",
-        overview:
-          "A mood-focused Android application built natively with Java and Android Studio.",
-        role: "Solo project exploring native Android development.",
-        highlights: [
-          "Native Android UI built in Java",
-          "Activity-based navigation",
-          "On-device local state",
-        ],
-      },
-      tr: {
-        kicker: "Yerel Android",
-        overview:
-          "Java ve Android Studio ile yerel olarak geliştirilen, ruh hâli odaklı bir Android uygulaması.",
-        role: "Yerel Android geliştirmeyi keşfeden bireysel proje.",
-        highlights: [
-          "Java ile yazılmış yerel Android arayüzü",
-          "Aktivite tabanlı gezinme",
-          "Cihaz üzerinde yerel durum",
-        ],
-      },
-    },
-    chartplotter: {
-      title: "Simple Chart Plotter",
-      tags: ["Python", "Matplotlib"],
-      github: "https://github.com/KaanCan1/Simple-Chart-Plotter",
-      demo: null,
-      en: {
-        kicker: "Data Visualization",
-        overview:
-          "A lightweight Python tool for reading data and plotting it into clean charts, made to take the friction out of quick dataset exploration.",
-        role: "Solo project.",
-        highlights: [
-          "Reads input data and renders charts",
-          "Fast visual exploration of datasets",
-          "Small, focused and easy to run",
-        ],
-      },
-      tr: {
-        kicker: "Veri Görselleştirme",
-        overview:
-          "Veri okuyup temiz grafiklere döken hafif bir Python aracı; veri kümelerini hızlıca incelemeyi kolaylaştırmak için yapıldı.",
-        role: "Bireysel proje.",
-        highlights: [
-          "Girdi verisini okur ve grafik üretir",
-          "Veri kümelerini hızlı görsel inceleme",
-          "Küçük, odaklı ve çalıştırması kolay",
+          "Temizleme: HTML ve linkler silinir, emojiler Türkçe kelimeye çevrilir, NLTK durak kelimeleri ayıklanır",
+          "scikit-learn CountVectorizer ile 1–3 gramlık kelime torbası özellikleri",
+          "L2 düzenlileştirme, dropout ve erken durdurmalı 128-64-32-16 yoğun katmanlı ağ",
+          "%80/%20 eğitim/test ayrımı, test doğruluğu ve kayıp/doğruluk grafikleri, yazılan yoruma canlı tahmin",
         ],
       },
     },
