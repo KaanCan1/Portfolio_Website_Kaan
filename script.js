@@ -594,9 +594,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "proj.beansocial.kicker": "Mobile App · Graduation Project",
       "proj.beansocial.desc":
         "A social platform for coffee lovers to share recipes, follow each other, and discover new types of coffee. Flutter client with GetX, backed by my own Express API on PostgreSQL — built end to end.",
-      "proj.spendly.kicker": "Mobile App + Backend",
+      "proj.spendly.kicker": "iOS App",
       "proj.spendly.desc":
-        "A clean, minimal expense tracker that keeps you on top of your spending. Flutter front end backed by a Node.js API, containerized with Docker for a reproducible setup.",
+        "A minimal expense tracker for iPhone: type the amount, tap a category, and it is saved. Works offline with no account, and expenses can be logged from a home screen widget or with Siri.",
       "proj.sentiment.kicker": "Machine Learning",
       "proj.sentiment.desc":
         "Classifies Turkish movie reviews as positive or negative. Reviews are cleaned (emoji turned into words, stop words removed), turned into 1–3-gram bag-of-words vectors and fed to a regularised Keras neural network.",
@@ -679,9 +679,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "proj.beansocial.kicker": "Mobil Uygulama · Bitirme Projesi",
       "proj.beansocial.desc":
         "Kahve severlerin tarif paylaştığı, birbirini takip ettiği ve yeni kahve türlerini keşfettiği bir sosyal platform. GetX ile yazılmış Flutter istemci, PostgreSQL üzerinde çalışan kendi Express API'mden besleniyor — baştan sona geliştirildi.",
-      "proj.spendly.kicker": "Mobil Uygulama + Backend",
+      "proj.spendly.kicker": "iOS Uygulaması",
       "proj.spendly.desc":
-        "Harcamalarını takip etmeni sağlayan sade, minimal bir gider takip uygulaması. Node.js API ile beslenen Flutter arayüz, tekrarlanabilir kurulum için Docker ile paketlendi.",
+        "iPhone için minimal bir gider takip uygulaması: tutarı yaz, kategoriye dokun, kaydedilsin. Hesap gerektirmeden çevrimdışı çalışır; harcamalar ana ekran widget'ından veya Siri ile de girilebilir.",
       "proj.sentiment.kicker": "Makine Öğrenmesi",
       "proj.sentiment.desc":
         "Türkçe film yorumlarını olumlu/olumsuz olarak sınıflandırır. Yorumlar temizlenir (emojiler kelimeye çevrilir, durak kelimeler ayıklanır), 1–3 gramlık kelime torbası vektörlerine dönüştürülür ve düzenlileştirilmiş bir Keras sinir ağına verilir.",
@@ -922,33 +922,33 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     spendly: {
       title: "Spendly",
-      tags: ["Flutter", "Dart", "Node.js", "Docker"],
+      tags: ["Swift", "SwiftUI", "SwiftData", "WidgetKit", "App Intents"],
       github: "https://github.com/KaanCan1/Spendly",
       demo: null,
       en: {
-        kicker: "Mobile App + Backend",
+        kicker: "iOS App",
         overview:
-          "A clean, minimal expense tracker that helps you stay on top of your spending: a Flutter client backed by a custom Node.js API and containerized with Docker.",
-        role: "Full-stack: Flutter front end, Node.js REST API, and Docker setup.",
+          "A minimal expense tracker for iPhone that focuses on one thing: logging an expense in a few seconds. The app opens on the keypad, works offline and needs no account.",
+        role: "Solo project: SwiftUI app, widgets and Siri support, with shared logic in a Swift package. No backend; the app, widgets and Siri share one local SwiftData store.",
         highlights: [
-          "Guided onboarding flow",
-          "Add and categorize expenses quickly",
-          "Weekly summary with a spending chart",
-          "Full transaction history and settings",
-          "Node.js REST backend, reproducible via Docker Compose",
+          "Two-tap logging with undo, plus a suggestion to repeat your usual expense",
+          "Income entries and logging for past days",
+          "Monthly overview by category, with per-category budgets and a warning at 80%",
+          "Home screen and lock screen widgets, a Control Center button, and Siri and Shortcuts support",
+          "Daily and weekly reminders, CSV export, and iCloud sync ready through CloudKit",
         ],
       },
       tr: {
-        kicker: "Mobil Uygulama + Backend",
+        kicker: "iOS Uygulaması",
         overview:
-          "Harcamalarını takip etmeni sağlayan sade, minimal bir gider takip uygulaması: Node.js API ile beslenen Flutter istemci, Docker ile paketlendi.",
-        role: "Full-stack: Flutter arayüz, Node.js REST API ve Docker kurulumu.",
+          "Tek bir işe odaklanan, iPhone için minimal bir gider takip uygulaması: bir harcamayı birkaç saniyede kaydetmek. Uygulama doğrudan tuş takımıyla açılır, çevrimdışı çalışır ve hesap gerektirmez.",
+        role: "Tek kişilik proje: SwiftUI uygulaması, widget'lar ve Siri desteği; ortak mantık bir Swift paketinde. Backend yok; uygulama, widget'lar ve Siri aynı yerel SwiftData deposunu paylaşır.",
         highlights: [
-          "Rehberli ilk kullanım (onboarding) akışı",
-          "Harcamaları hızlıca ekleme ve kategorize etme",
-          "Grafikli haftalık özet",
-          "Tam işlem geçmişi ve ayarlar",
-          "Docker Compose ile tekrarlanabilir Node.js REST backend",
+          "Geri alınabilen iki dokunuşla kayıt ve her zamanki harcamayı tekrarlama önerisi",
+          "Gelir girişi ve geçmiş günlere kayıt",
+          "Kategori bazında aylık özet; kategori başına bütçe ve %80'de uyarı",
+          "Ana ekran ve kilit ekranı widget'ları, Denetim Merkezi düğmesi, Siri ve Kestirmeler desteği",
+          "Günlük ve haftalık hatırlatıcılar, CSV dışa aktarma ve CloudKit ile iCloud senkronizasyonuna hazır altyapı",
         ],
       },
     },
