@@ -133,11 +133,13 @@ section { scroll-margin-top: 5rem; }
 #projects .project-card { box-shadow: none; }
 #about, #experience, #contact { padding-top: 5.5rem; padding-bottom: 5.5rem; }
 #about .title, #experience .title, #contact .title { text-align: left; font-size: clamp(2.8rem, 5vw, 4.3rem); letter-spacing: -.065em; margin-bottom: 2.5rem; }
-#about, #experience { border-top: 1px solid var(--border-color); }
+#about, #experience, #contact { border-top: 1px solid var(--border-color); }
 #about .about-pic { max-width: 300px; filter: grayscale(.55); }
 .details-container, .text-container, .contact-form-container { box-shadow: none; border-radius: 22px; }
 .tech-strip { border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-#contact { --bg-color: #e7f0e9; --card-bg: #fff; --bg-subtle: #e7f0e9; --text-color: #173529; --primary-color: #173529; --muted-color: #5e776a; --border-color: #d0dfd2; --accent-strong: #1c684b; --accent-tint: rgba(28,104,75,.09); max-width: none; background: #e7f0e9; color: #173529; padding-inline: max(24px, calc((100vw - 1160px)/2)); }
+#contact { max-width: none; background: var(--bg-color); color: var(--text-color); padding-inline: max(24px, calc((100vw - 1160px)/2)); }
+/* Light theme only: the contact band gets its own soft green palette; dark theme inherits the global tokens. */
+body:not([data-theme="dark"]) #contact { --bg-color: #e7f0e9; --card-bg: #fff; --bg-subtle: #e7f0e9; --text-color: #173529; --primary-color: #173529; --muted-color: #5e776a; --border-color: #d0dfd2; --accent-strong: #1c684b; --accent-tint: rgba(28,104,75,.09); }
 #contact .contact-grid { max-width: 1160px; margin: 0 auto; }
 #contact .title { max-width: 1160px; margin-inline: auto; }
 #contact .contact-art { width: min(100%, 370px); max-width: 370px; height: auto; aspect-ratio: 1; }
