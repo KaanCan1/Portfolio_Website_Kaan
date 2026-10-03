@@ -934,7 +934,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     spendly: {
       title: "Spendly",
-      tags: ["Swift", "SwiftUI", "SwiftData", "WidgetKit", "App Intents"],
+      tags: ["Swift", "SwiftUI", "SwiftData", "WidgetKit", "App Intents", "StoreKit 2"],
       github: "https://github.com/KaanCan1/Spendly",
       demo: null,
       en: {
@@ -945,9 +945,10 @@ document.addEventListener("DOMContentLoaded", function () {
         highlights: [
           "Two-tap logging with undo, plus a suggestion to repeat your usual expense",
           "Income entries and logging for past days",
-          "Monthly overview by category, with per-category budgets and a warning at 80%",
+          "Your own categories with a name, emoji and color, and a monthly overview by category",
+          "Monthly budget per category, with a notification at 80% and 100%",
           "Home screen and lock screen widgets, a Control Center button, and Siri and Shortcuts support",
-          "Daily and weekly reminders, CSV export, and iCloud sync ready through CloudKit",
+          "English and Turkish, plus Spendly Pro through StoreKit 2 for unlimited categories and budgets and CSV export",
         ],
       },
       tr: {
@@ -958,9 +959,10 @@ document.addEventListener("DOMContentLoaded", function () {
         highlights: [
           "Geri alınabilen iki dokunuşla kayıt ve her zamanki harcamayı tekrarlama önerisi",
           "Gelir girişi ve geçmiş günlere kayıt",
-          "Kategori bazında aylık özet; kategori başına bütçe ve %80'de uyarı",
+          "İsim, emoji ve renkle kendi kategorilerini oluşturma ve kategori bazında aylık özet",
+          "Kategori başına aylık bütçe; %80 ve %100'de bildirim",
           "Ana ekran ve kilit ekranı widget'ları, Denetim Merkezi düğmesi, Siri ve Kestirmeler desteği",
-          "Günlük ve haftalık hatırlatıcılar, CSV dışa aktarma ve CloudKit ile iCloud senkronizasyonuna hazır altyapı",
+          "İngilizce ve Türkçe dil desteği; StoreKit 2 ile Spendly Pro: sınırsız kategori ve bütçe, CSV dışa aktarma",
         ],
       },
     },
