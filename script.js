@@ -255,12 +255,31 @@ document.addEventListener("DOMContentLoaded", function () {
       if (timer) runDotClock();
     }
 
+    /* If the strip is parked on a clone, swap to the real slide it
+       copies. Same pixels, so the snap is invisible. */
+    function settle() {
+      if (!loop) return;
+      if (pos > count) {
+        pos -= count;
+        place(true, true);
+      } else if (pos < 1) {
+        pos += count;
+        place(true, true);
+      }
+    }
+
     /* Step one frame in either direction, riding through a clone at
-       the ends so the motion always continues the same way. */
+       the ends so the motion always continues the same way. Settle
+       first: a click that interrupts the slide onto a clone gets no
+       transitionend, and stepping on from there would run off the
+       end of the strip into empty frames. */
     function step(dir) {
+      if (!loop) return;
+      settle();
       current = ((current + dir) % count + count) % count;
       pos += dir;
       place(false);
+      if (prefersReducedMotion) settle();
     }
 
     function goTo(idx, instant) {
@@ -269,17 +288,10 @@ document.addEventListener("DOMContentLoaded", function () {
       place(instant);
     }
 
-    /* Once a clone has finished sliding in, swap to the real slide
-       it copies. Same pixels, so the snap is invisible. */
+    /* Once a clone has finished sliding in, swap to the real slide. */
     track.addEventListener("transitionend", function (e) {
-      if (e.target !== track || e.propertyName !== "transform" || !loop) return;
-      if (pos === count + 1) {
-        pos = 1;
-        place(true, true);
-      } else if (pos === 0) {
-        pos = count;
-        place(true, true);
-      }
+      if (e.target !== track || e.propertyName !== "transform") return;
+      settle();
     });
 
     function stop() {
