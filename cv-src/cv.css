@@ -18,6 +18,13 @@ a { color: #1a56c4; text-decoration: none; }
   letter-spacing: 0.02em;
   margin: 0 0 5px;
 }
+.headline {
+  text-align: center;
+  font-size: 10.5pt;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 4px;
+}
 .contact {
   text-align: center;
   font-size: 9.1pt;
