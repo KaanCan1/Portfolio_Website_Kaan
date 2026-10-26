@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kaan Can Kurt — Data CV</title>
+<link rel="stylesheet" href="cv.css">
+</head>
+<body>
+
+<h1 class="name">KAAN CAN KURT</h1>
+<p class="headline">Software Developer <span class="sep">|</span> Data &amp; AI</p>
+<p class="contact">+90 537 490 56 08 <span class="sep">|</span> <a href="mailto:kaancan368368@gmail.com">kaancan368368@gmail.com</a></p>
+<p class="contact"><a href="https://linkedin.com/in/kaan-can-kurt-805990299">linkedin.com/in/kaan-can-kurt-805990299</a> <span class="sep">|</span> <a href="https://github.com/KaanCan1">github.com/KaanCan1</a> <span class="sep">|</span> <a href="https://kaancankurt.vercel.app">kaancankurt.vercel.app</a></p>
+
+<h2>Summary</h2>
+<p class="summary">Computer Engineering graduate of Tokat Gaziosmanpaşa University (2025). I collect, clean, model and analyse data with Python, SQL and PostgreSQL, combine and validate data from multiple sources, and design relational data models. In my projects I have produced risk metrics from price time series and calculated a personal inflation index from grocery receipts. I have used the Claude API with structured outputs for data extraction and validation, and I actively use Claude Code, Codex and similar AI tools at every stage of development. I verify my data flows with unit and integration tests and set up CI/CD pipelines in GitHub Actions so tests run automatically on every commit. I am seeking data analysis, data modelling and AI-focused roles.</p>
+
+<h2>Experience</h2>
+<p class="role">Computer Engineering Intern | Eduji R&amp;D Software Design and Consultancy Inc.</p>
+<p class="meta">Bornova, İzmir, Türkiye | July 2024 – September 2024</p>
+<ul>
+  <li>Queried large data sets through REST APIs using server-side filtering and pagination to keep data transfer efficient.</li>
+  <li>Worked with the backend team to test API responses and validate data contracts in Postman.</li>
+  <li>Helped build a survey and rewards app in Flutter; implemented token-based authentication.</li>
+</ul>
+
+<h2>Projects</h2>
+
+<div class="proj">
+<p class="proj-title">Portfolio Tracker <span class="stack">| Python, pandas, PostgreSQL, Node.js, Claude API, MCP &middot; <a href="https://github.com/KaanCan1/portfolio-tracker">github.com/KaanCan1/portfolio-tracker</a></span></p>
+<ul>
+  <li>Built a data layer that collects stock, fund and gold prices from three financial data providers, falls back automatically when a source fails, and loads the data into a relational PostgreSQL model.</li>
+  <li>Generated technical analysis signals from price time series and measured their results; built a risk module with a correlation matrix, 95% VaR, portfolio beta and a Monte Carlo forecast.</li>
+  <li>Used Claude API structured outputs to validate data extracted from free text against a schema, and exposed the API to AI assistants as tools through an MCP server. Added 283 unit tests and CI/CD.</li>
+</ul>
+</div>
+
+<div class="proj">
+<p class="proj-title">Sepet — Personal Inflation Index <span class="stack">| PostgreSQL, SQL, Node.js, Flutter, OCR, Claude API &middot; <a href="https://github.com/KaanCan1/Sepet">github.com/KaanCan1/Sepet</a></span></p>
+<ul>
+  <li>Built an app that calculates a personal inflation index from grocery receipts. Computed the chained Laspeyres index with 12-month spending weights in PostgreSQL functions that run next to the data.</li>
+  <li>Designed a normalization layer that maps abbreviated receipt items to a standard product catalogue with fuzzy matching, calling the Claude API only for lines the matcher is unsure about.</li>
+  <li>Pulled the official CPI series from the TCMB EVDS API. Ran OCR on the device, so only parsed line items are sent to the server.</li>
+</ul>
+</div>
+
+<div class="proj">
+<p class="proj-title">Open Basket <span class="stack">| Dart, PostgreSQL, WebSocket, Flutter &middot; <a href="https://github.com/KaanCan1/Open-Basket">github.com/KaanCan1/Open-Basket</a> &middot; <a href="https://open-basket.serverpod.space/">Live demo</a></span></p>
+<ul>
+  <li>Built with one teammate for the BuilderBase Serverpod Hackathon: a shared household basket that syncs in real time and calculates who owes whom at checkout.</li>
+  <li>Generated a PostgreSQL schema from 17 models; enforced one open basket per household at the database level with a partial unique index and calculated balances in integer minor units.</li>
+  <li>Pushed updates over WebSocket; added integration tests and CI, and the backend is deployed to the cloud.</li>
+</ul>
+</div>
+
+<h2>Education</h2>
+<p class="role">Tokat Gaziosmanpaşa University | BSc in Computer Engineering | 2021 – 2025</p>
+<p class="meta">GPA: 88.02 / 100</p>
+<ul>
+  <li>Relevant coursework: artificial intelligence, machine learning, statistics, databases, data structures and algorithms.</li>
+</ul>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+<p><b>Data &amp; Analysis:</b> Python (pandas), SQL, data cleaning, data modelling, ETL, time series analysis</p>
+<p><b>AI:</b> Claude API (structured outputs), LLM integration, MCP, Claude Code, Codex, OCR</p>
+<p><b>Databases:</b> PostgreSQL, MySQL, SQL Server</p>
+<p><b>Programming Languages:</b> Python, SQL, JavaScript, Dart, Java, C#</p>
+<p><b>Tools &amp; Testing:</b> Git, Docker, GitHub Actions (CI/CD), Postman, Node.js, REST API, Unit and Integration Testing</p>
+</div>
+
+<h2>Certificates and Languages</h2>
+<div class="skills">
+<p><b>Certificates:</b> Huawei &amp; CloudMetrik – Cybersecurity Bootcamp (2026) &middot; BTK Academy – Cybersecurity</p>
+<p><b>Languages:</b> Turkish (Native) <span class="sep">|</span> English (B2, Upper-Intermediate) <span class="sep">|</span> German (A2, Elementary)</p>
+</div>
+
+</body>
+</html>

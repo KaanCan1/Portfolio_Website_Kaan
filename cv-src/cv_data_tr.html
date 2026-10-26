@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Kaan Can Kurt — Data CV</title>
+<link rel="stylesheet" href="cv.css">
+</head>
+<body>
+
+<h1 class="name">KAAN CAN KURT</h1>
+<p class="headline">Yazılım Geliştirici <span class="sep">|</span> Veri ve Yapay Zekâ</p>
+<p class="contact">+90 537 490 56 08 <span class="sep">|</span> <a href="mailto:kaancan368368@gmail.com">kaancan368368@gmail.com</a></p>
+<p class="contact"><a href="https://linkedin.com/in/kaan-can-kurt-805990299">linkedin.com/in/kaan-can-kurt-805990299</a> <span class="sep">|</span> <a href="https://github.com/KaanCan1">github.com/KaanCan1</a> <span class="sep">|</span> <a href="https://kaancankurt.vercel.app">kaancankurt.vercel.app</a></p>
+
+<h2>Özet</h2>
+<p class="summary">Tokat Gaziosmanpaşa Üniversitesi Bilgisayar Mühendisliği mezunuyum (2025). Python, SQL ve PostgreSQL ile veriyi toplayıp temizliyor, modelliyor ve analiz ediyorum; farklı kaynaklardan gelen verileri birleştirip doğruluyor, ilişkisel veri modelleri tasarlıyorum. Projelerimde fiyat zaman serilerinden risk metrikleri ürettim ve market fişlerinden kişisel enflasyon endeksi hesapladım. Claude API'yi yapılandırılmış çıktılarla veri çıkarma ve doğrulama adımlarında kullandım; Claude Code, Codex ve benzeri yapay zekâ araçlarından geliştirmenin her aşamasında aktif biçimde yararlanıyorum. Veri akışlarımı birim ve entegrasyon testleriyle doğruluyor, GitHub Actions ile kurduğum CI/CD hattında testlerin her commit'te otomatik çalışmasını sağlıyorum. Veri analizi, veri modelleme ve yapay zekâ odaklı rollerde çalışmayı hedefliyorum.</p>
+
+<h2>Deneyim</h2>
+<p class="role">Bilgisayar Mühendisi Stajyeri | Eduji Ar-Ge Yazılım Tasarım ve Danışmanlık A.Ş.</p>
+<p class="meta">Bornova, İzmir | Temmuz 2024 – Eylül 2024</p>
+<ul>
+  <li>REST API'ler üzerinden büyük veri kümelerini sunucu tarafında filtreleme ve sayfalama ile sorguladım, veri aktarımını verimli tuttum.</li>
+  <li>Backend ekibiyle birlikte çalışarak API yanıtlarını ve veri sözleşmelerini Postman üzerinden test ettim.</li>
+  <li>Anket ve ödül odaklı mobil uygulamanın Flutter geliştirmesine katkı sağladım; token tabanlı kimlik doğrulama uyguladım.</li>
+</ul>
+
+<h2>Projeler</h2>
+
+<div class="proj">
+<p class="proj-title">Portfolio Tracker <span class="stack">| Python, pandas, PostgreSQL, Node.js, Claude API, MCP &middot; <a href="https://github.com/KaanCan1/portfolio-tracker">github.com/KaanCan1/portfolio-tracker</a></span></p>
+<ul>
+  <li>Hisse, fon ve altın fiyatlarını üç finansal veri sağlayıcısından toplayan, bir kaynak hata verdiğinde otomatik olarak yedeğe geçen ve verileri ilişkisel PostgreSQL modeline yükleyen veri katmanını geliştirdim.</li>
+  <li>Fiyat zaman serilerinden teknik analiz sinyalleri üretip sonuçlarını ölçtüm; korelasyon matrisi, %95 VaR, portföy betası ve Monte Carlo projeksiyonu içeren bir risk modülü kurdum.</li>
+  <li>Claude API'nin yapılandırılmış çıktılarıyla serbest metinden çıkardığım verileri şemaya göre doğruladım; API'yi bir MCP sunucusuyla yapay zekâ asistanlarına araç olarak açtım. 283 birim testi ve CI/CD ekledim.</li>
+</ul>
+</div>
+
+<div class="proj">
+<p class="proj-title">Sepet — Kişisel Enflasyon Endeksi <span class="stack">| PostgreSQL, SQL, Node.js, Flutter, OCR, Claude API &middot; <a href="https://github.com/KaanCan1/Sepet">github.com/KaanCan1/Sepet</a></span></p>
+<ul>
+  <li>Market fişlerinden kişisel enflasyon endeksi hesaplayan bir uygulama geliştirdim. Zincirlenmiş Laspeyres endeksini 12 aylık harcama ağırlıklarıyla, verinin yanında çalışan PostgreSQL fonksiyonlarında hesapladım.</li>
+  <li>Fişlerdeki kısaltılmış ürün adlarını bulanık eşleştirmeyle standart ürün kataloğuna bağlayan normalizasyon katmanını tasarladım; Claude API'yi yalnızca eşleştirmenin emin olamadığı satırlarda devreye soktum.</li>
+  <li>Resmî TÜFE serisini TCMB EVDS API'sinden çektim. OCR'ı cihazda çalıştırdım; sunucuya yalnızca ayrıştırılmış satırlar gönderiliyor.</li>
+</ul>
+</div>
+
+<div class="proj">
+<p class="proj-title">Open Basket <span class="stack">| Dart, PostgreSQL, WebSocket, Flutter &middot; <a href="https://github.com/KaanCan1/Open-Basket">github.com/KaanCan1/Open-Basket</a> &middot; <a href="https://open-basket.serverpod.space/">Canlı demo</a></span></p>
+<ul>
+  <li>BuilderBase Serverpod Hackathon'unda iki kişilik bir ekiple geliştirdim: ev halkının ortak sepete eklediklerini gerçek zamanlı eşitleyen ve kasada kimin kime ne borçlu olduğunu hesaplayan bir uygulama.</li>
+  <li>17 modelden PostgreSQL şeması ürettim; hane başına tek açık sepet kuralını partial unique index ile veritabanı seviyesinde uyguladım, borçları sunucuda kuruş bazında hesapladım.</li>
+  <li>Güncellemeleri WebSocket ile ilettim; entegrasyon testleri ve CI ekledim, backend bulutta yayında.</li>
+</ul>
+</div>
+
+<h2>Eğitim</h2>
+<p class="role">Tokat Gaziosmanpaşa Üniversitesi | Bilgisayar Mühendisliği (Lisans) | 2021 – 2025</p>
+<p class="meta">Not Ortalaması: 88,02 / 100</p>
+<ul>
+  <li>İlgili dersler: yapay zekâ, makine öğrenmesi, istatistik, veritabanı yönetimi, veri yapıları ve algoritma analizi.</li>
+</ul>
+
+<h2>Teknik Beceriler</h2>
+<div class="skills">
+<p><b>Veri ve Analiz:</b> Python (pandas), SQL, veri temizleme, veri modelleme, ETL, zaman serisi analizi</p>
+<p><b>Yapay Zekâ:</b> Claude API (structured outputs), LLM entegrasyonu, MCP, Claude Code, Codex, OCR</p>
+<p><b>Veritabanı:</b> PostgreSQL, MySQL, SQL Server</p>
+<p><b>Programlama Dilleri:</b> Python, SQL, JavaScript, Dart, Java, C#</p>
+<p><b>Araçlar ve Test:</b> Git, Docker, GitHub Actions (CI/CD), Postman, Node.js, REST API, Birim ve Entegrasyon Testi</p>
+</div>
+
+<h2>Sertifikalar ve Diller</h2>
+<div class="skills">
+<p><b>Sertifikalar:</b> Huawei &amp; CloudMetrik – Siber Güvenlik Bootcamp (2026) &middot; BTK Akademi – Siber Güvenlik</p>
+<p><b>Diller:</b> Türkçe (Ana Dil) <span class="sep">|</span> İngilizce (B2, Upper-Intermediate) <span class="sep">|</span> Almanca (A2, Temel)</p>
+</div>
+
+</body>
+</html>
