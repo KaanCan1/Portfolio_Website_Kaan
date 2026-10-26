@@ -1,7 +1,8 @@
 # CV kaynaklari
 
-`assets/KaanCanKurt_CV.pdf` (TR) ve `assets/KaanCanKurt_ENG_CV.pdf` (EN) bu klasordeki
-HTML dosyalarindan uretilir. PDF'leri elle duzenleme — kaynagi duzenle, yeniden uret.
+`assets/KaanCanKurt_CV.pdf` (TR) ve `assets/KaanCanKurt_ENG_CV.pdf` (EN) genel CV'ler;
+`assets/KaanCanKurt_Data_CV.pdf` (TR) ve `assets/KaanCanKurt_ENG_Data_CV.pdf` (EN) veri ve
+yapay zeka ilanlari icin. Hepsi bu klasordeki HTML dosyalarindan uretilir. PDF'leri elle duzenleme — kaynagi duzenle, yeniden uret.
 
 ## Dosyalar
 
@@ -9,8 +10,10 @@ HTML dosyalarindan uretilir. PDF'leri elle duzenleme — kaynagi duzenle, yenide
 |---|---|
 | `cv_tr.html` | Turkce CV icerigi |
 | `cv_en.html` | Ingilizce CV icerigi |
-| `cv.css` | Ikisinin ortak tasarimi (A4, Helvetica Neue, bolum basliklari) |
-| `build.sh` | Headless Chrome ile ikisini de PDF'e basar |
+| `cv_data_tr.html` | Turkce data CV icerigi (veri analizi, veri modelleme, yapay zeka) |
+| `cv_data_en.html` | Ingilizce data CV icerigi |
+| `cv.css` | Hepsinin ortak tasarimi (A4, Helvetica Neue, bolum basliklari) |
+| `build.sh` | Headless Chrome ile dordunu de PDF'e basar |
 
 ## Guncelleme
 

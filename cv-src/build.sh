@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# CV kaynaklarindan (cv_tr.html / cv_en.html) PDF uretir ve assets/ icine yazar.
+# CV kaynaklarindan (cv_tr / cv_en / cv_data_tr / cv_data_en .html) PDF uretir ve assets/ icine yazar.
 # Kullanim:  ./cv-src/build.sh
 set -euo pipefail
 
@@ -21,4 +21,6 @@ build() {  # $1 = dil kodu, $2 = cikti dosya adi
 echo "CV uretiliyor:"
 build tr KaanCanKurt_CV.pdf
 build en KaanCanKurt_ENG_CV.pdf
+build data_tr KaanCanKurt_Data_CV.pdf
+build data_en KaanCanKurt_ENG_Data_CV.pdf
 echo "Bitti. Tek sayfayi astiysa cv.css icindeki font-size / line-height degerlerini kis."

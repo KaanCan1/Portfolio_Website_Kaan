@@ -32,6 +32,7 @@ a { color: #1a56c4; text-decoration: none; }
   margin: 0 0 2px;
 }
 .contact .sep { color: #888; padding: 0 3px; }
+.skills .sep { color: #888; padding: 0 4px; }
 
 /* --- Bolumler --- */
 h2 {
