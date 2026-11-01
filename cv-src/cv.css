@@ -47,14 +47,11 @@ h2 {
 .role { font-weight: 700; margin: 0; }
 .meta { font-style: italic; color: #333; margin: 0 0 3px; font-size: 9.3pt; }
 
-ul { margin: 0 0 0 0; padding-left: 13px; list-style: none; }
-li { margin: 0 0 2px; text-align: justify; position: relative; }
-li::before {
-  content: "•";
-  position: absolute;
-  left: -11px;
-  color: #333;
-}
+/* Madde isaretleri ::marker ile ciziliyor. li'ye position verme: Chrome
+   konumlandirilmis elemanlari PDF'e en son basiyor ve ATS metni yanlis sirada okuyor. */
+ul { margin: 0; padding-left: 13px; list-style: disc; }
+li { margin: 0 0 2px; padding-left: 1px; text-align: justify; }
+li::marker { color: #333; font-size: 0.85em; }
 p.summary { margin: 0; text-align: justify; }
 
 /* --- Projeler --- */
