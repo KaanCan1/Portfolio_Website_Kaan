@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kaancankurt.vercel.app/sitemap.xml
+Sitemap: https://kaancankurt.com/sitemap.xml

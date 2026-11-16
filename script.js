@@ -624,7 +624,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "form.sending": "Sending…",
       "form.success": "✅ Your message has been sent. I'll get back to you soon.",
       "form.error":
-        "❌ Sending failed. Please try again, or email me at kaancan368368@gmail.com.",
+        "❌ Sending failed. Please try again, or email me at kaan@kaancankurt.com.",
       "footer.copyright": "Copyright © 2025 Kaan Can Kurt. All Rights Reserved.",
       "modal.built": "Highlights",
       "modal.role": "Role / team",
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "form.send": "Mesaj Gönder",
       "form.sending": "Gönderiliyor…",
       "form.error":
-        "❌ Gönderilemedi. Lütfen tekrar dene ya da kaancan368368@gmail.com adresine yaz.",
+        "❌ Gönderilemedi. Lütfen tekrar dene ya da kaan@kaancankurt.com adresine yaz.",
       "form.success": "✅ Mesajın ulaştı. En kısa sürede döneceğim.",
       "footer.copyright": "Telif © 2025 Kaan Can Kurt. Tüm Hakları Saklıdır.",
       "modal.built": "Öne çıkanlar",
